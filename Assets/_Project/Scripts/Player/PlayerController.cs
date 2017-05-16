@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         ReadInput();
-        UpdateAimingDirection();
         UpdateAnimation();
     }
 
@@ -67,28 +66,14 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void ReadInput()
     {
-        //movement input.
-        _movementVector = new Vector2(
-            Input.GetAxis("Horizontal"),
-            Input.GetAxis("Vertical")
-        );
+        //movement.
+        _movementVector = Controller.LeftStick.Vector;
 
+        //Aiming. (We read in a vector and convert it to a degree for ease of use.)
+        _aimingDegree = MathHelper.Vector2Degree(Controller.RightStick.Vector);
 
         //shooting.
-        _shootButtonPressed = Input.GetMouseButton(0);
-    }
-
-    /// <summary>
-    /// Update the viewing direction.
-    /// </summary>
-    private void UpdateAimingDirection()
-    {
-        //Calculate the vector to the mouse position from this character.
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 distance = mousePosition - (Vector2)transform.position;
-
-        //Calculate the angle to the mouse position.
-        _aimingDegree = MathHelper.Vector2Degree(distance);
+        _shootButtonPressed = Controller.RightTrigger.IsPressed;
     }
 
     /// <summary>
