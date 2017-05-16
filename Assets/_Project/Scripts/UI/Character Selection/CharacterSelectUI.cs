@@ -9,24 +9,31 @@ using UnityEngine.UI;
 public class CharacterSelectUI : MonoBehaviour
 {
     #region Editor Variables
-
+    /// <summary>
+    /// Cooldown on changing which of the headshots is currently focused on. 
+    /// </summary>
     [SerializeField] private float _changeFocusCooldown;
     #endregion
 
     #region Internal Variables
-    private CharacterSelectHeadShot[] _headshots;
-    private CharacterSelectHeadShot _focusedHeadShot;
-    private int _focusedHeadshotIndex;
-    private bool _onRefocusCooldown;
+    private CharacterSelectHeadShot[] _headshots;       //Array of all the headshots.
+    private CharacterSelectHeadShot _focusedHeadShot;   //The headshot that's currently focused on.
+    private int _focusedHeadshotIndex;                  //index in the array of the focused headshot.
+    private bool _onRefocusCooldown;                    //true if currently on cooldown for changing focus, flase otherwise.
     #endregion
 
     #region Properties
+    /// <summary>
+    /// Controller that this UI reads it's input from.
+    /// </summary>
     public InputDevice Controller { get; set; }
     #endregion
 
     #region Events
-
     public delegate void CharacterSelectEventHandler(PlayerController character);
+    /// <summary>
+    /// Event that is thrown when a character has been selected. Includes a reference to the character prefab in the parameters.
+    /// </summary>
     public event CharacterSelectEventHandler OnCharacterSelected;
     #endregion
 
@@ -37,7 +44,8 @@ public class CharacterSelectUI : MonoBehaviour
 
     private void Start()
     {
-        ChangeFocusTo(_headshots[0]);
+        //set the starting focus.
+        ChangeFocusTo(0);
     }
 
     private void Update()
@@ -68,11 +76,15 @@ public class CharacterSelectUI : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks if the player has made it's choice. If true, applies choice.
+    /// Check if the player has made it's choice. If true, apply choice.
     /// </summary>
     private void CheckSelection()
     {
-        //todo
+        if (!Controller.Action1.WasPressed) return;
+
+        //Throw select event and destroy this ui.
+        OnCharacterSelected(_focusedHeadShot.AssociatedCharacterPrefab);
+        Destroy(gameObject);
     }
 
     #region Changing focused headshot.

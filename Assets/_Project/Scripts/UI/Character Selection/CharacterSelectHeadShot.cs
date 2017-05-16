@@ -5,21 +5,33 @@ using UnityEngine.UI;
 
 public class CharacterSelectHeadShot : MonoBehaviour
 {
-    //todo setup reference to character prefab.
+    #region Editor Variables
+    [SerializeField] private PlayerController _associatedCharacterPrefab;
+    #endregion
 
+    #region Components
     private Outline _outline;
+    #endregion
+
+    #region Properties
+    public PlayerController AssociatedCharacterPrefab
+    {
+        get { return _associatedCharacterPrefab; }
+    }
+    #endregion
+
     private void Awake()
     {
         _outline = GetComponent<Outline>();
-        Unselect();
+        UnFocus();
     }
 
-    public void Select()
+    public void Focus()
     {
         _outline.enabled = true;
     }
 
-    public void Unselect()
+    public void UnFocus()
     {
         _outline.enabled = false;
     }
