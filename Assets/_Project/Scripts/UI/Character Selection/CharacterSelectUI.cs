@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//todo add User controls
-//todo add actual selection
 public class CharacterSelectUI : MonoBehaviour
 {
     #region Editor Variables
@@ -63,7 +61,7 @@ public class CharacterSelectUI : MonoBehaviour
     {
         //Stop if we're on cooldown or no input was registered.
         float direction = Controller.LeftStickX.Value;
-        if (_onRefocusCooldown || direction == null) return;
+        if (_onRefocusCooldown || direction == 0) return;
 
         //Move focus.
         if (direction > 0)

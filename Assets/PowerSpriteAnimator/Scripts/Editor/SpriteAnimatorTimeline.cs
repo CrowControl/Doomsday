@@ -77,7 +77,7 @@ public partial class SpriteAnimator
 			m_selectionMouseStart = e.mousePosition.x;
 		}
 
-		// Select whatever's in the selection box
+		// Focus whatever's in the selection box
 		if ( (m_dragState == eDragState.SelectEvent || m_dragState == eDragState.SelectFrame) && e.rawType == EventType.MouseDrag && e.button == 0 )
 		{			
 			float dragTimeStart = GuiPosToAnimTime(rect, m_selectionMouseStart);

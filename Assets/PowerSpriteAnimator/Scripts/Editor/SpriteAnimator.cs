@@ -1191,7 +1191,7 @@ public partial class SpriteAnimator : EditorWindow
 		// Add the duplicated frames
 		list.InsertRange( index, duplicatedItems );
 
-		// Select the newly created frames
+		// Focus the newly created frames
 		ClearSelection();
 		selectedList = duplicatedItems;
 
