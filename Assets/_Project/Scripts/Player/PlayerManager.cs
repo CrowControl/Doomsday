@@ -31,10 +31,12 @@ namespace _Project.Scripts
         {
             if (_newPlayerIndex >= _maxPlayerCount) throw new TooManyPlayersException(controller);
 
-            //Spawn UI, and await the selection.
+            //Spawn UI, set the controller and await the selection.
             CharacterSelectUI charSelect = _characterSelectUIManager.SpawnCharacterSelectUI(_newPlayerIndex);
             charSelect.OnCharacterSelected += OnCharacterSelected;
+            charSelect.Controller = controller;
 
+            //Set the index for the next player.
             _newPlayerIndex++;
         }
 
