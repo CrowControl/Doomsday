@@ -23,6 +23,9 @@ namespace _Project.Scripts
 
         private void OnOnNewDeviceInUse(InputDevice controller)
         {
+            //todo spawn UI
+            //todo subscribe to char selection event
+            //todo spawn selected character
         }
     }
 }

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//todo rename "select" to "focus"
+//todo add User controls
 public class CharacterSelectUI : MonoBehaviour
 {
     #region Internal Variables

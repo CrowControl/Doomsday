@@ -75,6 +75,7 @@ namespace _Project.Scripts
         private void OnDeviceDetached(InputDevice device)
         {
             _devicesInUse.Remove(device);
+            //todo
         }
         #endregion
     }

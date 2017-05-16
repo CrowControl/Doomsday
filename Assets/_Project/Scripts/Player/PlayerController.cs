@@ -3,6 +3,8 @@ using Assets;
 using Assets._Project.Scripts.Shooting;
 using UnityEngine;
 
+//todo refactor the mouse-keyboard input to a seperate component.
+//todo implement InControl input management.
 [RequireComponent(typeof(Rigidbody2D)), 
  RequireComponent(typeof(Animator)), 
  RequireComponent(typeof(SpriteRenderer))]
