@@ -28,7 +28,7 @@ public class CharacterSelectUI : MonoBehaviour
     #endregion
 
     #region Events
-    public delegate void CharacterSelectEventHandler(PlayerController character);
+    public delegate void CharacterSelectEventHandler(PlayerController character, InputDevice controller);
     /// <summary>
     /// Event that is thrown when a character has been selected. Includes a reference to the character prefab in the parameters.
     /// </summary>
@@ -81,7 +81,7 @@ public class CharacterSelectUI : MonoBehaviour
         if (!Controller.Action1.WasPressed) return;
 
         //Throw select event and destroy this ui.
-        OnCharacterSelected(_focusedHeadShot.AssociatedCharacterPrefab);
+        OnCharacterSelected(_focusedHeadShot.AssociatedCharacterPrefab, Controller);
         Destroy(gameObject);
     }
 

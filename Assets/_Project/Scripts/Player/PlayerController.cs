@@ -1,6 +1,7 @@
 ﻿
 using Assets;
 using Assets._Project.Scripts.Shooting;
+using InControl;
 using UnityEngine;
 
 //todo refactor the mouse-keyboard input to a seperate component.
@@ -30,6 +31,10 @@ public class PlayerController : MonoBehaviour
     private bool _shootButtonPressed;
 
     private float _aimingDegree;
+    #endregion
+
+    #region Properties
+    public InputDevice Controller { get; set; }
     #endregion
 
     private void Awake()

@@ -10,6 +10,7 @@ namespace _Project.Scripts
     {
         #region Editor Variables
         [SerializeField] private float _maxPlayerCount;
+        [SerializeField] private Vector2 _spawnPosition;
         #endregion
 
         #region Other Objects
@@ -40,9 +41,13 @@ namespace _Project.Scripts
             _newPlayerIndex++;
         }
 
-        private void OnCharacterSelected(PlayerController character)
+        private void OnCharacterSelected(PlayerController characterPrefab, InputDevice controller)
         {
-            //todo
+            //Spawn the character, pass the controller reference.
+            PlayerController character = Instantiate(characterPrefab, _spawnPosition, Quaternion.identity);
+            character.Controller = controller;
+
+            _players.Add(character);
         }
     }
 
