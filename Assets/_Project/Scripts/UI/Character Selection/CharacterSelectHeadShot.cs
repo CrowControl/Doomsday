@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CharacterSelectHeadShot : MonoBehaviour
 {
+    //todo setup reference to character prefab.
+
     private Outline _outline;
     private void Awake()
     {

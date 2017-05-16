@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 //todo rename "select" to "focus"
 //todo add User controls
+//todo add actual selection
 public class CharacterSelectUI : MonoBehaviour
 {
     #region Internal Variables
@@ -14,7 +15,13 @@ public class CharacterSelectUI : MonoBehaviour
     #endregion
 
     #region Properties
-    public InputDevice _controller;
+    public InputDevice Controller { get; set; }
+    #endregion
+
+    #region Events
+
+    public delegate void CharacterSelectEventHandler(PlayerController character);
+    public event CharacterSelectEventHandler OnCharacterSelected;
     #endregion
 
     private void Awake()

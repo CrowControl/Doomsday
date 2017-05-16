@@ -21,10 +21,11 @@ public class CharacterSelectUIManager : MonoBehaviour
         new Vector2(-1, -1),
         new Vector2(1, -1)
     };
+
     #endregion
 
-    public static void SpawnCharacterSelectUI(int playerIndex)
+    public void SpawnCharacterSelectUI(int playerIndex)
     {
-        //todo
+        //todo Spawn UI
     }
 }

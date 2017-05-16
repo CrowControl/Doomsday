@@ -38,10 +38,16 @@ namespace _Project.Scripts
             InputDevice device = InputManager.ActiveDevice;
             if (WasJoinButtonPressed(device) && !IsInUse(device))
             {
-                if (OnNewDeviceInUse != null)
+                if (OnNewDeviceInUse == null) return;
+
+                try
                 {
                     OnNewDeviceInUse(device);
                     _devicesInUse.Add(device);
+                }
+                catch (TooManyPlayersException exception)
+                {
+                    _devicesInUse.Remove(exception.AssociatedController);
                 }
             }
         }
