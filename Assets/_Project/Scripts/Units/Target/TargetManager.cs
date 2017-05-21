@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Project.Scripts.Target
+namespace _Project.Scripts.Units.Target
 {
     public class TargetManager : MonoBehaviour
     {

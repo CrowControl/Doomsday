@@ -1,38 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using _Project.Scripts.Player;
 
-public class CharacterSelectHeadShot : MonoBehaviour
+namespace _Project.Scripts.UI.Character_Selection
 {
-    #region Editor Variables
-    [SerializeField] private PlayerController _associatedCharacterPrefab;
-    #endregion
-
-    #region Components
-    private Outline _outline;
-    #endregion
-
-    #region Properties
-    public PlayerController AssociatedCharacterPrefab
+    public class CharacterSelectHeadShot : MonoBehaviour
     {
-        get { return _associatedCharacterPrefab; }
-    }
-    #endregion
+        #region Editor Variables
+        [SerializeField] private PlayerCharacterController _associatedCharacterPrefab;
+        #endregion
 
-    private void Awake()
-    {
-        _outline = GetComponent<Outline>();
-        UnFocus();
-    }
+        #region Components
+        private Outline _outline;
+        #endregion
 
-    public void Focus()
-    {
-        _outline.enabled = true;
-    }
+        #region Properties
+        public PlayerCharacterController AssociatedCharacterPrefab
+        {
+            get { return _associatedCharacterPrefab; }
+        }
+        #endregion
 
-    public void UnFocus()
-    {
-        _outline.enabled = false;
+        private void Awake()
+        {
+            _outline = GetComponent<Outline>();
+            UnFocus();
+        }
+
+        public void Focus()
+        {
+            _outline.enabled = true;
+        }
+
+        public void UnFocus()
+        {
+            _outline.enabled = false;
+        }
     }
 }

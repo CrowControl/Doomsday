@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets
+namespace _Project.Scripts
 {
-    static class MathHelper
+    internal static class MathHelper
     {
         /// <summary>
         /// Converts a directional vector to an angle between -180 and 180 degrees.

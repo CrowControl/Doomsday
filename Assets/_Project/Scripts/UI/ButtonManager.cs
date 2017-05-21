@@ -1,12 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ButtonManager : MonoBehaviour
+namespace _Project.Scripts.UI
 {
-    public void LoadAndStartLevel(string sceneName)
+    public class ButtonManager : MonoBehaviour
     {
-        SceneManager.LoadScene(sceneName);
+        public void LoadAndStartLevel(string sceneName)
+        {
+            SceneManager.LoadScene(sceneName);
+        }
     }
 }

@@ -1,99 +1,98 @@
-﻿
-using Assets;
-using Assets._Project.Scripts.Shooting;
-using InControl;
+﻿using InControl;
 using UnityEngine;
+using _Project.Scripts.Units;
 
-//todo refactor the mouse-keyboard input to a seperate component.
-//todo implement InControl input management.
-[RequireComponent(typeof(Rigidbody2D)), 
- RequireComponent(typeof(Animator)), 
- RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(IShooter))]
-public class PlayerController : MonoBehaviour
+namespace _Project.Scripts.Player
 {
-    #region Editor Variables
-
-    [SerializeField] private float _speed;
-
-    #endregion
-
-    #region Components
-    private Rigidbody2D _rigidbody;
-    private Animator _animator;
-    private SpriteRenderer _renderer;
-    private IShooter _shooter;
-    #endregion
-
-    #region Internal variables
-    //input.
-    private Vector2 _movementVector;
-    private bool _shootButtonPressed;
-
-    private float _aimingDegree;
-    #endregion
-
-    #region Properties
-    public InputDevice Controller { get; set; }
-    #endregion
-
-    private void Awake()
+    [RequireComponent(typeof(Rigidbody2D)), 
+     RequireComponent(typeof(Animator)), 
+     RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(IShooter))]
+    public class PlayerController : MonoBehaviour
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-        _renderer = GetComponent<SpriteRenderer>();
-        _shooter = GetComponent<IShooter>();
-    }
+        #region Editor Variables
 
-    private void Update()
-    {
-        ReadInput();
-        UpdateAnimation();
-    }
+        [SerializeField] private float _speed;
 
-    private void FixedUpdate()
-    {
-        //Movement.
-        UpdateMovement();
+        #endregion
 
-        //shooting.
-        if(_shootButtonPressed)
-            _shooter.Shoot(_aimingDegree);
-    }
+        #region Components
+        private Rigidbody2D _rigidbody;
+        private Animator _animator;
+        private SpriteRenderer _renderer;
+        private IShooter _shooter;
+        #endregion
 
-    /// <summary>
-    /// Reads in the player input.
-    /// </summary>
-    private void ReadInput()
-    {
-        //movement.
-        _movementVector = Controller.LeftStick.Vector;
+        #region Internal variables
+        //input.
+        private Vector2 _movementVector;
+        private bool _shootButtonPressed;
 
-        //Aiming. (We read in a vector and convert it to a degree for ease of use.)
-        _aimingDegree = MathHelper.Vector2Degree(Controller.RightStick.Vector);
+        private float _aimingDegree;
+        #endregion
 
-        //shooting.
-        _shootButtonPressed = Controller.RightTrigger.IsPressed;
-    }
+        #region Properties
+        public InputDevice Controller { get; set; }
+        #endregion
 
-    /// <summary>
-    /// Updates the animation.
-    /// </summary>
-    private void UpdateAnimation()
-    {
-        //Tell the animator we're moving if we have velocity.
-        _animator.SetBool("IsMoving", _rigidbody.velocity != Vector2.zero);
-        //We're front facing if we're aiming to the bottom half of the screen.
-        _animator.SetBool("IsFrontFacing", _aimingDegree <= 0);
-        //We want to flip if we're aiming to the right side of the screen.  
-        _renderer.flipX = Mathf.Abs(_aimingDegree) <= 90;
-    }
+        private void Awake()
+        {
+            _rigidbody = GetComponent<Rigidbody2D>();
+            _animator = GetComponent<Animator>();
+            _renderer = GetComponent<SpriteRenderer>();
+            _shooter = GetComponent<IShooter>();
+        }
 
-    /// <summary>
-    /// Updates the player movement.
-    /// </summary>
-    private void UpdateMovement()
-    {
-        _rigidbody.velocity = _movementVector * _speed;
+        private void Update()
+        {
+            ReadInput();
+            UpdateAnimation();
+        }
+
+        private void FixedUpdate()
+        {
+            //Movement.
+            UpdateMovement();
+
+            //shooting.
+            if(_shootButtonPressed)
+                _shooter.Shoot(_aimingDegree);
+        }
+
+        /// <summary>
+        /// Reads in the player input.
+        /// </summary>
+        private void ReadInput()
+        {
+            //movement.
+            _movementVector = Controller.LeftStick.Vector;
+
+            //Aiming. (We read in a vector and convert it to a degree for ease of use.)
+            _aimingDegree = MathHelper.Vector2Degree(Controller.RightStick.Vector);
+
+            //shooting.
+            _shootButtonPressed = Controller.RightTrigger.IsPressed;
+        }
+
+        /// <summary>
+        /// Updates the animation.
+        /// </summary>
+        private void UpdateAnimation()
+        {
+            //Tell the animator we're moving if we have velocity.
+            _animator.SetBool("IsMoving", _rigidbody.velocity != Vector2.zero);
+            //We're front facing if we're aiming to the bottom half of the screen.
+            _animator.SetBool("IsFrontFacing", _aimingDegree <= 0);
+            //We want to flip if we're aiming to the right side of the screen.  
+            _renderer.flipX = Mathf.Abs(_aimingDegree) <= 90;
+        }
+
+        /// <summary>
+        /// Updates the player movement.
+        /// </summary>
+        private void UpdateMovement()
+        {
+            _rigidbody.velocity = _movementVector * _speed;
+        }
     }
 }

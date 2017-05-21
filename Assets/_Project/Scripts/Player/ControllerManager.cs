@@ -1,18 +1,22 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using InControl;
+using UnityEngine;
 
-namespace _Project.Scripts
+namespace _Project.Scripts.Player
 {
     public class ControllerManager : MonoBehaviour
     {
         #region Variables
         #region Internal Variables
+        //The devices currently being used.
         private readonly List<InputDevice> _devicesInUse = new List<InputDevice>();
         #endregion
 
         #region Events
         public delegate void DeviceEventHandler(InputDevice device);
+        /// <summary>
+        /// Event that triggers when a new device is registered.
+        /// </summary>
         public event DeviceEventHandler OnNewDeviceInUse;
         #endregion
         #endregion

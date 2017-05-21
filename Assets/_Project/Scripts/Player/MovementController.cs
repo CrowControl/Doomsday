@@ -6,17 +6,18 @@ namespace _Project.Scripts.Player
     public class MovementController : MonoBehaviour {
 
         #region Editor Variables
-        [SerializeField] private float _speed;
+        [SerializeField] private float _speed;          //Speed that this character moves at.
         #endregion
 
         #region Components
-        private Rigidbody2D _rigidbody;                   //Handles Physics.
+        private Rigidbody2D _rigidbody;                 //Handles Physics.
         private IMovementInputSource _movementSource;   //Provides movement input.
         #endregion
 
 
         private void Awake ()
         {
+            //Get components.
             _rigidbody = GetComponent<Rigidbody2D>();
             _movementSource = GetComponent<IMovementInputSource>();
         }
@@ -24,12 +25,13 @@ namespace _Project.Scripts.Player
         // Update is called once per frame
         private void FixedUpdate ()
         {
+            //Move by setting the velocity.
             _rigidbody.velocity = _movementSource.MovementVector * _speed;
         }
     }
 
     public interface IMovementInputSource
     {
-        Vector2 MovementVector { get; }
+        Vector2 MovementVector { get; } 
     }
 }

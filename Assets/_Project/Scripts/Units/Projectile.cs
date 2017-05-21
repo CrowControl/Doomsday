@@ -1,7 +1,6 @@
-﻿using Assets;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace _Project.Scripts.Shooting
+namespace _Project.Scripts.Units
 {
 
     [RequireComponent(typeof(Rigidbody2D))]

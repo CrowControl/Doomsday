@@ -1,7 +1,6 @@
-﻿using Assets._Project.Scripts;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace _Project.Scripts.Target
+namespace _Project.Scripts.Units.Target
 {
     [RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(HealthController))]
     public class TargetController : MonoBehaviour

@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using InControl;
 using UnityEngine;
+using _Project.Scripts.UI.Character_Selection;
 
-namespace _Project.Scripts
+namespace _Project.Scripts.Player
 {
     [RequireComponent(typeof(ControllerManager))]
     public class PlayerManager : MonoBehaviour
     {
         #region Editor Variables
-        [SerializeField] private float _maxPlayerCount;
-        [SerializeField] private Vector2 _spawnPosition;
+        [SerializeField] private float _maxPlayerCount;     //Maximum amount of players allowed.
+        [SerializeField] private Vector2 _spawnPosition;    //Position to spawn new players at.
         #endregion
 
         #region Other Objects
-        private CharacterSelectUIManager _characterSelectUIManager;
+        private CharacterSelectUIManager _characterSelectUIManager; //The object that spawns Character select UI.
         #endregion
         
         #region Internal Variables
-        private readonly List<PlayerController> _players = new List<PlayerController>();
+        private readonly List<PlayerCharacterController> _playerCharacters = new List<PlayerCharacterController>();
         private int _newPlayerIndex;
         #endregion
 
@@ -41,13 +42,13 @@ namespace _Project.Scripts
             _newPlayerIndex++;
         }
 
-        private void OnCharacterSelected(PlayerController characterPrefab, InputDevice controller)
+        private void OnCharacterSelected(PlayerCharacterController characterPrefab, InputDevice controller)
         {
             //Spawn the character, pass the controller reference.
-            PlayerController character = Instantiate(characterPrefab, _spawnPosition, Quaternion.identity);
-            character.Controller = controller;
-
-            _players.Add(character);
+            PlayerCharacterController playerCharacter = Instantiate(characterPrefab, _spawnPosition, Quaternion.identity);
+            playerCharacter.Controller = controller;
+            
+            _playerCharacters.Add(playerCharacter);
         }
     }
 
