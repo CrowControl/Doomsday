@@ -19,8 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4434086404535818}
-  - component: {fileID: 212578938163994520}
   - component: {fileID: 95372564711899914}
+  - component: {fileID: 212578938163994520}
+  - component: {fileID: 210525781904391604}
   - component: {fileID: 61188002409964994}
   - component: {fileID: 50760496142209978}
   - component: {fileID: 114627061711065584}
@@ -64,7 +65,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61188002409964994
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -135,6 +136,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
+--- !u!210 &210525781904391604
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1897973420397094}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!212 &212578938163994520
 SpriteRenderer:
   m_ObjectHideFlags: 1

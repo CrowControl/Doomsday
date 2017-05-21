@@ -149,6 +149,7 @@ PlayerSettings:
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
+  apiCompatibilityLevel: 2
   stripEngineCode: 1
   iPhoneStrippingLevel: 0
   iPhoneScriptCallOptimization: 0
@@ -583,10 +584,8 @@ PlayerSettings:
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
   xboxOneScriptCompiler: 0
-  vrEditorSettings:
-    daydream:
-      daydreamIconForeground: {fileID: 0}
-      daydreamIconBackground: {fileID: 0}
+  vrEditorSettings: {daydream: {daydreamIconForeground: {fileID: 0}, daydreamIconBackground: {
+        fileID: 0}}}
   cloudServicesEnabled:
     Build: 0
     Collab: 1
@@ -594,7 +593,6 @@ PlayerSettings:
     Hub: 0
     UNet: 1
   facebookSdkVersion: 7.9.1
-  apiCompatibilityLevel: 2
   cloudProjectId: 1fadc08c-9f1d-474a-8126-7837fb86ca41
   projectName: Doomsday
   organizationId: jvanopstal
