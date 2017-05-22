@@ -46,7 +46,7 @@ namespace _Project.Scripts.Units.Target
         private static HealthController AddHealthComponent(GameObject target)
         {
             HealthController health = target.gameObject.AddComponent<HealthController>();
-            health.Hp = 5;
+            health.HP = 5;
             return health;
         }
 

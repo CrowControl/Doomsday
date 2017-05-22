@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace _Project.Scripts
 {
     internal static class MathHelper
     {
+        #region Conversions
         /// <summary>
         /// Converts a directional vector to an angle between -180 and 180 degrees.
         /// </summary>
@@ -32,5 +34,40 @@ namespace _Project.Scripts
             return RadianToVector2(degree * Mathf.Deg2Rad) * length;
         }
         #endregion
+
+        #endregion
+
+        #region Clamp
+        public static float Clamp(float value, float minValue, float maxValue)
+        {
+            if (value < minValue) return minValue;
+            if (value > maxValue) return maxValue;
+            return value;
+        }
+
+        public static float Clamp(float value, float maxValue)
+        {
+            return Clamp(value, 0, maxValue);
+        }
+        #endregion
+
+        /// <summary>
+        /// Generates a layermask that makes a Raycast hit all layers that are passed.
+        /// </summary>
+        /// <param name="layerIndices">The indices of the layers that we want to include.</param>
+        /// <returns>A layermask.</returns>
+        public static int GenerateHitLayerMask(List<int> layerIndices)
+        {
+            if (layerIndices.Count < 1) return 0;
+
+            int layerMask = 0;
+            foreach (int layerIndex in layerIndices)
+            {
+                int layer = 1 << layerIndex;
+                layerMask = layerMask | layer;
+            }
+
+            return layerMask;
+        }
     }
 }

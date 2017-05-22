@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Project.Scripts.Player
 {
-    public class ControllerManager : MonoBehaviour
+    public class PlayerDeviceManager : MonoBehaviour
     {
         #region Variables
         #region Internal Variables
@@ -51,7 +51,7 @@ namespace _Project.Scripts.Player
                 }
                 catch (TooManyPlayersException exception)
                 {
-                    _devicesInUse.Remove(exception.AssociatedController);
+                    _devicesInUse.Remove(exception.AssociatedDevice);
                 }
             }
         }

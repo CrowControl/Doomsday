@@ -4,6 +4,8 @@ using _Project.Scripts.Player;
 
 namespace _Project.Scripts.UI.Character_Selection
 {
+    [RequireComponent(typeof(Outline)), 
+     RequireComponent(typeof(RectTransform))]
     public class CharacterSelectHeadShot : MonoBehaviour
     {
         #region Editor Variables
@@ -12,6 +14,7 @@ namespace _Project.Scripts.UI.Character_Selection
 
         #region Components
         private Outline _outline;
+        private RectTransform _rectTransform;
         #endregion
 
         #region Properties
@@ -19,11 +22,17 @@ namespace _Project.Scripts.UI.Character_Selection
         {
             get { return _associatedCharacterPrefab; }
         }
+
+        public float Width { get { return _rectTransform.rect.width; } }
+
         #endregion
 
         private void Awake()
         {
+            //get components.
             _outline = GetComponent<Outline>();
+            _rectTransform = GetComponent<RectTransform>();
+
             UnFocus();
         }
 

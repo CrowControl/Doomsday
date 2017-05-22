@@ -1,4 +1,5 @@
-﻿using InControl;
+﻿using System.Linq;
+using InControl;
 using UnityEngine;
 using _Project.Scripts.Player;
 
@@ -11,6 +12,8 @@ namespace _Project.Scripts.UI.Character_Selection
         /// Cooldown on changing which of the headshots is currently focused on. 
         /// </summary>
         [SerializeField] private float _changeFocusCooldown;
+        [SerializeField] private float _betweenHeadshotSpace;
+        [SerializeField] private string _headshotResourcePath;
         #endregion
 
         #region Internal Variables
@@ -22,9 +25,9 @@ namespace _Project.Scripts.UI.Character_Selection
 
         #region Properties
         /// <summary>
-        /// Controller that this UI reads it's input from.
+        /// Device that this UI reads it's input from.
         /// </summary>
-        public InputDevice Controller { get; set; }
+        public InputDevice Device { get; set; }
         #endregion
 
         #region Events
@@ -37,18 +40,57 @@ namespace _Project.Scripts.UI.Character_Selection
 
         private void Awake()
         {
-            _headshots = GetComponentsInChildren<CharacterSelectHeadShot>();
+            _headshots = Resources.LoadAll<CharacterSelectHeadShot>(_headshotResourcePath);
+            InstantiateHeadshots();
         }
 
         private void Start()
         {
+            //Set the headshot positions. Needs to happen in start so the headshots have time to initialize their components, which we need for their position.
+            SetHeadshotPositions();
             //set the starting focus.
             ChangeFocusTo(0);
         }
 
+        #region Headshot Initialization
+        private void InstantiateHeadshots()
+        {
+            for (int i = 0; i < _headshots.Length; i++)
+                _headshots[i] = Instantiate(_headshots[i], transform);
+        }
+
+        /// <summary>
+        /// Sets the headshot positions.
+        /// </summary>
+        private void SetHeadshotPositions()
+        {
+            //If only 1 or less headshots, it's position is already fine.
+            if (_headshots.Length <= 1) return;
+
+            //Calculate the total width of this element.
+            float totalBetweenSpace = (_headshots.Length - 1) * _betweenHeadshotSpace;
+            float heatShotsWidthSum = _headshots.Sum(h => h.Width);
+            float totalWidth = totalBetweenSpace + heatShotsWidthSum;
+
+            //Set the leftmost headshot's position.
+
+            float xPos = -totalWidth / 2 + _headshots[0].Width / 2; //Have the total width to left, but half it's own width to the right.
+            Vector2 position = new Vector2(xPos, 0);
+            _headshots[0].transform.localPosition = position;
+
+            //Set the rest of the positions.
+            for (int i = 1; i < _headshots.Length; i++)
+            {
+                position.x += _headshots[i - 1].Width / 2 + _betweenHeadshotSpace + _headshots[i].Width / 2;
+                _headshots[i].transform.localPosition = position;
+            }
+        }
+        #endregion
+
+        #region Update
         private void Update()
         {
-            if (Controller == null) return;
+            if (Device == null) return;
 
             UpdateFocus();
             CheckSelection();
@@ -60,11 +102,11 @@ namespace _Project.Scripts.UI.Character_Selection
         private void UpdateFocus()
         {
             //Stop if we're on cooldown or no input was registered.
-            float direction = Controller.LeftStickX.Value;
+            float direction = Device.LeftStickX.Value;
             if (_onRefocusCooldown || direction == 0) return;
 
             //Move focus.
-            if (direction > 0)
+            if (direction < 0)
                 FocusMoveLeft();
             else
                 FocusMoveRight();
@@ -78,12 +120,14 @@ namespace _Project.Scripts.UI.Character_Selection
         /// </summary>
         private void CheckSelection()
         {
-            if (!Controller.Action1.WasPressed) return;
+            if (!Device.Action1.WasPressed) return;
 
             //Throw select event and destroy this ui.
-            OnCharacterSelected(_focusedHeadShot.AssociatedCharacterPrefab, Controller);
+            OnCharacterSelected(_focusedHeadShot.AssociatedCharacterPrefab, Device);
             Destroy(gameObject);
         }
+
+        #endregion
 
         #region Changing focused headshot.
         /// <summary>
@@ -156,6 +200,5 @@ namespace _Project.Scripts.UI.Character_Selection
         }
 
         #endregion
-
     }
 }

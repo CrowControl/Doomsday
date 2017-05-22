@@ -6,7 +6,7 @@ using _Project.Scripts.UI.Character_Selection;
 
 namespace _Project.Scripts.Player
 {
-    [RequireComponent(typeof(ControllerManager))]
+    [RequireComponent(typeof(PlayerDeviceManager))]
     public class PlayerManager : MonoBehaviour
     {
         #region Editor Variables
@@ -25,28 +25,28 @@ namespace _Project.Scripts.Player
 
         private void Start()
         {
-            GetComponent<ControllerManager>().OnNewDeviceInUse += OnOnNewDeviceInUse;
+            GetComponent<PlayerDeviceManager>().OnNewDeviceInUse += OnOnNewDeviceInUse;
             _characterSelectUIManager = FindObjectOfType<CharacterSelectUIManager>();
         }
 
-        private void OnOnNewDeviceInUse(InputDevice controller)
+        private void OnOnNewDeviceInUse(InputDevice device)
         {
-            if (_newPlayerIndex >= _maxPlayerCount) throw new TooManyPlayersException(controller);
+            if (_newPlayerIndex >= _maxPlayerCount) throw new TooManyPlayersException(device);
 
-            //Spawn UI, set the controller and await the selection.
+            //Spawn UI, set the device and await the selection.
             CharacterSelectUI charSelect = _characterSelectUIManager.SpawnCharacterSelectUI(_newPlayerIndex);
             charSelect.OnCharacterSelected += OnCharacterSelected;
-            charSelect.Controller = controller;
+            charSelect.Device = device;
 
             //Set the index for the next player.
             _newPlayerIndex++;
         }
 
-        private void OnCharacterSelected(PlayerCharacterController characterPrefab, InputDevice controller)
+        private void OnCharacterSelected(PlayerCharacterController characterPrefab, InputDevice device)
         {
-            //Spawn the character, pass the controller reference.
+            //Spawn the character, pass the device reference.
             PlayerCharacterController playerCharacter = Instantiate(characterPrefab, _spawnPosition, Quaternion.identity);
-            playerCharacter.Controller = controller;
+            playerCharacter.Device = device;
             
             _playerCharacters.Add(playerCharacter);
         }
@@ -54,12 +54,12 @@ namespace _Project.Scripts.Player
 
     public class TooManyPlayersException : Exception
     {
-        public InputDevice AssociatedController { get; private set; }
+        public InputDevice AssociatedDevice { get; private set; }
 
-        public TooManyPlayersException(InputDevice controller) 
+        public TooManyPlayersException(InputDevice device) 
             : base("Tried to add a new player when the maximum amount of players has already been reached.")
         {
-            AssociatedController = controller;
+            AssociatedDevice = device;
         }
     }
 }

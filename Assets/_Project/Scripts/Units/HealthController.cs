@@ -2,17 +2,29 @@
 
 namespace _Project.Scripts.Units
 {
-    class HealthController : MonoBehaviour
+    public class HealthController : MonoBehaviour
     {
         #region Editor Variables
-        [SerializeField] private float _hp;
+        [SerializeField] private float _startingHP;
+        [SerializeField] private float _maxHP;
         #endregion
 
         #region Properties
-        public float Hp
+        public float HP
         {
             get { return _hp; }
-            set { _hp = value; }
+            set
+            {
+                //If the new value is lower, use the GetHit method.
+                if (value < _hp)
+                {
+                    GetHit(_hp - value);
+                    return;
+                }
+
+                //Assign it but keep it bellow max.
+                _hp = value < _maxHP ? value : _maxHP; 
+            }
         }
         #endregion
 
@@ -23,6 +35,15 @@ namespace _Project.Scripts.Units
         public event HitEventHandler OnHit;
         public event DeathEventHandler OnDeath;
         #endregion
+
+        #region Internal Variables
+        private float _hp;
+        #endregion
+
+        private void Awake()
+        {
+            HP = _startingHP;
+        }
 
         public void GetHit(float damage)
         {

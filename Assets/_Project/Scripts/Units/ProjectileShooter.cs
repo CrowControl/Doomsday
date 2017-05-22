@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using _Project.Scripts.Player;
 
 namespace _Project.Scripts.Units
 {
-    public class ProjectileShooter : MonoBehaviour, IShooter
+    public class ProjectileShooter : MonoBehaviour, IAbility
     {
         #region Editor Variables
         //projectile.
@@ -18,18 +19,20 @@ namespace _Project.Scripts.Units
         private bool _onCooldown;
         #endregion
 
+        public event AbilityEventHandler OnFinished;
+
         /// <summary>
         /// Shoots a projectile.
         /// </summary>
         /// <param name="direction"></param>
-        public void Shoot(float directionAngle)
+        public void Do(ICharacterAimSource aimsource)
         {
             //check if we're on cooldown.
             if (_onCooldown) return;
 
             //Spawn a projectile.
             Projectile projectile = Instantiate(_projectilePrefab, transform.position,
-                Quaternion.AngleAxis(directionAngle, Vector3.forward));
+                Quaternion.AngleAxis(aimsource.AimingDegree, Vector3.forward));
         
             //Make it move.
             projectile.Speed = _projectileSpeed;

@@ -7,8 +7,8 @@ namespace _Project.Scripts.Player
     [RequireComponent(typeof(Rigidbody2D)), 
      RequireComponent(typeof(Animator)), 
      RequireComponent(typeof(SpriteRenderer))]
-    [RequireComponent(typeof(IShooter))]
-    public class PlayerController : MonoBehaviour
+    [RequireComponent(typeof(IAbility))]
+    public class PlayerController : MonoBehaviour, ICharacterAimSource
     {
         #region Editor Variables
 
@@ -20,7 +20,7 @@ namespace _Project.Scripts.Player
         private Rigidbody2D _rigidbody;
         private Animator _animator;
         private SpriteRenderer _renderer;
-        private IShooter _shooter;
+        private IAbility _shooter;
         #endregion
 
         #region Internal variables
@@ -28,11 +28,11 @@ namespace _Project.Scripts.Player
         private Vector2 _movementVector;
         private bool _shootButtonPressed;
 
-        private float _aimingDegree;
         #endregion
 
         #region Properties
         public InputDevice Controller { get; set; }
+        public float AimingDegree { get; set; }
         #endregion
 
         private void Awake()
@@ -40,7 +40,7 @@ namespace _Project.Scripts.Player
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
             _renderer = GetComponent<SpriteRenderer>();
-            _shooter = GetComponent<IShooter>();
+            _shooter = GetComponent<IAbility>();
         }
 
         private void Update()
@@ -56,7 +56,7 @@ namespace _Project.Scripts.Player
 
             //shooting.
             if(_shootButtonPressed)
-                _shooter.Shoot(_aimingDegree);
+                _shooter.Do(this);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace _Project.Scripts.Player
             _movementVector = Controller.LeftStick.Vector;
 
             //Aiming. (We read in a vector and convert it to a degree for ease of use.)
-            _aimingDegree = MathHelper.Vector2Degree(Controller.RightStick.Vector);
+            AimingDegree = MathHelper.Vector2Degree(Controller.RightStick.Vector);
 
             //shooting.
             _shootButtonPressed = Controller.RightTrigger.IsPressed;
@@ -82,9 +82,9 @@ namespace _Project.Scripts.Player
             //Tell the animator we're moving if we have velocity.
             _animator.SetBool("IsMoving", _rigidbody.velocity != Vector2.zero);
             //We're front facing if we're aiming to the bottom half of the screen.
-            _animator.SetBool("IsFrontFacing", _aimingDegree <= 0);
+            _animator.SetBool("IsFrontFacing", AimingDegree <= 0);
             //We want to flip if we're aiming to the right side of the screen.  
-            _renderer.flipX = Mathf.Abs(_aimingDegree) <= 90;
+            _renderer.flipX = Mathf.Abs(AimingDegree) <= 90;
         }
 
         /// <summary>
