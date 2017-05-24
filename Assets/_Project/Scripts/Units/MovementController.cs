@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Project.Scripts.Player
+namespace _Project.Scripts.Units
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class MovementController : MonoBehaviour {
@@ -13,7 +13,6 @@ namespace _Project.Scripts.Player
         private Rigidbody2D _rigidbody;                 //Handles Physics.
         private IMovementInputSource _movementSource;   //Provides movement input.
         #endregion
-
 
         private void Awake ()
         {

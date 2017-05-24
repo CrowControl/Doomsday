@@ -21,8 +21,10 @@ GameObject:
   - component: {fileID: 4282486623803754}
   - component: {fileID: 212830148431414988}
   - component: {fileID: 58969485600989924}
+  - component: {fileID: 114918176564227672}
   - component: {fileID: 114475214851896872}
-  m_Layer: 8
+  - component: {fileID: 114386207049394404}
+  m_Layer: 11
   m_Name: Damage Aura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,6 +59,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.085
+--- !u!114 &114386207049394404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152661299932652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df5c535409ed754d99f931917ad6e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 3
 --- !u!114 &114475214851896872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,7 +85,18 @@ MonoBehaviour:
   _effectPrefab: {fileID: 114975647408621852, guid: e7cdbd2e8d1fae7438a3b653d701dd60,
     type: 2}
   _maxHitCount: 3
-  _lifeTime: 3
+  _singleTargetHitCooldown: 0.5
+--- !u!114 &114918176564227672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152661299932652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f57f6b5c97345728f17a2f51a883fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212830148431414988
 SpriteRenderer:
   m_ObjectHideFlags: 1

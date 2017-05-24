@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using _Project.Scripts.Effects;
 using _Project.Scripts.Units;
 
-namespace _Project.Scripts.Player.Characters.Psycoon
+namespace _Project.Scripts.Effects
 {
     [RequireComponent(typeof(Collider2D))]
     public class OnCollisionEffectApplier : MonoBehaviour
@@ -12,7 +11,6 @@ namespace _Project.Scripts.Player.Characters.Psycoon
         #region Editor Variables
         [SerializeField] private HealthEffect _effectPrefab;        //The effect to apply on collision.
         [SerializeField] private int _maxHitCount;                  //Maximum amount of hits we want to allow.
-        [SerializeField] private float _lifeTime;                   //Maximum duation of this object.
         [SerializeField] private float _singleTargetHitCooldown;    //Cooldown for a single target that got hit.
         #endregion
 
@@ -32,9 +30,6 @@ namespace _Project.Scripts.Player.Characters.Psycoon
         {
             //Ensure it's a trigger Component.
             GetComponent<Collider2D>().isTrigger = true;
-
-            //Set the lifetime.
-            Invoke("Finish", _lifeTime);
         }
 
         /// <summary>

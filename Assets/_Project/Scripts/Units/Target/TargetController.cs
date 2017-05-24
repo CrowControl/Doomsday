@@ -89,7 +89,7 @@ namespace _Project.Scripts.Units.Target
         /// </summary>
         private void InvertDirection()
         {
-            //Go into the opposite direction.
+            //Do into the opposite direction.
             _direction *= -1;
             _rigidbody.velocity = _direction * _speed;
 

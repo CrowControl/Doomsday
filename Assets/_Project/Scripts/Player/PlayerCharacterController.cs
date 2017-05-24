@@ -1,6 +1,6 @@
 ﻿using InControl;
 using UnityEngine;
-using _Project.Scripts.UI.Character_Selection;
+using _Project.Scripts.Units;
 
 namespace _Project.Scripts.Player
 {
@@ -10,6 +10,7 @@ namespace _Project.Scripts.Player
         public InputDevice Device { get; set; }         //Device that controls this character.
         public Vector2 MovementVector { get; private set; } //Vector used for movement.
         public float AimingDegree { get; private set; }     //Degree that this character is aiming at.
+        public Vector2 SourcePosition { get { return transform.position; } } 
         #endregion
 	
         // Update is called once per frame
@@ -26,5 +27,6 @@ namespace _Project.Scripts.Player
     public interface ICharacterAimSource
     {
         float AimingDegree { get; }     //Degree that this character is aiming at.
+        Vector2 SourcePosition { get; }
     }
 }

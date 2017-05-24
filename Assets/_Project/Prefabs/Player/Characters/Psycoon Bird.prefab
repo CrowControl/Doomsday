@@ -27,8 +27,7 @@ GameObject:
   - component: {fileID: 50386153821273260}
   - component: {fileID: 114525078848915458}
   - component: {fileID: 114816951235965080}
-  - component: {fileID: 114188849719769022}
-  - component: {fileID: 114650550040441942}
+  - component: {fileID: 114724930517710214}
   m_Layer: 8
   m_Name: Psycoon Bird
   m_TagString: Player
@@ -111,18 +110,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114188849719769022
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1605805755777890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6de83648138b4cf44a44b962b74ce9d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxDistance: 5
 --- !u!114 &114518586059332180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
---- !u!114 &114650550040441942
+--- !u!114 &114724930517710214
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -154,9 +141,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1605805755777890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a286f527ddeb74e468de29b1f12ac0a4, type: 3}
+  m_Script: {fileID: 11500000, guid: be738b0d41402024d99376565891a11a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _abilityPrefab: {fileID: 0}
 --- !u!114 &114816951235965080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,17 +160,17 @@ MonoBehaviour:
   _chargeCooldown: 2
   _maxChargeColor: {r: 0.44827604, g: 0, b: 1, a: 1}
   _damageAuraPrefabs:
-  - {fileID: 114475214851896872, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
-  - {fileID: 114475214851896872, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
-  - {fileID: 114475214851896872, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
-  - {fileID: 114475214851896872, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
-  - {fileID: 114475214851896872, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
+  - {fileID: 114918176564227672, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
+  - {fileID: 114918176564227672, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
+  - {fileID: 114918176564227672, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
+  - {fileID: 114918176564227672, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
+  - {fileID: 114918176564227672, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
   _healAuraPrefabs:
-  - {fileID: 114251957716489344, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
-  - {fileID: 114251957716489344, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
-  - {fileID: 114251957716489344, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
-  - {fileID: 114251957716489344, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
-  - {fileID: 114251957716489344, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
+  - {fileID: 114432940828990976, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
+  - {fileID: 114432940828990976, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
+  - {fileID: 114432940828990976, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
+  - {fileID: 114432940828990976, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
+  - {fileID: 114432940828990976, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
   _damageBeamPrefabs:
   - {fileID: 114661478048658556, guid: 75640c872237dc641bd8308ae63b37b2, type: 2}
   - {fileID: 114661478048658556, guid: 75640c872237dc641bd8308ae63b37b2, type: 2}

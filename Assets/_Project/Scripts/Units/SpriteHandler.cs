@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
+using _Project.Scripts.Player;
 
-namespace _Project.Scripts.Player
+namespace _Project.Scripts.Units
 {
     [RequireComponent(typeof(Rigidbody2D)),
      RequireComponent(typeof(Animator)),

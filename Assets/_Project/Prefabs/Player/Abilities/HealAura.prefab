@@ -21,7 +21,9 @@ GameObject:
   - component: {fileID: 4104038961201866}
   - component: {fileID: 212892539211934804}
   - component: {fileID: 58694804147213384}
+  - component: {fileID: 114432940828990976}
   - component: {fileID: 114251957716489344}
+  - component: {fileID: 114012384159634256}
   m_Layer: 8
   m_Name: HealAura
   m_TagString: Untagged
@@ -57,6 +59,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.085
+--- !u!114 &114012384159634256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238306303866126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df5c535409ed754d99f931917ad6e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 3
 --- !u!114 &114251957716489344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,7 +85,18 @@ MonoBehaviour:
   _effectPrefab: {fileID: 114525009576262760, guid: b69b5dd0e11690c41b5451dc8675bfe1,
     type: 2}
   _maxHitCount: 3
-  _lifeTime: 3
+  _singleTargetHitCooldown: 0
+--- !u!114 &114432940828990976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238306303866126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f57f6b5c97345728f17a2f51a883fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212892539211934804
 SpriteRenderer:
   m_ObjectHideFlags: 1
