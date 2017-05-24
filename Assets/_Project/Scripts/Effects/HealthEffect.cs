@@ -3,7 +3,7 @@ using _Project.Scripts.Units;
 
 namespace _Project.Scripts.Effects
 {
-    public class HealthEffect : MonoBehaviour
+    public class HealthEffect : IEffect<HealthController>
     {
         #region Editor Variables
         [SerializeField] private float _healthChangePerTick;                //Amount of health changed each tick. Positive for a heal, negative for damage.
@@ -26,7 +26,7 @@ namespace _Project.Scripts.Effects
         private int _tickCount;     //Amount of ticks up until now.
         #endregion
 
-        public void SetTarget(HealthController health)
+        public override void SetTarget(HealthController health)
         {
             _health = health;
 

@@ -13,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - Player
-  - ShotByPlayer
-  - 
-  - 
-  - 
+  - Players
+  - Enemies
+  - Buildings
+  - Player Projectiles
+  - Enemy Projectiles
   - 
   - 
   - 

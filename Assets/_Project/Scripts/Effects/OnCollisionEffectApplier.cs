@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using _Project.Scripts.Effects;
 using _Project.Scripts.Units;
@@ -9,9 +10,10 @@ namespace _Project.Scripts.Player.Characters.Psycoon
     public class OnCollisionEffectApplier : MonoBehaviour
     {
         #region Editor Variables
-        [SerializeField] private HealthEffect _effectPrefab;
-        [SerializeField] private int _maxHitCount;
-        [SerializeField] private float _lifeTime;
+        [SerializeField] private HealthEffect _effectPrefab;        //The effect to apply on collision.
+        [SerializeField] private int _maxHitCount;                  //Maximum amount of hits we want to allow.
+        [SerializeField] private float _lifeTime;                   //Maximum duation of this object.
+        [SerializeField] private float _singleTargetHitCooldown;    //Cooldown for a single target that got hit.
         #endregion
 
         #region Events
@@ -20,7 +22,10 @@ namespace _Project.Scripts.Player.Characters.Psycoon
         #endregion
 
         #region Internal Variables
-        private readonly List<HealthController> _hits = new List<HealthController>();
+        /// <summary>
+        /// Dictionary to keep the hit cooldowns for all targets.
+        /// </summary>
+        private readonly Dictionary<HealthController, float> _hitCooldowns = new Dictionary<HealthController, float>();
         #endregion
 
         private void Awake()
@@ -32,20 +37,38 @@ namespace _Project.Scripts.Player.Characters.Psycoon
             Invoke("Finish", _lifeTime);
         }
 
+        /// <summary>
+        /// Called when the Collider component attached to this object has a collision.
+        /// </summary>
+        /// <param name="other">The other collider in this collision.</param>
         private void OnTriggerEnter2D(Collider2D other)
         {
             //Get health component. If none is found or we already collided before, stop.
             HealthController health = other.GetComponent<HealthController>();
-            if (health == null || _hits.Contains(health)) return;
+            if (health == null || !HitAllowed(health)) return;
 
             //if we've reached maximum hit count, finish. else, apply.
-            _hits.Add(health);
-            if (_hits.Count > _maxHitCount)
+            _hitCooldowns[health] = Time.time + _singleTargetHitCooldown;
+            if (_hitCooldowns.Count > _maxHitCount)
                 Finish();
             else
-                Apply(health);
+                IEffect<HealthController>.ApplyEffect(_effectPrefab, health);
         }
 
+        /// <summary>
+        /// Checks if a hit on the healthController should be allowed.
+        /// </summary>
+        /// <param name="health">The healthcontroller.</param>
+        /// <returns>True if allowed, false otherwise.</returns>
+        private bool HitAllowed(HealthController health)
+        {
+            return !_hitCooldowns.Keys.Contains(health) || _hitCooldowns[health] <= Time.time;
+        }
+
+        /// <summary>
+        /// Applies the effect to the healthController.
+        /// </summary>
+        /// <param name="health">The healthcontroller.</param>
         private void Apply(HealthController health)
         {
             HealthEffect effect = Instantiate(_effectPrefab, health.transform);
@@ -53,16 +76,24 @@ namespace _Project.Scripts.Player.Characters.Psycoon
         }
 
         /// <summary>
-        /// Finishes up this healing.
+        /// Finishes.
         /// </summary>
         private void Finish()
         {
-            CancelInvoke();
+            Destroy(gameObject);
+        }
 
+        /// <summary>
+        /// Called when this object is destroyed.
+        /// </summary>
+        private void OnDestroy()
+        {
+            //Cancel any outstanding invokes.
+            CancelInvoke();
+            
+            //Call event.
             if (OnFinished != null)
                 OnFinished();
-
-            Destroy(gameObject);
         }
     }
 }

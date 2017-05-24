@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4338627544905184}
   - component: {fileID: 212852278812750394}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Small circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4177197613288052}
   - component: {fileID: 212896726332343492}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Medium Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4732887844094894}
   - component: {fileID: 212888508008214072}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 'Big Circle '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4480607099586196}
   - component: {fileID: 212593496218943170}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Biggest Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 50692199880050870}
   - component: {fileID: 114744647094315238}
   - component: {fileID: 114757053900414834}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Practice Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3940f85e232bf9845b3dc1134fbbfb51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 4
+  _startingHP: 0
+  _maxHP: 0
 --- !u!212 &212593496218943170
 SpriteRenderer:
   m_ObjectHideFlags: 1

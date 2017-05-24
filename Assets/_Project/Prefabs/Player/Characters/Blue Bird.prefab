@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114617242870451300}
   - component: {fileID: 114319001737748324}
   m_Layer: 8
-  m_Name: Refactored Bird
+  m_Name: Blue Bird
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

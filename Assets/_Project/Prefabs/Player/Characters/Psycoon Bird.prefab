@@ -122,7 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de83648138b4cf44a44b962b74ce9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 0.3
   _maxDistance: 5
 --- !u!114 &114518586059332180
 MonoBehaviour:
@@ -171,7 +170,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chargePerSecond: 25
   _chargeCooldown: 2
+  _maxChargeColor: {r: 0.44827604, g: 0, b: 1, a: 1}
   _damageAuraPrefabs:
+  - {fileID: 114475214851896872, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
   - {fileID: 114475214851896872, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
   - {fileID: 114475214851896872, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
   - {fileID: 114475214851896872, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
@@ -181,12 +182,15 @@ MonoBehaviour:
   - {fileID: 114251957716489344, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
   - {fileID: 114251957716489344, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
   - {fileID: 114251957716489344, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
+  - {fileID: 114251957716489344, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
   _damageBeamPrefabs:
   - {fileID: 114661478048658556, guid: 75640c872237dc641bd8308ae63b37b2, type: 2}
   - {fileID: 114661478048658556, guid: 75640c872237dc641bd8308ae63b37b2, type: 2}
   - {fileID: 114661478048658556, guid: 75640c872237dc641bd8308ae63b37b2, type: 2}
   - {fileID: 114661478048658556, guid: 75640c872237dc641bd8308ae63b37b2, type: 2}
+  - {fileID: 114661478048658556, guid: 75640c872237dc641bd8308ae63b37b2, type: 2}
   _healBeamPrefabs:
+  - {fileID: 114247471197071650, guid: b6dbb320ba009bd429782b43313bbde0, type: 2}
   - {fileID: 114247471197071650, guid: b6dbb320ba009bd429782b43313bbde0, type: 2}
   - {fileID: 114247471197071650, guid: b6dbb320ba009bd429782b43313bbde0, type: 2}
   - {fileID: 114247471197071650, guid: b6dbb320ba009bd429782b43313bbde0, type: 2}

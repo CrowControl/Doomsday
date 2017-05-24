@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 70119619495287962}
   - component: {fileID: 114247471197071650}
   - component: {fileID: 114565644418129134}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Heal Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,6 +70,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _distanceTweak: 4
+  _lifeTime: 5
+  _layersToHit: 080000000a000000
 --- !u!114 &114565644418129134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,8 +85,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114525009576262760, guid: b69b5dd0e11690c41b5451dc8675bfe1,
     type: 2}
-  _maxHitCount: 1
-  _lifeTime: 0.3
+  _maxHitCount: 4
+  _lifeTime: 5
+  _singleTargetHitCooldown: 0.3
 --- !u!212 &212773479920650228
 SpriteRenderer:
   m_ObjectHideFlags: 1

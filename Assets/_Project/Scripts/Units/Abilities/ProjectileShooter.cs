@@ -10,9 +10,6 @@ namespace _Project.Scripts.Units
         [SerializeField] private Projectile _projectilePrefab;
         [SerializeField] private float _projectileSpeed;
         [SerializeField] private float _projectileRange;
-
-        //Cooldown
-        [SerializeField] private float _cooldown;
         #endregion
 
         #region Internal Variables
@@ -24,7 +21,7 @@ namespace _Project.Scripts.Units
         /// <summary>
         /// Shoots a projectile.
         /// </summary>
-        /// <param name="direction"></param>
+        /// <param name="aimsource">Source of aiming.</param>
         public void Do(ICharacterAimSource aimsource)
         {
             //check if we're on cooldown.
@@ -39,25 +36,8 @@ namespace _Project.Scripts.Units
             projectile.Range = _projectileRange;
             projectile.StartMoving();
 
-            //start the cooldown.
-            StartCooldown();
-        }
-
-        /// <summary>
-        /// Starts the shooting cooldown.
-        /// </summary>
-        private void StartCooldown()
-        {
-            _onCooldown = true;
-            Invoke("FinishCooldown", _cooldown);
-        }
-
-        /// <summary>
-        /// Finishes the cooldown.
-        /// </summary>
-        private void FinishCooldown()
-        {
-            _onCooldown = false;
+            if (OnFinished != null)
+                OnFinished();
         }
     }
 }

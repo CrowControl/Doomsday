@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Effect : MonoBehaviour {
+namespace _Project.Scripts.Effects
+{
+    public abstract class IEffect<T> : MonoBehaviour where T : MonoBehaviour
+    {
+        public abstract void SetTarget(T target);
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        public static void ApplyEffect(IEffect<T> effectPrefab, T target) 
+        {
+            IEffect<T> effect = Instantiate(effectPrefab, target.transform);
+            effect.SetTarget(target);
+        }
+    }
 }

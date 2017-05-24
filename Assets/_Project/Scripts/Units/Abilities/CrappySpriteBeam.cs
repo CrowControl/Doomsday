@@ -29,9 +29,16 @@ namespace _Project.Scripts.Units
         {
             _renderer = GetComponent<SpriteRenderer>();
             _renderer.drawMode = SpriteDrawMode.Sliced;
+            _renderer.enabled = false;
 
             _collider = GetComponent<CapsuleCollider2D>();
             _collider.direction = CapsuleDirection2D.Horizontal;
+        }
+
+
+        private void Start()
+        {
+            _renderer.enabled = true;
         }
 
         private void Update()

@@ -13,6 +13,7 @@ namespace _Project.Scripts.Player.Characters.Psycoon
         #region Editor Variables
         [SerializeField] private float _chargePerSecond;
         [SerializeField] private float _chargeCooldown;
+        [SerializeField] private Color _maxChargeColor;
 
         //attack prefabs.
         [SerializeField] private List<OnCollisionEffectApplier> _damageAuraPrefabs;
@@ -24,6 +25,7 @@ namespace _Project.Scripts.Player.Characters.Psycoon
         #region Components
         private AuraSpawner _auraSpawner;
         private CrappyBeamShooter _crappyBeamShooter;
+        private SpriteHandler _spriteHandler;
         #endregion
 
         #region Internal Variables
@@ -34,6 +36,7 @@ namespace _Project.Scripts.Player.Characters.Psycoon
         {
             _auraSpawner = GetComponent<AuraSpawner>();
             _crappyBeamShooter = GetComponent<CrappyBeamShooter>();
+            _spriteHandler = GetComponent<SpriteHandler>();
 
             ChangeState(new NotChargingState());
         }
@@ -89,6 +92,8 @@ namespace _Project.Scripts.Player.Characters.Psycoon
         private abstract class ChargingState : IPsycoonState
         {
             #region Internal Variables
+            private Color _startingColor, _maxChargeColor;
+            private SpriteHandler _spriteHandler;
 
             private float _charge;                          //Percentage of charge charged.
             protected InputControl MainButton, OtherButton; //Main button and off button. Differs on child classes.
@@ -100,12 +105,16 @@ namespace _Project.Scripts.Player.Characters.Psycoon
 
             public void Enter(PsycoonController psycoon, InputDevice controller)
             {
+                InitializeColorManagement(psycoon);
                 AssignButtons(controller);
                 UpdateCharge(psycoon._chargePerSecond);
             }
 
             public IPsycoonState Update(PsycoonController psycoon, InputDevice controller)
             {
+                UpdateCharge(psycoon._chargePerSecond);
+                UpdateColor(psycoon);
+
                 if (MainButton.WasReleased)
                     return ButtonReleaseTransition(psycoon);
 
@@ -115,12 +124,28 @@ namespace _Project.Scripts.Player.Characters.Psycoon
                 return null;
             }
 
-            public void Exit(PsycoonController psycoon, InputDevice controller){ }
+            public void Exit(PsycoonController psycoon, InputDevice controller)
+            {
+                _spriteHandler.FadeToColor(_startingColor, 0.3f);
+            }
 
             private void UpdateCharge(float chargePerSecond)
             {
                 _charge += chargePerSecond * Time.deltaTime;
-                MathHelper.Clamp(_charge, 100);
+                _charge = MathHelper.Clamp(_charge, 100);
+            }
+
+            private void InitializeColorManagement(PsycoonController psycoon)
+            {
+                _spriteHandler = psycoon._spriteHandler;
+
+                _startingColor = _spriteHandler.Color;
+                _maxChargeColor = psycoon._maxChargeColor;
+            }
+
+            private void UpdateColor(PsycoonController psycoon)
+            {
+                psycoon._spriteHandler.Color = Color.Lerp(_startingColor, _maxChargeColor, _charge / 100);
             }
 
             #region Abstract Methods

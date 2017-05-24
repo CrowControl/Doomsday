@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace _Project.Scripts.Player
 {
@@ -13,6 +14,15 @@ namespace _Project.Scripts.Player
         private Animator _animator;                 //Handles Animation.
         private SpriteRenderer _renderer;           //Handles rendering of the sprite.
         private ICharacterAimSource _characterAim;  //Component to get aiming input from.
+        #endregion
+
+        #region Properties
+
+        public Color Color
+        {
+            get { return _renderer.color; }
+            set { _renderer.color = value; }
+        }
         #endregion
 
         private void Awake()
@@ -35,6 +45,27 @@ namespace _Project.Scripts.Player
             _animator.SetBool("IsFrontFacing", aimingDegree <= 0);
             //We want to flip the sprite if we're aiming to the right side of the screen.  
             _renderer.flipX = Mathf.Abs(aimingDegree) <= 90;
+        }
+
+        public void FadeToColor(Color color, float fadeDuration)
+        {
+            StartCoroutine(FadeToColorRoutine(color, fadeDuration));
+        }
+
+        private IEnumerator FadeToColorRoutine(Color color, float fadeDuration)
+        {
+            Color startingColor = Color;
+
+            float elapsedTime = 0;
+
+            while (elapsedTime < fadeDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                Color = Color.Lerp(startingColor, color, elapsedTime / fadeDuration);
+                yield return null;
+            }
+
+            Color = color;
         }
     }
 }
