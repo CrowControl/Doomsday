@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4097297633212112}
   - component: {fileID: 114975647408621852}
   m_Layer: 0
-  m_Name: Single Damage Effect
+  m_Name: Single Large Heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5a8406e663346459d7f7c70895bac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthChangePerTick: -3
+  _healthChangePerTick: 5
   _tickDuration: 0
   _maxTickCount: 1
   _maxDuration: 2

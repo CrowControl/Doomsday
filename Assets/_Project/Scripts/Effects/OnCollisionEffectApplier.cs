@@ -9,7 +9,7 @@ namespace _Project.Scripts.Effects
     public class OnCollisionEffectApplier : MonoBehaviour
     {
         #region Editor Variables
-        [SerializeField] private HealthEffect _effectPrefab;        //The effect to apply on collision.
+        [SerializeField] private List<HealthEffect> _effectPrefabs;        //The effect to apply on collision.
         [SerializeField] private int _maxHitCount;                  //Maximum amount of hits we want to allow.
         [SerializeField] private float _singleTargetHitCooldown;    //Cooldown for a single target that got hit.
         #endregion
@@ -47,7 +47,7 @@ namespace _Project.Scripts.Effects
             if (_hitCooldowns.Count > _maxHitCount)
                 Finish();
             else
-                IEffect<HealthController>.ApplyEffect(_effectPrefab, health);
+                ApplyEffects(health);
         }
 
         /// <summary>
@@ -64,10 +64,10 @@ namespace _Project.Scripts.Effects
         /// Applies the effect to the healthController.
         /// </summary>
         /// <param name="health">The healthcontroller.</param>
-        private void Apply(HealthController health)
+        private void ApplyEffects(HealthController health)
         {
-            HealthEffect effect = Instantiate(_effectPrefab, health.transform);
-            effect.SetTarget(health);
+            foreach (HealthEffect effect in _effectPrefabs)
+                IEffect<HealthController>.ApplyEffect(effect, health);
         }
 
         /// <summary>
