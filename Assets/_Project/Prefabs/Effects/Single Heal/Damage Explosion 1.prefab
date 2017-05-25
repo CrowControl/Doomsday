@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114466793232508624}
   - component: {fileID: 114087724530956550}
   m_Layer: 0
-  m_Name: ExplosionEffect
+  m_Name: Damage Explosion 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,5 +64,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1efcd8f1d6e78e4b9e7d3d644d7c160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPrefab: {fileID: 1654054511866574, guid: 5cdc70ad4beacb84ab097d76a14725ba,
+  _spawnPrefab: {fileID: 1324862906674764, guid: 3a5c6f30300d94141818913171ed75ee,
     type: 2}
