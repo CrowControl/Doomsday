@@ -3,13 +3,12 @@ using _Project.Scripts.Units;
 
 namespace _Project.Scripts.Effects
 {
-    public class HealthEffect : IEffect<HealthController>
+    public class HealthEffect : Effect
     {
         #region Editor Variables
         [SerializeField] private float _healthChangePerTick;                //Amount of health changed each tick. Positive for a heal, negative for damage.
         [SerializeField] private float _tickDuration;                       //Duration of a tick.
-        [SerializeField] private int _maxTickCount;                         //Maximum amount of ticks. 
-        [SerializeField] private float _maxDuration;                        //Maximum duration of this effect. 
+        [SerializeField] private int _maxTickCount;                         //Maximum amount of ticks.  
         [SerializeField] private bool _startFirstTickImmediately = true;    //If true, the first tick happens immediately. otherwise, it will wait the tickduration.
         #endregion
 
@@ -26,11 +25,14 @@ namespace _Project.Scripts.Effects
         private int _tickCount;     //Amount of ticks up until now.
         #endregion
 
-        public override void SetTarget(HealthController health)
+        public override bool HasTargetComponent(GameObject gameObj)
         {
-            _health = health;
+            return (gameObj.GetComponent<HealthController>() != null);
+        }
 
-            Invoke("Finish", _maxDuration);
+        protected override void Apply(GameObject gameObj)
+        {
+            _health = gameObj.GetComponent<HealthController>();
             StartTicking();
         }
     
@@ -51,12 +53,12 @@ namespace _Project.Scripts.Effects
             //Finish if we have exceeded the maximum tick count.
             _tickCount++;
             if(_tickCount > _maxTickCount)
-                Finish();
+                Destroy(gameObject);
 
             _health.HP += _healthChangePerTick;
         }
 
-        private void Finish()
+        private void OnDestroy()
         {
             //Cancel all invokes.
             CancelInvoke();
@@ -64,9 +66,6 @@ namespace _Project.Scripts.Effects
             //Call event.
             if (OnEffectFinished != null)
                 OnEffectFinished();
-
-            //Destroy this script.
-            Destroy(this);
         }
     }
 }

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 70242351802224688}
   - component: {fileID: 114228653811409802}
   - component: {fileID: 114788475878980870}
+  - component: {fileID: 114975976854862326}
   - component: {fileID: 114853744970513062}
   m_Layer: 11
   m_Name: Level 2 Damage Beam
@@ -84,8 +85,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa0a6cbcd97c834fb8bff70ffee1a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectPrefabs:
-  - {fileID: 114975647408621852, guid: e7cdbd2e8d1fae7438a3b653d701dd60, type: 2}
+  _effectPrefab: {fileID: 114975647408621852, guid: e7cdbd2e8d1fae7438a3b653d701dd60,
+    type: 2}
   _maxHitCount: 3
   _singleTargetHitCooldown: 2
 --- !u!114 &114853744970513062
@@ -99,7 +100,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df5c535409ed754d99f931917ad6e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 0.5
+  _duration: 1
+--- !u!114 &114975976854862326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1744161288529466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa0a6cbcd97c834fb8bff70ffee1a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectPrefab: {fileID: 114975647408621852, guid: a3ec6ebe58837e94ea448057d11fdf57,
+    type: 2}
+  _maxHitCount: 3
+  _singleTargetHitCooldown: 2
 --- !u!212 &212364526346669926
 SpriteRenderer:
   m_ObjectHideFlags: 1

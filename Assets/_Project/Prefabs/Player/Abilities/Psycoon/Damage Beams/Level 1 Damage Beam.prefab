@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50148959326325678}
   - component: {fileID: 114930643367000526}
   - component: {fileID: 114513094584345060}
+  - component: {fileID: 114789964810621790}
   m_Layer: 11
   m_Name: Level 1 Damage Beam
   m_TagString: Untagged
@@ -90,8 +91,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa0a6cbcd97c834fb8bff70ffee1a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectPrefabs:
-  - {fileID: 114975647408621852, guid: e7cdbd2e8d1fae7438a3b653d701dd60, type: 2}
+  _effectPrefab: {fileID: 114975647408621852, guid: a3ec6ebe58837e94ea448057d11fdf57,
+    type: 2}
+  _maxHitCount: 1
+  _singleTargetHitCooldown: 0.5
+--- !u!114 &114789964810621790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1540104715341096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa0a6cbcd97c834fb8bff70ffee1a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectPrefab: {fileID: 114975647408621852, guid: a3ec6ebe58837e94ea448057d11fdf57,
+    type: 2}
   _maxHitCount: 1
   _singleTargetHitCooldown: 0.5
 --- !u!114 &114930643367000526

@@ -54,5 +54,4 @@ MonoBehaviour:
   _healthChangePerTick: -7
   _tickDuration: 4
   _maxTickCount: 1
-  _maxDuration: 8
-  _startFirstTickImmediately: 1
+  _startFirstTickImmediately: 0

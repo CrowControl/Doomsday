@@ -103,8 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa0a6cbcd97c834fb8bff70ffee1a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectPrefabs:
-  - {fileID: 114975647408621852, guid: a3ec6ebe58837e94ea448057d11fdf57, type: 2}
+  _effectPrefab: {fileID: 114975647408621852, guid: a3ec6ebe58837e94ea448057d11fdf57,
+    type: 2}
   _maxHitCount: 3
   _singleTargetHitCooldown: 0.5
 --- !u!212 &212351565618597818

@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 212895471110102456}
   - component: {fileID: 70977634843659472}
   - component: {fileID: 114997805806432888}
-  - component: {fileID: 114855345282967570}
   - component: {fileID: 114242654099463862}
+  - component: {fileID: 114855345282967570}
+  - component: {fileID: 114162321567412738}
   m_Layer: 11
   m_Name: Level 3 Damage Beam
   m_TagString: Untagged
@@ -59,6 +60,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.2, y: 0.2}
   m_Direction: 0
+--- !u!114 &114162321567412738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1346926793063734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa0a6cbcd97c834fb8bff70ffee1a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectPrefab: {fileID: 114466793232508624, guid: c3bd5f9cc6974b442b6c691b7386d452,
+    type: 2}
+  _maxHitCount: 5
+  _singleTargetHitCooldown: 3
 --- !u!114 &114242654099463862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df5c535409ed754d99f931917ad6e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 0.5
+  _duration: 2
 --- !u!114 &114855345282967570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -82,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa0a6cbcd97c834fb8bff70ffee1a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectPrefabs:
-  - {fileID: 114975647408621852, guid: 4bf15b09431b98942859064a1b23c81d, type: 2}
+  _effectPrefab: {fileID: 114975647408621852, guid: 4bf15b09431b98942859064a1b23c81d,
+    type: 2}
   _maxHitCount: 5
-  _singleTargetHitCooldown: 2
+  _singleTargetHitCooldown: 3
 --- !u!114 &114997805806432888
 MonoBehaviour:
   m_ObjectHideFlags: 1
