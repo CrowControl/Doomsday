@@ -63,7 +63,7 @@ namespace _Project.Scripts.Effects
 
         private void CheckForMaxHitReached()
         {
-            if (_hits > _maxHitCount)
+            if (_hits >= _maxHitCount)
                 Destroy(gameObject);
         }
 

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114347505271169278}
   - component: {fileID: 114027449230893642}
   m_Layer: 5
-  m_Name: Blue Bird Headshot
+  m_Name: Merlin Bird Headshot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d6b43137b63e743b84f9fff3a08e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _associatedCharacterPrefab: {fileID: 0}
+  _associatedCharacterPrefab: {fileID: 114822605077373976, guid: be769f400f851d3408ce5f047390a913,
+    type: 2}
 --- !u!114 &114309942777454790
 MonoBehaviour:
   m_ObjectHideFlags: 1

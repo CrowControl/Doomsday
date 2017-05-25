@@ -30,5 +30,11 @@ namespace _Project.Scripts.Units.Abilities
 
             return ability;
         }
+
+        public Ability Spawn(ICharacterAimSource aimsource, Ability prefab)
+        {
+            AbilityPrefab = prefab;
+            return Spawn(aimsource);
+        }
     }
 }
