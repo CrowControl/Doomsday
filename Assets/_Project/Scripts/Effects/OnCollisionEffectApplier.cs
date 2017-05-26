@@ -28,26 +28,37 @@ namespace _Project.Scripts.Effects
         private int _hits;
         #endregion
 
-        private void Awake()
-        {
-            //Ensure it's a trigger Collider.
-            GetComponent<Collider2D>().isTrigger = true;
-        }
+        //private void Awake()
+        //{
+        //    //Ensure it's a trigger Collider.
+        //    GetComponent<Collider2D>().isTrigger = true;
+        //}
 
+        #region Collision
         private void OnTriggerEnter2D(Collider2D other)
         {
-            GameObject otherObject = other.gameObject;
-            if (OnHitCooldown(otherObject))
+            CheckCollision(other.gameObject);
+            }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            CheckCollision(collision.gameObject);
+        }
+
+        private void CheckCollision(GameObject gameObj)
+        {
+            if (OnHitCooldown(gameObj))
                 return;
 
-            if (Effect.TryApplyEffect(_effectPrefab, otherObject))
+            if (Effect.TryApplyEffect(_effectPrefab, gameObj))
             {
-                StartHitCooldown(otherObject);
+                StartHitCooldown(gameObj);
 
                 _hits++;
                 CheckForMaxHitReached();
             }
         }
+        #endregion
 
         #region Cooldowns
         private bool OnHitCooldown(GameObject obj)
