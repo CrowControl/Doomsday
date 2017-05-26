@@ -178,11 +178,11 @@ MonoBehaviour:
   - {fileID: 114997805806432888, guid: bf806cec9b3afde4a95dac9da7b52383, type: 2}
   - {fileID: 114769608884262144, guid: cf0ccce7298b6ba4c9866e454326a73e, type: 2}
   _healBeamPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 114201581508249298, guid: f8a058188d7beed47aa333283ddcae16, type: 2}
+  - {fileID: 114647888195953734, guid: fdfc3ebd66ef53c4a94d75609270ab9a, type: 2}
+  - {fileID: 114543988792312364, guid: 8a3b622bde4c1164a9fd1a837247f75d, type: 2}
+  - {fileID: 114653774463222814, guid: d9dd5d737e44b1f4c96f619c1bc4fe10, type: 2}
+  - {fileID: 114163360442946646, guid: d15ea3f151ca97f449e3d569828069aa, type: 2}
 --- !u!210 &210548934140718374
 SortingGroup:
   m_ObjectHideFlags: 1
