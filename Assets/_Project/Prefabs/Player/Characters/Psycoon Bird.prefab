@@ -160,29 +160,29 @@ MonoBehaviour:
   _chargeCooldown: 2
   _maxChargeColor: {r: 0.44827604, g: 0, b: 1, a: 1}
   _damageAuraPrefabs:
-  - {fileID: 114918176564227672, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
-  - {fileID: 114918176564227672, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
-  - {fileID: 114918176564227672, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
-  - {fileID: 114918176564227672, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
-  - {fileID: 114918176564227672, guid: 24377c7458b4f3644aaf166f583d0167, type: 2}
+  - {fileID: 114995670440989868, guid: e97411e296f13854a873be600432d32d, type: 2}
+  - {fileID: 114957677373972446, guid: 21d132effdf2db14ca1d951edfa4e9ee, type: 2}
+  - {fileID: 114644212993443058, guid: dde457ce676c3324fa9edc897a2414ce, type: 2}
+  - {fileID: 114043869509183950, guid: eb6046352222f0a44b140d1ee7e69821, type: 2}
+  - {fileID: 114871335255310268, guid: 1f758d3d278147a499751fc44c2ac5a8, type: 2}
   _healAuraPrefabs:
-  - {fileID: 114432940828990976, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
-  - {fileID: 114432940828990976, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
-  - {fileID: 114432940828990976, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
-  - {fileID: 114432940828990976, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
-  - {fileID: 114432940828990976, guid: 237e0fb21509e9047b5761d54752f52c, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _damageBeamPrefabs:
-  - {fileID: 114661478048658556, guid: 75640c872237dc641bd8308ae63b37b2, type: 2}
-  - {fileID: 114661478048658556, guid: 75640c872237dc641bd8308ae63b37b2, type: 2}
-  - {fileID: 114661478048658556, guid: 75640c872237dc641bd8308ae63b37b2, type: 2}
-  - {fileID: 114661478048658556, guid: 75640c872237dc641bd8308ae63b37b2, type: 2}
-  - {fileID: 114661478048658556, guid: 75640c872237dc641bd8308ae63b37b2, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _healBeamPrefabs:
-  - {fileID: 114247471197071650, guid: b6dbb320ba009bd429782b43313bbde0, type: 2}
-  - {fileID: 114247471197071650, guid: b6dbb320ba009bd429782b43313bbde0, type: 2}
-  - {fileID: 114247471197071650, guid: b6dbb320ba009bd429782b43313bbde0, type: 2}
-  - {fileID: 114247471197071650, guid: b6dbb320ba009bd429782b43313bbde0, type: 2}
-  - {fileID: 114247471197071650, guid: b6dbb320ba009bd429782b43313bbde0, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!210 &210548934140718374
 SortingGroup:
   m_ObjectHideFlags: 1
