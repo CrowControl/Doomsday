@@ -21,6 +21,11 @@ namespace _Project.Scripts.Units.Abilities
         private CapsuleCollider2D _collider;    //Component that handles collision.
         #endregion
 
+        #region Properties
+        public float MaxDistance { get { return _maxDistance; } }
+        public int LayerMask { get { return MathHelper.GenerateHitLayerMask(_layersToHit;)} }
+        #endregion
+
         #region Internal Variables
 
         private Vector2 _sourcePosition, _targetPosition;   //The to ends of this beam.
@@ -80,7 +85,7 @@ namespace _Project.Scripts.Units.Abilities
             RaycastHit2D hit = Physics2D.Raycast(_sourcePosition, direction, _maxDistance, layerMask);
 
             //If we hit, return collided object.
-            if (hit.collider != null)
+            if (hit.collider  != null)
                 _targetPosition = hit.point;
             else
             {
