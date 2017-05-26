@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 50947027296777938}
   - component: {fileID: 114130489157853814}
   - component: {fileID: 114653329058631120}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Excalibur Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
