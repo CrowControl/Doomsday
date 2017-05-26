@@ -172,11 +172,11 @@ MonoBehaviour:
   - {fileID: 114152523473677592, guid: 5fb0991b80cef2241b8cb128b4981938, type: 2}
   - {fileID: 114214337152196168, guid: e51e95d95e83b0642967123c6b904795, type: 2}
   _damageBeamPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 114308848397574084, guid: fdd037f343a8d9648b282a96ebdd4798, type: 2}
+  - {fileID: 114930643367000526, guid: 90af3e042d37d354c8d56f7863142e7d, type: 2}
+  - {fileID: 114228653811409802, guid: 17322b4742ebfeb41bddd0f971c9bcf5, type: 2}
+  - {fileID: 114997805806432888, guid: bf806cec9b3afde4a95dac9da7b52383, type: 2}
+  - {fileID: 114769608884262144, guid: cf0ccce7298b6ba4c9866e454326a73e, type: 2}
   _healBeamPrefabs:
   - {fileID: 0}
   - {fileID: 0}
