@@ -166,11 +166,11 @@ MonoBehaviour:
   - {fileID: 114043869509183950, guid: eb6046352222f0a44b140d1ee7e69821, type: 2}
   - {fileID: 114871335255310268, guid: 1f758d3d278147a499751fc44c2ac5a8, type: 2}
   _healAuraPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 114684208093467980, guid: afec2a5320911b245b00776e11a8ce7e, type: 2}
+  - {fileID: 114982551012135898, guid: b7633cd213cfd9840abfccf1f76dc645, type: 2}
+  - {fileID: 114241674020290846, guid: 2c1a14d984f6fe34c9c97f2ee43f260f, type: 2}
+  - {fileID: 114152523473677592, guid: 5fb0991b80cef2241b8cb128b4981938, type: 2}
+  - {fileID: 114214337152196168, guid: e51e95d95e83b0642967123c6b904795, type: 2}
   _damageBeamPrefabs:
   - {fileID: 0}
   - {fileID: 0}
