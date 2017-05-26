@@ -223,8 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3940f85e232bf9845b3dc1134fbbfb51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingHP: 0
-  _maxHP: 0
+  _startingHP: 20
+  _maxHP: 20
 --- !u!212 &212593496218943170
 SpriteRenderer:
   m_ObjectHideFlags: 1

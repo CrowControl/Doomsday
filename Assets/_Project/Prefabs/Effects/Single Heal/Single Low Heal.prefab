@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4097297633212112}
   - component: {fileID: 114975647408621852}
+  - component: {fileID: 114334942724180860}
   m_Layer: 0
   m_Name: Single Low Heal
   m_TagString: Untagged
@@ -40,6 +41,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114334942724180860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1122322598299468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df5c535409ed754d99f931917ad6e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 1
 --- !u!114 &114975647408621852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,5 +67,4 @@ MonoBehaviour:
   _healthChangePerTick: 1
   _tickDuration: 0
   _maxTickCount: 1
-  _maxDuration: 2
   _startFirstTickImmediately: 1
