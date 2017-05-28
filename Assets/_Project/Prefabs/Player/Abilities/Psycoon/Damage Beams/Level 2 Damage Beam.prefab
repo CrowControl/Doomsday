@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114788475878980870}
   - component: {fileID: 114975976854862326}
   - component: {fileID: 114853744970513062}
+  - component: {fileID: 114493898041984136}
   m_Layer: 11
   m_Name: Level 2 Damage Beam
   m_TagString: Untagged
@@ -73,6 +74,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layersToHit: 0a000000
   _maxDistance: 2
+--- !u!114 &114493898041984136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1744161288529466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c140b80f0744ff868c8686564b43db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _distanceTweak: 4
 --- !u!114 &114788475878980870
 MonoBehaviour:

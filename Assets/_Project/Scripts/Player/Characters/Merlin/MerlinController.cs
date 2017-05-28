@@ -10,7 +10,7 @@ namespace _Project.Scripts.Player.Characters
         [SerializeField] private float _cooldown;
 
         [SerializeField] private Projectile _excaliburPrefab;
-        [SerializeField] private CrappySpriteBeam _lightningPrefab;
+        [SerializeField] private ShotBeamController _lightningPrefab;
         #endregion
 
         #region Components

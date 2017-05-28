@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114107922609137520}
   - component: {fileID: 114847687104824824}
   - component: {fileID: 114414099656187662}
+  - component: {fileID: 114331939512690578}
   m_Layer: 11
   m_Name: Level 4 Damage Beam
   m_TagString: Untagged
@@ -72,6 +73,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 2
+--- !u!114 &114331939512690578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1946012141316822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c140b80f0744ff868c8686564b43db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distanceTweak: 4
 --- !u!114 &114414099656187662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,7 +113,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layersToHit: 0a000000
   _maxDistance: 6
-  _distanceTweak: 4
 --- !u!114 &114847687104824824
 MonoBehaviour:
   m_ObjectHideFlags: 1

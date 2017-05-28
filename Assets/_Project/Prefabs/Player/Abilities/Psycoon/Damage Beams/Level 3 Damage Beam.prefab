@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114997805806432888}
   - component: {fileID: 114242654099463862}
   - component: {fileID: 114855345282967570}
+  - component: {fileID: 114089875482530102}
   m_Layer: 11
   m_Name: Level 3 Damage Beam
   m_TagString: Untagged
@@ -59,6 +60,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 4, y: 0.18}
   m_Direction: 1
+--- !u!114 &114089875482530102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1346926793063734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c140b80f0744ff868c8686564b43db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distanceTweak: 4
 --- !u!114 &114242654099463862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,7 +112,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layersToHit: 0a000000
   _maxDistance: 6
-  _distanceTweak: 4
 --- !u!212 &212895471110102456
 SpriteRenderer:
   m_ObjectHideFlags: 1

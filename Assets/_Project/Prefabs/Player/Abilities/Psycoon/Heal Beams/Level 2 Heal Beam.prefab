@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114543988792312364}
   - component: {fileID: 114896492996754374}
   - component: {fileID: 114142723055652202}
+  - component: {fileID: 114448387872834750}
   m_Layer: 13
   m_Name: Level 2 Heal Beam
   m_TagString: Untagged
@@ -71,6 +72,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 0.5
+--- !u!114 &114448387872834750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1132660895353758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c140b80f0744ff868c8686564b43db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distanceTweak: 4
 --- !u!114 &114543988792312364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,7 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layersToHit: 0a000000
   _maxDistance: 3
-  _distanceTweak: 4
 --- !u!114 &114896492996754374
 MonoBehaviour:
   m_ObjectHideFlags: 1
