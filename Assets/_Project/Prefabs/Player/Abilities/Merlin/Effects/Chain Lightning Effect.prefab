@@ -51,8 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8625c534a0825047990a1b3dc679cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chainBeamPrefab: {fileID: 0}
-  _totalDuration: 0
+  _chainBeamPrefab: {fileID: 114734242330390420, guid: f4609e5945382d84391d7031199eeeae,
+    type: 2}
+  _totalDuration: 4
   _timeBetweenChain: 0
-  _maxChainDistance: 0
-  _maxChainedExcaliburs: 0
+  _maxChainDistance: 5
+  _maxChainedExcaliburs: 3

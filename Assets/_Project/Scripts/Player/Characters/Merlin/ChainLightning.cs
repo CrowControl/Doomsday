@@ -17,7 +17,7 @@ namespace _Project.Scripts.Player.Characters.Merlin
         #endregion
 
         #region Internal Variables
-        private List<ChainBeam> _chainBeams = new List<ChainBeam>();
+        private readonly List<ChainBeam> _chainBeams = new List<ChainBeam>();
         #endregion
 
         public override bool HasTargetComponent(GameObject gameObj)

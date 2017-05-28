@@ -25,7 +25,7 @@ namespace _Project.Scripts.Units.Abilities
             _collider.direction = CapsuleDirection2D.Horizontal;
         }
 
-        public void ActivateRendering()
+        public void Activate()
         {
             _renderer.enabled = true;
         }
