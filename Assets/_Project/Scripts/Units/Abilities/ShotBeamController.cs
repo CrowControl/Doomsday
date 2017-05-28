@@ -45,7 +45,7 @@ namespace _Project.Scripts.Units.Abilities
 
             //Manually update once, because otherwise the beam spawns around the source, only then turn the renderer on.
             Update();
-            _beam.ActivateRendering();
+            _beam.Activate();
         }
 
         #region Update

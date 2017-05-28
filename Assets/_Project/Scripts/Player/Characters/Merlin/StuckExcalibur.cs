@@ -8,6 +8,10 @@ namespace _Project.Scripts.Player.Characters.Merlin
      RequireComponent(typeof(CapsuleCollider2D))]   //This is so other excaliburs can detect this one.
     public class StuckExcalibur : MonoBehaviour
     {
+        #region Properties
+        public int OtherExcalibursInRange { get { return _otherExcalibursInRange.Count; } }
+        #endregion
+
         #region Internal Variables
         private readonly List<StuckExcalibur> _otherExcalibursInRange = new List<StuckExcalibur>();
         #endregion
@@ -48,7 +52,11 @@ namespace _Project.Scripts.Player.Characters.Merlin
             if (excluded != null)
                 foreach (StuckExcalibur excludedExcalibur in excluded)
                     otherExcaliburs.Remove(excludedExcalibur);
-        
+
+            //If we have no valid neighbouring excaliburs left, return null.
+            if (otherExcaliburs.Count <= 0)
+                return null;
+
             //Get the nearest other excalibur.
             StuckExcalibur nearestExcalibur = otherExcaliburs.First();
             float nearestDistance = float.MaxValue;
@@ -65,6 +73,10 @@ namespace _Project.Scripts.Player.Characters.Merlin
 
             return nearestExcalibur;
         }
+        public StuckExcalibur GetNearestOtherExcalibur(StuckExcalibur excluded)
+        {
+            return GetNearestOtherExcalibur(new List<StuckExcalibur> { excluded });
+        }
 
         /// <summary>
         /// Gets the nearest other excalibur.
@@ -72,7 +84,9 @@ namespace _Project.Scripts.Player.Characters.Merlin
         /// <returns>The nearest other excalibur</returns>
         public StuckExcalibur GetNearestOtherExcalibur()
         {
-            return GetNearestOtherExcalibur(null);
+            return GetNearestOtherExcalibur(new List<StuckExcalibur>());
         }
+
+
     }
 }

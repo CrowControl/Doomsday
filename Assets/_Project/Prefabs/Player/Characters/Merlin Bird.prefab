@@ -124,7 +124,8 @@ MonoBehaviour:
   _cooldown: 0.5
   _excaliburPrefab: {fileID: 114623983640892600, guid: 85983f061ed40a740aa32cad9ea92aa8,
     type: 2}
-  _lightningPrefab: {fileID: 0}
+  _lightningPrefab: {fileID: 114670040058727846, guid: 9d936f832e4dfa343b3933bac717f94e,
+    type: 2}
 --- !u!114 &114727538256070020
 MonoBehaviour:
   m_ObjectHideFlags: 1
