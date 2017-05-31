@@ -9,68 +9,61 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1623881854764504}
+  m_RootGameObject: {fileID: 1868300637659562}
   m_IsPrefabParent: 1
---- !u!1 &1623881854764504
+--- !u!1 &1868300637659562
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4983821566403622}
-  - component: {fileID: 212848046620183480}
-  - component: {fileID: 70747915780872268}
-  - component: {fileID: 114623983640892600}
-  - component: {fileID: 50947027296777938}
-  - component: {fileID: 114130489157853814}
-  - component: {fileID: 114653329058631120}
-  m_Layer: 11
-  m_Name: Excalibur Projectile
+  - component: {fileID: 4985484791127650}
+  - component: {fileID: 212363684867640924}
+  - component: {fileID: 70597695711137370}
+  - component: {fileID: 58200048391450554}
+  - component: {fileID: 114124459364993260}
+  m_Layer: 14
+  m_Name: Stuck Excalibur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4983821566403622
+--- !u!4 &4985484791127650
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1623881854764504}
+  m_GameObject: {fileID: 1868300637659562}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalPosition: {x: 0.2, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!50 &50947027296777938
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!58 &58200048391450554
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1623881854764504}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
+  m_GameObject: {fileID: 1868300637659562}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
---- !u!70 &70747915780872268
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 100
+--- !u!70 &70597695711137370
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1623881854764504}
+  m_GameObject: {fileID: 1868300637659562}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -80,55 +73,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 5}
   m_Direction: 0
---- !u!114 &114130489157853814
+--- !u!114 &114124459364993260
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1623881854764504}
+  m_GameObject: {fileID: 1868300637659562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa0a6cbcd97c834fb8bff70ffee1a26, type: 3}
+  m_Script: {fileID: 11500000, guid: fb3cbc92e544c684cbfac25cde47b103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectPrefab: {fileID: 114975647408621852, guid: e7cdbd2e8d1fae7438a3b653d701dd60,
-    type: 2}
-  _maxHitCount: 2
-  _singleTargetHitCooldown: 1
---- !u!114 &114623983640892600
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1623881854764504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e367be5f9a974014ca239bd8bc8a6398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 5
-  _range: 10
---- !u!114 &114653329058631120
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1623881854764504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa0a6cbcd97c834fb8bff70ffee1a26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _effectPrefab: {fileID: 114715104579810534, guid: 070e21149fd016f46a0c142eb8a8415c,
-    type: 2}
-  _maxHitCount: 1
-  _singleTargetHitCooldown: 0
---- !u!212 &212848046620183480
+--- !u!212 &212363684867640924
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1623881854764504}
+  m_GameObject: {fileID: 1868300637659562}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

@@ -4,7 +4,7 @@ using _Project.Scripts.Units;
 
 namespace _Project.Scripts.Player
 {
-    public class PlayerCharacterController : MonoBehaviour, IMovementInputSource, ICharacterAimSource
+    public class PlayerCharacterController : CustomMonoBehaviour, IMovementInputSource, ICharacterAimSource
     {
         #region Properties
         public InputDevice Device { get; set; }         //Device that controls this character.

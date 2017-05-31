@@ -15,7 +15,7 @@ namespace _Project.Scripts.Effects
         public static bool TryApplyEffect(Effect effectPrefab, GameObject gameObj)
         {
             //Each effect has a target component. If the game object does not have this component, we do not continue.
-            if (!effectPrefab.HasTargetComponent(gameObj))
+            if (!effectPrefab.IsValidTarget(gameObj))
                 return false;
 
             //Instantiate the prefab.
@@ -24,7 +24,7 @@ namespace _Project.Scripts.Effects
             return true;
         }
 
-        public abstract bool HasTargetComponent(GameObject gameObj);
+        public abstract bool IsValidTarget(GameObject gameObj);
         protected abstract void Apply(GameObject gameObj);
     }
 }

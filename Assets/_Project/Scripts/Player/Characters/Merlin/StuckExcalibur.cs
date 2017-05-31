@@ -6,14 +6,14 @@ namespace _Project.Scripts.Player.Characters.Merlin
 {
     [RequireComponent(typeof(CircleCollider2D)),    //Used as range to find other excaliburs in.
      RequireComponent(typeof(CapsuleCollider2D))]   //This is so other excaliburs can detect this one.
-    public class StuckExcalibur : MonoBehaviour
+    public class StuckExcalibur : CustomMonoBehaviour
     {
         #region Properties
         public int OtherExcalibursInRange { get { return _otherExcalibursInRange.Count; } }
         #endregion
 
         #region Internal Variables
-        private readonly List<StuckExcalibur> _otherExcalibursInRange = new List<StuckExcalibur>();
+        private readonly HashSet<StuckExcalibur> _otherExcalibursInRange = new HashSet<StuckExcalibur>();
         #endregion
 
         private void Awake()
@@ -26,15 +26,15 @@ namespace _Project.Scripts.Player.Characters.Merlin
         //Watches out for excaliburs entering in range.
         private void OnTriggerEnter2D(Collider2D other)
         {
-            StuckExcalibur otherExcalibur = other.GetComponentInChildren<StuckExcalibur>();
-            if(otherExcalibur != null)
+            StuckExcalibur otherExcalibur = other.GetComponent<StuckExcalibur>();
+            if(otherExcalibur != null && otherExcalibur != this)
                 _otherExcalibursInRange.Add(otherExcalibur);
         }
 
         //Watches out for excaliburs extiting range.
         private void OnTriggerExit2D(Collider2D other)
         {
-            StuckExcalibur otherExcalibur = other.GetComponentInChildren<StuckExcalibur>();
+            StuckExcalibur otherExcalibur = other.GetComponent<StuckExcalibur>();
             if (otherExcalibur != null)
                 _otherExcalibursInRange.Remove(otherExcalibur);
         }
@@ -86,7 +86,5 @@ namespace _Project.Scripts.Player.Characters.Merlin
         {
             return GetNearestOtherExcalibur(new List<StuckExcalibur>());
         }
-
-
     }
 }

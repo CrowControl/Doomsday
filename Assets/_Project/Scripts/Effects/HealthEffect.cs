@@ -18,14 +18,14 @@ namespace _Project.Scripts.Effects
 
         #region Events
         public delegate void HealthEffectEventHandler();
-        public event HealthEffectEventHandler OnEffectFinished;
+        public event HealthEffectEventHandler OnDestroyed;
         #endregion
 
         #region Internal Variables
         private int _tickCount;     //Amount of ticks up until now.
         #endregion
 
-        public override bool HasTargetComponent(GameObject gameObj)
+        public override bool IsValidTarget(GameObject gameObj)
         {
             return (gameObj.GetComponent<HealthController>() != null);
         }
@@ -64,8 +64,8 @@ namespace _Project.Scripts.Effects
             CancelInvoke();
 
             //Call event.
-            if (OnEffectFinished != null)
-                OnEffectFinished();
+            if (OnDestroyed != null)
+                OnDestroyed();
         }
     }
 }

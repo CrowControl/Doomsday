@@ -16,11 +16,6 @@ namespace _Project.Scripts.Units.Abilities
         private Beam _beam;
         #endregion
 
-        #region Properties
-        public float MaxDistance { get { return _maxDistance; } }
-        public int LayerMask { get { return MathHelper.GenerateHitLayerMask(_layersToHit); } }
-        #endregion
-
         #region Internal Variables
 
         private Vector2 _sourcePosition, _targetPosition;   //The to ends of this beam.
@@ -29,7 +24,15 @@ namespace _Project.Scripts.Units.Abilities
 
         private void Awake()
         {
+            InitializeComponents();
             _sourcePosition = transform.position;
+        }
+
+        /// <summary>
+        /// Initializes all necessary components.
+        /// </summary>
+        private void InitializeComponents()
+        {
             _beam = GetComponent<Beam>();
         }
 
@@ -41,7 +44,6 @@ namespace _Project.Scripts.Units.Abilities
         {
             //Set the aim source.
             _aimSource = aimSource;
-            //Spawn the actual beam.
 
             //Manually update once, because otherwise the beam spawns around the source, only then turn the renderer on.
             Update();
@@ -69,7 +71,7 @@ namespace _Project.Scripts.Units.Abilities
             RaycastHit2D hit = Physics2D.Raycast(_sourcePosition, direction, _maxDistance, layerMask);
 
             //If we hit, return collided object.
-            if (hit.collider  != null)
+            if (hit.collider != null)
                 return hit.point;
             
             //calculate the position that is _maxdistance away in direction of this.position.

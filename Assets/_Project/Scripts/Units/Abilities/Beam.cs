@@ -4,7 +4,7 @@ namespace _Project.Scripts.Units.Abilities
 {
     [RequireComponent(typeof(SpriteRenderer)),
      RequireComponent(typeof(CapsuleCollider2D))]
-    class Beam : MonoBehaviour
+    class Beam : CustomMonoBehaviour
     {
         #region Editor Variables.
         [SerializeField] private float _distanceTweak;
@@ -30,6 +30,7 @@ namespace _Project.Scripts.Units.Abilities
             _renderer.enabled = true;
         }
 
+        #region Update
         /// <summary>
         /// Updates the transform.
         /// </summary>
@@ -57,6 +58,18 @@ namespace _Project.Scripts.Units.Abilities
 
             _renderer.size = size;
             _collider.size = size;
+        }
+        #endregion
+
+        /// <summary>
+        /// Makes the beam ignore collision with the given gameobject.
+        /// </summary>
+        /// <param name="gameObj">Game object to ignore.</param>
+        public void IgnoreCollisionWith(GameObject gameObj)
+        {
+            Collider2D otherCollider = gameObj.GetComponent<Collider2D>();
+            if (otherCollider != null)
+                Physics2D.IgnoreCollision(_collider, otherCollider);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace _Project.Scripts.Player.Characters.Merlin
     public class ChainLightning : Effect
     {
         #region Editor Variables
-        [SerializeField] private ChainBeam _chainBeamPrefab;
+        [SerializeField] private ChainBeamController _chainBeamControllerPrefab;
 
         [SerializeField] private float _totalDuration;
         [SerializeField] private float _timeBetweenChain;
@@ -17,12 +17,13 @@ namespace _Project.Scripts.Player.Characters.Merlin
         #endregion
 
         #region Internal Variables
-        private readonly List<ChainBeam> _chainBeams = new List<ChainBeam>();
+        private readonly List<ChainBeamController> _chainBeams = new List<ChainBeamController>();
         #endregion
 
-        public override bool HasTargetComponent(GameObject gameObj)
+        public override bool IsValidTarget(GameObject gameObj)
         {
-            return gameObj.GetComponentInChildren<StuckExcalibur>() != null;
+            return gameObj.GetComponentInChildren<StuckExcalibur>()      != null && //It must have a excalibur stuck in it.
+                   gameObj.GetComponentInChildren<ChainBeamController>() == null;   //But can't already be beamed.
         }
 
         protected override void Apply(GameObject gameObj)
@@ -33,9 +34,10 @@ namespace _Project.Scripts.Player.Characters.Merlin
 
         private IEnumerator ChainThatLighting()
         {
-            StuckExcalibur currentExcalibur = GetComponentInChildren<StuckExcalibur>();
-            StuckExcalibur previousExcalibur = currentExcalibur;
             List<StuckExcalibur> chainedExcaliburs = new List<StuckExcalibur>();
+
+            StuckExcalibur currentExcalibur = transform.parent.GetComponentInChildren<StuckExcalibur>();
+            StuckExcalibur previousExcalibur = currentExcalibur;
 
             while (true)
             {
@@ -65,16 +67,16 @@ namespace _Project.Scripts.Player.Characters.Merlin
         }
 
         /// <summary>
-        /// Spawns a chain beam between the 2 excaliburs.
+        /// Spawns a chain beamController between the 2 excaliburs.
         /// </summary>
         /// <param name="from">source of lightning.</param>
         /// <param name="to">target of lightning.</param>
         private void Chain(StuckExcalibur from, StuckExcalibur to)
         {
-            ChainBeam beam = Instantiate(_chainBeamPrefab, from.transform);
-            _chainBeams.Add(beam);
+            ChainBeamController beamController = Instantiate(_chainBeamControllerPrefab, from.transform);
+            _chainBeams.Add(beamController);
 
-            beam.Activate(from.transform, to.transform);
+            beamController.Activate(from.gameObject, to.gameObject);
         }
 
         private void Finish()
@@ -86,8 +88,9 @@ namespace _Project.Scripts.Player.Characters.Merlin
         {
             StopAllCoroutines();
 
-            foreach (ChainBeam beam in _chainBeams)
-                Destroy(beam.gameObject);
+            foreach (ChainBeamController beam in _chainBeams)
+                if(beam != null)
+                    Destroy(beam.gameObject);
             
         }
 

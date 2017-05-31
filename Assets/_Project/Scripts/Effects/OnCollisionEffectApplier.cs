@@ -6,17 +6,20 @@ using _Project.Scripts.Units;
 namespace _Project.Scripts.Effects
 {
     [RequireComponent(typeof(Collider2D))]
-    public class OnCollisionEffectApplier : MonoBehaviour
+    public class OnCollisionEffectApplier : CustomMonoBehaviour
     {
         #region Editor Variables
         [SerializeField] private Effect _effectPrefab;          //The effect to apply on collision.
         [SerializeField] private int _maxHitCount;                  //Maximum amount of hits we want to allow.
         [SerializeField] private float _singleTargetHitCooldown;    //Cooldown for a single target that got hit.
+        [SerializeField] private bool _destroyOnMaxHitReached;
         #endregion
 
-        #region Events
-        public delegate void OnCollisionHealEventHandler();
-        public event OnCollisionHealEventHandler OnFinished;
+        #region Properties
+        private bool MaxHitsreached
+        {
+            get { return _hits >= _maxHitCount; }
+        }
         #endregion
 
         #region Internal Variables
@@ -35,10 +38,11 @@ namespace _Project.Scripts.Effects
         //}
 
         #region Collision
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             CheckCollision(other.gameObject);
-            }
+        }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -47,7 +51,7 @@ namespace _Project.Scripts.Effects
 
         private void CheckCollision(GameObject gameObj)
         {
-            if (OnHitCooldown(gameObj))
+            if (MaxHitsreached || OnHitCooldown(gameObj))
                 return;
 
             if (Effect.TryApplyEffect(_effectPrefab, gameObj))
@@ -74,21 +78,19 @@ namespace _Project.Scripts.Effects
 
         private void CheckForMaxHitReached()
         {
-            if (_hits >= _maxHitCount)
+            if (_destroyOnMaxHitReached && MaxHitsreached)
                 Destroy(gameObject);
         }
 
         /// <summary>
         /// Called when this object is destroyed.
         /// </summary>
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
             //Cancel any outstanding invokes.
             CancelInvoke();
             
-            //Call event.
-            if (OnFinished != null)
-                OnFinished();
+            base.OnDestroy();
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace _Project.Scripts.Units
 {
-    public class HealthController : MonoBehaviour
+    public class HealthController : CustomMonoBehaviour
     {
         #region Editor Variables
         [SerializeField] private float _startingHP;

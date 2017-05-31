@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layersToHit: 0a000000
   _maxDistance: 6
+  _distanceTweak: 4
 --- !u!212 &212895471110102456
 SpriteRenderer:
   m_ObjectHideFlags: 1

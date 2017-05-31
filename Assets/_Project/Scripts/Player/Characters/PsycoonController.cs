@@ -209,7 +209,7 @@ namespace _Project.Scripts.Player.Characters
             public void Enter(PsycoonController psycoon, InputDevice controller)
             {
                 Ability ability = psycoon._abilitySpawner.Spawn(psycoon);
-                ability.OnFinished += () => _shouldTransition = true;
+                ability.OnDestroyed += () => _shouldTransition = true;
             }
 
             public IPsycoonState Update(PsycoonController psycoon, InputDevice controller)

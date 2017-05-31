@@ -74,6 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layersToHit: 0a000000
   _maxDistance: 2
+  _distanceTweak: 4
 --- !u!114 &114493898041984136
 MonoBehaviour:
   m_ObjectHideFlags: 1
