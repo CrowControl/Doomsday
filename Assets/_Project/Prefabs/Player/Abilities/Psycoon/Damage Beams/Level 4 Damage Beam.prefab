@@ -98,8 +98,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114466793232508624, guid: c3bd5f9cc6974b442b6c691b7386d452,
     type: 2}
+  _useMaxHitCount: 1
   _maxHitCount: 5
   _singleTargetHitCooldown: 3
+  _destroyOnMaxHitReached: 0
 --- !u!114 &114769608884262144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,7 +115,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layersToHit: 0a000000
   _maxDistance: 6
-  _distanceTweak: 4
 --- !u!114 &114847687104824824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,8 +128,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114975647408621852, guid: 4bf15b09431b98942859064a1b23c81d,
     type: 2}
+  _useMaxHitCount: 1
   _maxHitCount: 5
   _singleTargetHitCooldown: 3
+  _destroyOnMaxHitReached: 0
 --- !u!212 &212113295067032312
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1,47 +1,34 @@
 ﻿using UnityEngine;
 using _Project.Scripts.Units.Abilities;
 
-namespace _Project.Scripts.Player.Characters
+namespace _Project.Scripts.Player
 {
-    [RequireComponent(typeof(AbilitySpawner))]
-    public class MerlinController : PlayerCharacterController
+    class BasicCharacterController : PlayerCharacterController
     {
         #region Editor Variables
         [SerializeField] private float _cooldown;
 
-        [SerializeField] private Projectile _excaliburPrefab;
-        [SerializeField] private ShotBeamController _lightningPrefab;
-        #endregion
-
-        #region Components
-        private AbilitySpawner _abilitySpawner;
-        #endregion
+        [SerializeField] private Ability _rightTriggerAbilityPrefab;
+        [SerializeField] private Ability _leftTriggerAbilityPrefab;
+        #endregion 
 
         #region Internal Variables
         private bool _onCooldown;
-
         #endregion
 
-        private void Awake()
+        protected override void HandleInput()
         {
-            _abilitySpawner = GetComponent<AbilitySpawner>();
-        }
-
-        protected override void Update()
-        {
-            base.Update();
-
             //Check for cooldown.
             if (_onCooldown)
                 return;
 
             //Shoot excalibur.
             if (Device.RightTrigger.WasPressed)
-                _abilitySpawner.Spawn(this, _excaliburPrefab);
+                AbilitySpawner.Spawn(this, _rightTriggerAbilityPrefab);
 
             //Shoot lightning.
             else if (Device.LeftTrigger.WasPressed)
-                _abilitySpawner.Spawn(this, _lightningPrefab);
+                AbilitySpawner.Spawn(this, _leftTriggerAbilityPrefab);
         }
 
         #region Cooldown

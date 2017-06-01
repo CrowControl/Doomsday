@@ -22,12 +22,12 @@ GameObject:
   - component: {fileID: 95309925758744094}
   - component: {fileID: 212903710445662272}
   - component: {fileID: 210688069821252764}
+  - component: {fileID: 114951519590617386}
   - component: {fileID: 61340914061456176}
   - component: {fileID: 50150807944703300}
   - component: {fileID: 114727538256070020}
+  - component: {fileID: 114031427935389688}
   - component: {fileID: 114981833702510630}
-  - component: {fileID: 114951519590617386}
-  - component: {fileID: 114395206363981186}
   m_Layer: 8
   m_Name: Merlin Bird
   m_TagString: Player
@@ -110,7 +110,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114395206363981186
+--- !u!114 &114031427935389688
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -118,13 +118,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1413205995278750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e406f704b229f5d4ba1004c2ad5b0fc1, type: 3}
+  m_Script: {fileID: 11500000, guid: 856769d817076174c8a632a1a1d47c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cooldown: 0.5
-  _excaliburPrefab: {fileID: 114623983640892600, guid: 85983f061ed40a740aa32cad9ea92aa8,
+  _rightTriggerAbilityPrefab: {fileID: 114623983640892600, guid: 85983f061ed40a740aa32cad9ea92aa8,
     type: 2}
-  _lightningPrefab: {fileID: 114739830356387982, guid: cdf31f322f3390b41b77269ba88d299d,
+  _leftTriggerAbilityPrefab: {fileID: 114739830356387982, guid: cdf31f322f3390b41b77269ba88d299d,
     type: 2}
 --- !u!114 &114727538256070020
 MonoBehaviour:
@@ -204,7 +204,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6d8d881da2045a740a594e1981f3f08d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.8636917, b: 0.29411763, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

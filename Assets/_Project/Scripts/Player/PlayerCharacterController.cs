@@ -1,27 +1,54 @@
 ﻿using InControl;
 using UnityEngine;
+using _Project.Scripts.General;
 using _Project.Scripts.Units;
+using _Project.Scripts.Units.Abilities;
 
 namespace _Project.Scripts.Player
 {
-    public class PlayerCharacterController : CustomMonoBehaviour, IMovementInputSource, ICharacterAimSource
+    [RequireComponent(typeof(AbilitySpawner))]
+    public abstract class PlayerCharacterController : CustomMonoBehaviour, IMovementInputSource, ICharacterAimSource
     {
+        #region Components
+        protected AbilitySpawner AbilitySpawner;
+        #endregion
+
         #region Properties
         public InputDevice Device { get; set; }         //Device that controls this character.
+
+        #region IMovementInputSource
         public Vector2 MovementVector { get; private set; } //Vector used for movement.
-        public float AimingDegree { get; private set; }     //Degree that this character is aiming at.
-        public Vector2 SourcePosition { get { return transform.position; } } 
         #endregion
+
+        #region ICharacterAimSource
+        public float AimingDegree { get; private set; }     //Degree that this character is aiming at.
+        public Vector2 SourcePosition { get { return transform.position; } }
+        #endregion
+
+        #endregion
+
+        protected virtual void Awake()
+        {
+            AbilitySpawner = GetComponent<AbilitySpawner>();
+        }
 	
         // Update is called once per frame
-        protected virtual void Update ()
+        private void Update ()
         {
             //Movement.
             MovementVector = Device.LeftStick.Vector;
 
             //Aiming. (We read in a vector and convert it to a degree for ease of use.)
             AimingDegree = MathHelper.Vector2Degree(Device.RightStick.Vector);
+
+            //Let the implementing class handle input.
+            HandleInput();
         }
+
+        /// <summary>
+        /// Let the character class handle input.
+        /// </summary>
+        protected abstract void HandleInput();
     }
 
     public interface ICharacterAimSource

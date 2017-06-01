@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114865667444436860}
   - component: {fileID: 114502029627276932}
   m_Layer: 5
-  m_Name: Red Bird Headshot
+  m_Name: Jean Bird Headshot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d6b43137b63e743b84f9fff3a08e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _associatedCharacterPrefab: {fileID: 0}
+  _associatedCharacterPrefab: {fileID: 114139881257912196, guid: 73dc4b868f1b76343abf54b0046624fa,
+    type: 2}
 --- !u!114 &114730238843526086
 MonoBehaviour:
   m_ObjectHideFlags: 1

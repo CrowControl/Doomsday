@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using InControl;
 using UnityEngine;
+using _Project.Scripts.General;
 using _Project.Scripts.Units;
 using _Project.Scripts.Units.Abilities;
 
@@ -22,7 +23,6 @@ namespace _Project.Scripts.Player.Characters
         #endregion
 
         #region Components
-        private AbilitySpawner _abilitySpawner;
         private SpriteHandler _spriteHandler;
         #endregion
 
@@ -30,20 +30,18 @@ namespace _Project.Scripts.Player.Characters
         private IPsycoonState _state;
         #endregion
 
-        private void Awake()
+        protected override void Awake()
         {
             //Get Components.
-            _abilitySpawner = GetComponent<AbilitySpawner>();
+            base.Awake();
             _spriteHandler = GetComponent<SpriteHandler>();
 
             //Set starting state.
             TransitionTo(new NotChargingState());
         }
 
-        // Update is called once per frame
-        protected override void Update ()
+        protected override void HandleInput()
         {
-            base.Update();
             IPsycoonState nextState = _state.Update(this, Device);
 
             if (nextState != null)
@@ -131,7 +129,7 @@ namespace _Project.Scripts.Player.Characters
 
             private IPsycoonState TransitionToChargeRelease(PsycoonController psycoon, List<Ability> abilityPrefabs)
             {
-                AbilitySpawner abilitySpawner = psycoon._abilitySpawner;
+                AbilitySpawner abilitySpawner = psycoon.AbilitySpawner;
                 abilitySpawner.AbilityPrefab = abilityPrefabs[ChargeLevel];
 
                 return new ChargeReleaseState();
@@ -208,8 +206,8 @@ namespace _Project.Scripts.Player.Characters
 
             public void Enter(PsycoonController psycoon, InputDevice controller)
             {
-                Ability ability = psycoon._abilitySpawner.Spawn(psycoon);
-                ability.OnDestroyed += () => _shouldTransition = true;
+                psycoon.AbilitySpawner.OnFinished += () => _shouldTransition = true;
+                psycoon.AbilitySpawner.Spawn(psycoon);
             }
 
             public IPsycoonState Update(PsycoonController psycoon, InputDevice controller)

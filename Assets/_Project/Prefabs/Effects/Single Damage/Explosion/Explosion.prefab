@@ -73,6 +73,7 @@ MonoBehaviour:
     type: 2}
   _maxHitCount: 10
   _singleTargetHitCooldown: 1
+  _destroyOnMaxHitReached: 0
 --- !u!114 &114780545520428744
 MonoBehaviour:
   m_ObjectHideFlags: 1

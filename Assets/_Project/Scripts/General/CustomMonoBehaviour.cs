@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Project
+namespace _Project.Scripts.General
 {
     public abstract class CustomMonoBehaviour : MonoBehaviour
     {

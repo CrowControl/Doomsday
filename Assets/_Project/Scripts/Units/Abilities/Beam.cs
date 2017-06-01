@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using _Project.Scripts.General;
 
 namespace _Project.Scripts.Units.Abilities
 {
@@ -55,9 +56,7 @@ namespace _Project.Scripts.Units.Abilities
         private void UpdateSize(float distance)
         {
             Vector2 size = new Vector2(distance / _distanceTweak, _renderer.size.y);
-
-            _renderer.size = size;
-            _collider.size = size;
+            transform.localScale = new Vector2(size.x, transform.localScale.y); 
         }
         #endregion
 

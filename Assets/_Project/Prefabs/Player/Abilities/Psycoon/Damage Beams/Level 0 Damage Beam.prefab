@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114308848397574084}
   - component: {fileID: 114806798829008628}
   - component: {fileID: 50019171803534980}
+  - component: {fileID: 114902287172997434}
   m_Layer: 11
   m_Name: Level 0 Damage Beam
   m_TagString: Untagged
@@ -90,7 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e367be5f9a974014ca239bd8bc8a6398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 8
   _range: 10
 --- !u!114 &114806798829008628
 MonoBehaviour:
@@ -107,6 +107,19 @@ MonoBehaviour:
     type: 2}
   _maxHitCount: 1
   _singleTargetHitCooldown: 0.5
+  _destroyOnMaxHitReached: 0
+--- !u!114 &114902287172997434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1090598277565102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fc4e5c4b95eb845bf7b5b770dab5c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
 --- !u!212 &212351565618597818
 SpriteRenderer:
   m_ObjectHideFlags: 1

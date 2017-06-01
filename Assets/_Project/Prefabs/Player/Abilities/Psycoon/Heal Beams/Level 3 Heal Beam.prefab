@@ -73,8 +73,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114975647408621852, guid: 9ec30bac8ae113842b07cc4026bc89af,
     type: 2}
+  _useMaxHitCount: 1
   _maxHitCount: 5
   _singleTargetHitCooldown: 0.6
+  _destroyOnMaxHitReached: 0
 --- !u!114 &114653774463222814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,7 +90,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layersToHit: 0a000000
   _maxDistance: 6
-  _distanceTweak: 4
 --- !u!114 &114655235853403060
 MonoBehaviour:
   m_ObjectHideFlags: 1

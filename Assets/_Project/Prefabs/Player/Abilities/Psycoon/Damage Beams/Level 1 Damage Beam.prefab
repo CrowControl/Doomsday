@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114930643367000526}
   - component: {fileID: 114513094584345060}
   - component: {fileID: 114789964810621790}
+  - component: {fileID: 114423217963430140}
   m_Layer: 11
   m_Name: Level 1 Damage Beam
   m_TagString: Untagged
@@ -80,6 +81,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 4, y: 0.18}
   m_Direction: 1
+--- !u!114 &114423217963430140
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1540104715341096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fc4e5c4b95eb845bf7b5b770dab5c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
 --- !u!114 &114513094584345060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,8 +106,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114975647408621852, guid: a3ec6ebe58837e94ea448057d11fdf57,
     type: 2}
+  _useMaxHitCount: 1
   _maxHitCount: 1
   _singleTargetHitCooldown: 0.5
+  _destroyOnMaxHitReached: 0
 --- !u!114 &114789964810621790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,8 +123,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114975647408621852, guid: a3ec6ebe58837e94ea448057d11fdf57,
     type: 2}
+  _useMaxHitCount: 1
   _maxHitCount: 1
   _singleTargetHitCooldown: 0.5
+  _destroyOnMaxHitReached: 0
 --- !u!114 &114930643367000526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,8 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e367be5f9a974014ca239bd8bc8a6398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
-  _range: 12
+  _range: 11.53
 --- !u!212 &212951030579463466
 SpriteRenderer:
   m_ObjectHideFlags: 1

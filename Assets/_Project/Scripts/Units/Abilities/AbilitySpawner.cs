@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using _Project.Scripts.General;
 using _Project.Scripts.Player;
 
 namespace _Project.Scripts.Units.Abilities
 {
-    public class AbilitySpawner : MonoBehaviour
+    public class AbilitySpawner : CustomMonoBehaviour
     {
         #region Editor Variables
         //projectile.
@@ -18,6 +20,10 @@ namespace _Project.Scripts.Units.Abilities
         }
         #endregion
 
+        #region Events
+        public event BehaviourEventHandler OnFinished;
+        #endregion
+
         /// <summary>
         /// Shoots a projectile.
         /// </summary>
@@ -26,9 +32,17 @@ namespace _Project.Scripts.Units.Abilities
         {
             //Spawn a projectile.
             Ability ability = Instantiate(AbilityPrefab, transform);
+            
+            ability.OnNoLongerOccuppiesCaster += OnAbilityFinished;
             ability.Do(aimsource);
 
             return ability;
+        }
+
+        private void OnAbilityFinished()
+        {
+            if (OnFinished != null)
+                OnFinished();
         }
 
         public Ability Spawn(ICharacterAimSource aimsource, Ability prefab)

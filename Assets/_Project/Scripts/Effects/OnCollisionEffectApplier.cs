@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using _Project.Scripts.General;
 using _Project.Scripts.Units;
 
 namespace _Project.Scripts.Effects
@@ -10,6 +11,7 @@ namespace _Project.Scripts.Effects
     {
         #region Editor Variables
         [SerializeField] private Effect _effectPrefab;          //The effect to apply on collision.
+        [SerializeField] private bool _useMaxHitCount = true;
         [SerializeField] private int _maxHitCount;                  //Maximum amount of hits we want to allow.
         [SerializeField] private float _singleTargetHitCooldown;    //Cooldown for a single target that got hit.
         [SerializeField] private bool _destroyOnMaxHitReached;
@@ -18,7 +20,7 @@ namespace _Project.Scripts.Effects
         #region Properties
         private bool MaxHitsreached
         {
-            get { return _hits >= _maxHitCount; }
+            get { return _useMaxHitCount && _hits >= _maxHitCount; }
         }
         #endregion
 

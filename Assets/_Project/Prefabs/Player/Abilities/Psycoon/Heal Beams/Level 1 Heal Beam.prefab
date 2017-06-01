@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50261104113956492}
   - component: {fileID: 114647888195953734}
   - component: {fileID: 114579442121717678}
+  - component: {fileID: 114555380028823928}
   m_Layer: 13
   m_Name: Level 1 Heal Beam
   m_TagString: Untagged
@@ -79,6 +80,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 4, y: 0.18}
   m_Direction: 1
+--- !u!114 &114555380028823928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1927950300619500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fc4e5c4b95eb845bf7b5b770dab5c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
 --- !u!114 &114579442121717678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,6 +107,7 @@ MonoBehaviour:
     type: 2}
   _maxHitCount: 1
   _singleTargetHitCooldown: 0.5
+  _destroyOnMaxHitReached: 0
 --- !u!114 &114647888195953734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,7 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e367be5f9a974014ca239bd8bc8a6398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
   _range: 12
 --- !u!212 &212781680960594160
 SpriteRenderer:
