@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114801431922103660}
   - component: {fileID: 114818604722063896}
   - component: {fileID: 114659212547773550}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4384255884950204}
   - component: {fileID: 212462725558816212}
   - component: {fileID: 114412229247164512}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

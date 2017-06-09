@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870531504023426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.988, y: -0.025, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4103118544435914}
@@ -237,10 +237,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a57f20bed99ba4b81ea7ac390b8587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minigunBulletBeam: {fileID: 0}
-  _flameThrowerBeam: {fileID: 0}
-  _shotGunShotPrefab: {fileID: 0}
-  _onSwitchExplosionPrefab: {fileID: 0}
+  _minigunBulletBeam: {fileID: 114790013702403584, guid: 6bfe57cf7b6f61e488a5875771330330,
+    type: 2}
+  _flameThrowerBeam: {fileID: 114585453643312248, guid: 4015feade9942b149bd838af420a38dd,
+    type: 2}
+  _shotGunShotPrefab: {fileID: 114109883025387210, guid: 9267ecd3fda2a6b4e846df8781ecd3b4,
+    type: 2}
+  _onSwitchExplosionPrefab: {fileID: 114339485180710576, guid: d3d0886cda034d64093994931ea74c85,
+    type: 2}
   _abilityAfterSwitchCooldown: 0
   _abilityAfterAbilityCooldown: 0
 --- !u!210 &210928854829928244
@@ -252,7 +256,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 10037387
   m_SortingLayer: 2
-  m_SortingOrder: 9
+  m_SortingOrder: 0
 --- !u!212 &212260856754380946
 SpriteRenderer:
   m_ObjectHideFlags: 1
