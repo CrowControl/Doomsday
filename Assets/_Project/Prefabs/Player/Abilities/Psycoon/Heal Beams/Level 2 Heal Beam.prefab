@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114896492996754374}
   - component: {fileID: 114142723055652202}
   - component: {fileID: 114448387872834750}
+  - component: {fileID: 114615438028850742}
   m_Layer: 13
   m_Name: Level 2 Heal Beam
   m_TagString: Untagged
@@ -97,7 +98,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layersToHit: 0a000000
   _maxDistance: 3
-  _distanceTweak: 4
+--- !u!114 &114615438028850742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1132660895353758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e40cef8f477ce47a32cc52d399051b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableAfterAwake: 0
 --- !u!114 &114896492996754374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,8 +123,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114975647408621852, guid: 3cf6f1948ec6f1d4c810d275a56217ae,
     type: 2}
+  _useMaxHitCount: 1
   _maxHitCount: 3
   _singleTargetHitCooldown: 2
+  _destroyOnMaxHitReached: 0
 --- !u!212 &212932921823324308
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -142,8 +156,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1049595611
-  m_SortingLayer: 1
+  m_SortingLayerID: 10037387
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.46206903, g: 1, b: 0.25, a: 1}

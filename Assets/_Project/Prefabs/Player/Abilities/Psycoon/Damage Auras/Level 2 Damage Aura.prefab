@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114644212993443058}
   - component: {fileID: 114704701084380802}
   - component: {fileID: 114940765471611148}
+  - component: {fileID: 114470509318369908}
   m_Layer: 11
   m_Name: Level 2 Damage Aura
   m_TagString: Untagged
@@ -59,6 +60,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.085
+--- !u!114 &114470509318369908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1789508246607222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e40cef8f477ce47a32cc52d399051b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableAfterAwake: 0
 --- !u!114 &114644212993443058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,8 +96,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114975647408621852, guid: e7cdbd2e8d1fae7438a3b653d701dd60,
     type: 2}
+  _useMaxHitCount: 1
   _maxHitCount: 3
   _singleTargetHitCooldown: 1
+  _destroyOnMaxHitReached: 0
 --- !u!114 &114940765471611148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,8 +141,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1049595611
-  m_SortingLayer: 1
+  m_SortingLayerID: 10037387
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.9117647, g: 0.20112453, b: 0.20112453, a: 1}

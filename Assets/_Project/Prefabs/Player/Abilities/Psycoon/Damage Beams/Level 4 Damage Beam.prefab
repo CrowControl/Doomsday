@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114847687104824824}
   - component: {fileID: 114414099656187662}
   - component: {fileID: 114331939512690578}
+  - component: {fileID: 114020368052156980}
   m_Layer: 11
   m_Name: Level 4 Damage Beam
   m_TagString: Untagged
@@ -61,6 +62,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 4, y: 0.18}
   m_Direction: 1
+--- !u!114 &114020368052156980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1946012141316822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e40cef8f477ce47a32cc52d399051b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableAfterAwake: 0
 --- !u!114 &114107922609137520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,8 +174,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1049595611
-  m_SortingLayer: 1
+  m_SortingLayerID: 10037387
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}

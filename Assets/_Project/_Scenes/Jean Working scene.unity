@@ -252,6 +252,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1120212708893222, guid: 8dc8a87a21d52164d88f7e07d28f2bd6, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8dc8a87a21d52164d88f7e07d28f2bd6, type: 2}
   m_IsPrefabParent: 0
@@ -601,6 +605,40 @@ Prefab:
     - target: {fileID: 50899225704800870, guid: e9c391c33c7e378469139139f67201dc,
         type: 2}
       propertyPath: m_UseFullKinematicContacts
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212648701969741116, guid: e9c391c33c7e378469139139f67201dc,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: -865176575
+      objectReference: {fileID: 0}
+    - target: {fileID: 212648701969741116, guid: e9c391c33c7e378469139139f67201dc,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212942148726957350, guid: e9c391c33c7e378469139139f67201dc,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212845809966240926, guid: e9c391c33c7e378469139139f67201dc,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212270691772706830, guid: e9c391c33c7e378469139139f67201dc,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212616174352565122, guid: e9c391c33c7e378469139139f67201dc,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953988777163234, guid: e9c391c33c7e378469139139f67201dc, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

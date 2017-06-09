@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 58316719797567198}
   - component: {fileID: 114608365951121336}
   - component: {fileID: 114780545520428744}
+  - component: {fileID: 114770159049885208}
   m_Layer: 11
   m_Name: Explosion
   m_TagString: Untagged
@@ -71,9 +72,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114975647408621852, guid: e7cdbd2e8d1fae7438a3b653d701dd60,
     type: 2}
+  _useMaxHitCount: 1
   _maxHitCount: 10
   _singleTargetHitCooldown: 1
   _destroyOnMaxHitReached: 0
+--- !u!114 &114770159049885208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654054511866574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e40cef8f477ce47a32cc52d399051b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableAfterAwake: 0
 --- !u!114 &114780545520428744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,7 +130,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1049595611
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.9852941, g: 0, b: 0, a: 1}

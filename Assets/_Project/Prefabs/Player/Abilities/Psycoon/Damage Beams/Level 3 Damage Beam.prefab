@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114242654099463862}
   - component: {fileID: 114855345282967570}
   - component: {fileID: 114089875482530102}
+  - component: {fileID: 114667746160162270}
   m_Layer: 11
   m_Name: Level 3 Damage Beam
   m_TagString: Untagged
@@ -84,6 +85,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 2
+--- !u!114 &114667746160162270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1346926793063734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e40cef8f477ce47a32cc52d399051b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableAfterAwake: 0
 --- !u!114 &114855345282967570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,8 +110,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114975647408621852, guid: 4bf15b09431b98942859064a1b23c81d,
     type: 2}
+  _useMaxHitCount: 1
   _maxHitCount: 5
   _singleTargetHitCooldown: 3
+  _destroyOnMaxHitReached: 0
 --- !u!114 &114997805806432888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,7 +127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layersToHit: 0a000000
   _maxDistance: 6
-  _distanceTweak: 4
 --- !u!212 &212895471110102456
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -142,8 +156,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1049595611
-  m_SortingLayer: 1
+  m_SortingLayerID: 10037387
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}

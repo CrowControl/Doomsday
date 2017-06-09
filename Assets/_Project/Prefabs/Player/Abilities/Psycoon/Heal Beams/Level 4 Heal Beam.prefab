@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114871864635730122}
   - component: {fileID: 114789222014012248}
   - component: {fileID: 114214942763075118}
+  - component: {fileID: 114980684070751410}
   m_Layer: 13
   m_Name: Level 4 Heal Beam
   m_TagString: Untagged
@@ -74,7 +75,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layersToHit: 0a000000
   _maxDistance: 6
-  _distanceTweak: 4
 --- !u!114 &114214942763075118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,8 +100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114466793232508624, guid: afbc9db6c1ff7e347ba95461bcfedd41,
     type: 2}
+  _useMaxHitCount: 1
   _maxHitCount: 5
   _singleTargetHitCooldown: 3
+  _destroyOnMaxHitReached: 0
 --- !u!114 &114871864635730122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,8 +117,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114975647408621852, guid: 9ec30bac8ae113842b07cc4026bc89af,
     type: 2}
+  _useMaxHitCount: 1
   _maxHitCount: 5
   _singleTargetHitCooldown: 0.6
+  _destroyOnMaxHitReached: 0
 --- !u!114 &114978009501272276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,6 +133,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 1.3
+--- !u!114 &114980684070751410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1557576390038904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e40cef8f477ce47a32cc52d399051b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableAfterAwake: 0
 --- !u!212 &212395457338343920
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -158,8 +174,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1049595611
-  m_SortingLayer: 1
+  m_SortingLayerID: 10037387
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.2827587, g: 1, b: 0, a: 1}

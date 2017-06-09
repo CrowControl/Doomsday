@@ -192,7 +192,7 @@ namespace _Project.Scripts.Player.Characters.Chief
             public override void Enter(ChiefController chief)
             {
                 AbilitySpawner spawner = chief.AbilitySpawner;
-                spawner.OnFinished += () => _shouldTransition = true;
+                spawner.OnAbilitySpawnFinished += () => _shouldTransition = true;
 
                 spawner.Spawn(chief, chief._onSwitchExplosionPrefab);
             }

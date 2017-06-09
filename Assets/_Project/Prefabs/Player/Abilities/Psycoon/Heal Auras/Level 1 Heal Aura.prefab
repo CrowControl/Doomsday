@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114982551012135898}
   - component: {fileID: 114596048646403636}
   - component: {fileID: 114374485321173462}
+  - component: {fileID: 114987492080455846}
   m_Layer: 11
   m_Name: Level 1 Heal Aura
   m_TagString: Untagged
@@ -84,8 +85,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114975647408621852, guid: b2493f8f97bc0d047bd727f6620acda9,
     type: 2}
+  _useMaxHitCount: 1
   _maxHitCount: 3
   _singleTargetHitCooldown: 0.7
+  _destroyOnMaxHitReached: 0
 --- !u!114 &114982551012135898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,6 +100,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f57f6b5c97345728f17a2f51a883fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114987492080455846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1508479981265300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e40cef8f477ce47a32cc52d399051b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableAfterAwake: 0
 --- !u!212 &212682535857402344
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -126,8 +141,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1049595611
-  m_SortingLayer: 1
+  m_SortingLayerID: 10037387
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.47067025, g: 0.9558824, b: 0.31628463, a: 1}

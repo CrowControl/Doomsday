@@ -206,7 +206,7 @@ namespace _Project.Scripts.Player.Characters
 
             public void Enter(PsycoonController psycoon, InputDevice controller)
             {
-                psycoon.AbilitySpawner.OnFinished += () => _shouldTransition = true;
+                psycoon.AbilitySpawner.OnAbilitySpawnFinished += () => _shouldTransition = true;
                 psycoon.AbilitySpawner.Spawn(psycoon);
             }
 

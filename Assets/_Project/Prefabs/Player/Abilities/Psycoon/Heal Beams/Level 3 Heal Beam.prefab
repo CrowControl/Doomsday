@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114578048895896936}
   - component: {fileID: 114655235853403060}
   - component: {fileID: 114769648788717646}
+  - component: {fileID: 114545965863907476}
   m_Layer: 13
   m_Name: Level 3 Heal Beam
   m_TagString: Untagged
@@ -60,6 +61,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 4, y: 0.18}
   m_Direction: 1
+--- !u!114 &114545965863907476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1130798416454782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e40cef8f477ce47a32cc52d399051b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableAfterAwake: 0
 --- !u!114 &114578048895896936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,8 +156,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1049595611
-  m_SortingLayer: 1
+  m_SortingLayerID: 10037387
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.2827587, g: 1, b: 0, a: 1}

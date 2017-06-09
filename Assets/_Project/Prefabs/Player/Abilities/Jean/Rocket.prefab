@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4384255884950204}
   - component: {fileID: 212462725558816212}
+  - component: {fileID: 114412229247164512}
   m_Layer: 11
   m_Name: Sprite
   m_TagString: Untagged
@@ -67,7 +68,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1192009315006256}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -110,6 +111,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 0.57}
   m_Direction: 1
+--- !u!114 &114412229247164512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1936982569717500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e40cef8f477ce47a32cc52d399051b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableAfterAwake: 0
 --- !u!114 &114659212547773550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,14 +210,14 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -803777083
-  m_SortingLayer: 4
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300016, guid: 6828dc2978d3acb49bbe70a337c2e494, type: 3}
+  m_SortingLayerID: 10037387
+  m_SortingLayer: 2
+  m_SortingOrder: 47
+  m_Sprite: {fileID: 21300060, guid: 92fd58800fe5d344d992fb4aae8f2c2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.6800001, y: 2.7}
+  m_Size: {x: 1.6700001, y: 2.66}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 58704812360891296}
   - component: {fileID: 114756635734237540}
   - component: {fileID: 114324938484198598}
+  - component: {fileID: 114086634816500388}
   m_Layer: 11
   m_Name: Heal Explosion
   m_TagString: Untagged
@@ -58,6 +59,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.085
+--- !u!114 &114086634816500388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1324862906674764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e40cef8f477ce47a32cc52d399051b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableAfterAwake: 0
 --- !u!114 &114324938484198598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,8 +96,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114975647408621852, guid: 3cf6f1948ec6f1d4c810d275a56217ae,
     type: 2}
+  _useMaxHitCount: 1
   _maxHitCount: 10
   _singleTargetHitCooldown: 1
+  _destroyOnMaxHitReached: 0
 --- !u!212 &212486031701865116
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -114,8 +129,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1049595611
-  m_SortingLayer: 1
+  m_SortingLayerID: 10037387
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 0.9852941, b: 0.08833694, a: 1}

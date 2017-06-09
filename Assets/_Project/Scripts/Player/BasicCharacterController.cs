@@ -3,7 +3,7 @@ using _Project.Scripts.Units.Abilities;
 
 namespace _Project.Scripts.Player
 {
-    class BasicCharacterController : PlayerCharacterController
+    public class BasicCharacterController : PlayerCharacterController
     {
         #region Editor Variables
         [SerializeField] private float _cooldown;

@@ -14,6 +14,7 @@ TagManager:
   - 
   - 
   - Player Hitbox
+  - Player Hitbox
   - Enemies
   - Buildings
   - Player Damage Projectiles
@@ -21,8 +22,7 @@ TagManager:
   - Player Friendly projectiles
   - Stuck Excaliburs
   - Player Movement
-  - 
-  - 
+  - Player Movement
   - 
   - 
   - 
@@ -41,15 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Floor
-    uniqueID: 1049595611
-    locked: 0
-  - name: Buildings
+  - name: Background
     uniqueID: 3429790721
     locked: 0
-  - name: Units
-    uniqueID: 3613211183
+  - name: DynamicObjects
+    uniqueID: 10037387
     locked: 0
-  - name: Projectiles
-    uniqueID: 3491190213
+  - name: Foreground
+    uniqueID: 799627583
     locked: 0

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114214337152196168}
   - component: {fileID: 114708420105967920}
   - component: {fileID: 114838439370679446}
+  - component: {fileID: 114806148310257922}
   m_Layer: 11
   m_Name: Level 4 Heal Aura
   m_TagString: Untagged
@@ -83,8 +84,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 114975647408621852, guid: 9ec30bac8ae113842b07cc4026bc89af,
     type: 2}
+  _useMaxHitCount: 1
   _maxHitCount: 3
   _singleTargetHitCooldown: 0.7
+  _destroyOnMaxHitReached: 0
+--- !u!114 &114806148310257922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1646724832490770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e40cef8f477ce47a32cc52d399051b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableAfterAwake: 0
 --- !u!114 &114838439370679446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,8 +141,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1049595611
-  m_SortingLayer: 1
+  m_SortingLayerID: 10037387
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.041835755, g: 0.5514706, b: 0, a: 1}

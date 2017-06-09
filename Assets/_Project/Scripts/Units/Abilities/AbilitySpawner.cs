@@ -21,7 +21,7 @@ namespace _Project.Scripts.Units.Abilities
         #endregion
 
         #region Events
-        public event BehaviourEventHandler OnFinished;
+        public event BehaviourEventHandler OnAbilitySpawnFinished;
         #endregion
 
         /// <summary>
@@ -33,16 +33,16 @@ namespace _Project.Scripts.Units.Abilities
             //Spawn a projectile.
             Ability ability = Instantiate(AbilityPrefab, transform);
             
-            ability.OnNoLongerOccuppiesCaster += OnAbilityFinished;
+            ability.OnNoLongerOccuppiesCaster += OnAbilityNoLongerOccuppiesCaster;
             ability.Do(aimsource);
 
             return ability;
         }
 
-        private void OnAbilityFinished()
+        private void OnAbilityNoLongerOccuppiesCaster()
         {
-            if (OnFinished != null)
-                OnFinished();
+            if (OnAbilitySpawnFinished != null)
+                OnAbilitySpawnFinished();
         }
 
         public Ability Spawn(ICharacterAimSource aimsource, Ability prefab)

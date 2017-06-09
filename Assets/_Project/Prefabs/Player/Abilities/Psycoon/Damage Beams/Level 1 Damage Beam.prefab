@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114513094584345060}
   - component: {fileID: 114789964810621790}
   - component: {fileID: 114423217963430140}
+  - component: {fileID: 114575790909404676}
   m_Layer: 11
   m_Name: Level 1 Damage Beam
   m_TagString: Untagged
@@ -110,6 +111,18 @@ MonoBehaviour:
   _maxHitCount: 1
   _singleTargetHitCooldown: 0.5
   _destroyOnMaxHitReached: 0
+--- !u!114 &114575790909404676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1540104715341096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e40cef8f477ce47a32cc52d399051b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableAfterAwake: 0
 --- !u!114 &114789964810621790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,8 +181,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1049595611
-  m_SortingLayer: 1
+  m_SortingLayerID: 10037387
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0.44852942, b: 0.44852942, a: 1}
