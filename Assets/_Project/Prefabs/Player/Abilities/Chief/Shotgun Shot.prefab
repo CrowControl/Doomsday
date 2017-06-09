@@ -22,10 +22,10 @@ GameObject:
   - component: {fileID: 212222981455891318}
   - component: {fileID: 114551627638372776}
   - component: {fileID: 70456653124466160}
-  - component: {fileID: 114276257692270890}
+  - component: {fileID: 114109883025387210}
   - component: {fileID: 114806727146672474}
   - component: {fileID: 114992604259218408}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shotgun Shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1295072508783576}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8.5, y: 6.5, z: 8.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,7 +60,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.2, y: 0.19999999}
   m_Direction: 1
---- !u!114 &114276257692270890
+--- !u!114 &114109883025387210
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -68,9 +68,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1295072508783576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f57f6b5c97345728f17a2f51a883fa4, type: 3}
+  m_Script: {fileID: 11500000, guid: f95aa2139ea40324dbea66367d7d2967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _offsetDistance: 1
 --- !u!114 &114551627638372776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,7 +144,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 10037387
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
