@@ -9,7 +9,7 @@ using _Project.Scripts.Units;
 namespace _Project.Scripts.Enemies
 {
     [RequireComponent(typeof(IEnemyAttackController))]
-    public class EnemyController : CustomMonoBehaviour, IMovementInputSource
+    public class EnemyStateMachine : CustomMonoBehaviour, IMovementInputSource
     {
         #region Variables
 
@@ -79,7 +79,7 @@ namespace _Project.Scripts.Enemies
 
         #endregion
 
-        #region State Machine
+        #region States
 
         /// <summary>
         /// Interface for the states used in the enemy logic state machine.
@@ -90,20 +90,20 @@ namespace _Project.Scripts.Enemies
             /// Called when this state is first entered.
             /// </summary>
             /// <param name="enemy">Enemy instance this is the state of.</param>
-            void Enter(EnemyController enemy);
+            void Enter(EnemyStateMachine enemy);
 
             /// <summary>
             /// Called every update while this is the active state.
             /// </summary>
             /// <param name="enemy">Enemy instance this is the state of.</param>
             /// <returns>The next state if a transition is appropriatee, null otherwise.</returns>
-            IEnemyState Update(EnemyController enemy);
+            IEnemyState Update(EnemyStateMachine enemy);
 
             /// <summary>
             /// Called when this state is exited.
             /// </summary>
             /// <param name="enemy">Enemy instance this is the state of.</param>
-            void Exit(EnemyController enemy);
+            void Exit(EnemyStateMachine enemy);
         }
 
         /// <summary>
@@ -117,19 +117,19 @@ namespace _Project.Scripts.Enemies
             private PlayerCharacterController _noticedPlayer;
 
             //Subsrcibe to the noticing event.
-            public  void Enter(EnemyController enemy)
+            public  void Enter(EnemyStateMachine enemy)
             {
                 enemy._noticeRange.OnFirstPlayerEnteredRange += OnPlayerNoticed;
             }
 
             //Transition to moving state if we have noticed a player.
-            public  IEnemyState Update(EnemyController enemy)
+            public  IEnemyState Update(EnemyStateMachine enemy)
             {
                 return _noticedPlayer != null ? new MovingState(_noticedPlayer) : null;
             }
 
             //unsubscribe from thhe noticng event.
-            public  void Exit(EnemyController enemy)
+            public  void Exit(EnemyStateMachine enemy)
             {
                 enemy._noticeRange.OnFirstPlayerEnteredRange += OnPlayerNoticed;
             }
@@ -161,13 +161,13 @@ namespace _Project.Scripts.Enemies
             }
 
             //Subscribe to events.
-            public void Enter(EnemyController enemy)
+            public void Enter(EnemyStateMachine enemy)
             { 
                 enemy._noticeRange.OnLastPlayerExitedRange += OnNoPlayerInRange;
                 enemy._noticeRange.OnNewNearestPlayer += OnNewNearestPlayer;
             }
 
-            public  IEnemyState Update(EnemyController enemy)
+            public  IEnemyState Update(EnemyStateMachine enemy)
             {
                 //If no more players in range, back to idle.
                 if(_targetPlayer == null)
@@ -184,13 +184,13 @@ namespace _Project.Scripts.Enemies
 
 
             //Unsubscibe from events.
-            public void Exit(EnemyController enemy)
+            public void Exit(EnemyStateMachine enemy)
             {
                 enemy._noticeRange.OnLastPlayerExitedRange -= OnNoPlayerInRange;
                 enemy._noticeRange.OnNewNearestPlayer -= OnNewNearestPlayer;
             }
 
-            private static void MoveTowardsTarget(EnemyController enemy, Transform targetPlayerTransform)
+            private static void MoveTowardsTarget(EnemyStateMachine enemy, Transform targetPlayerTransform)
             {
                 Vector3 direction = enemy.transform.position - targetPlayerTransform.position;
                 direction.Normalize();
@@ -204,7 +204,7 @@ namespace _Project.Scripts.Enemies
             /// </summary>
             /// <param name="enemy">The enemy.</param>
             /// <returns>True if close enough, false if not.</returns>
-            private bool CloseEnoughToTarget(EnemyController enemy)
+            private bool CloseEnoughToTarget(EnemyStateMachine enemy)
             {
                 //Calculate distance to target.
                 Vector2 position = enemy.transform.position;
@@ -244,20 +244,20 @@ namespace _Project.Scripts.Enemies
             }
 
             //Attack, subscribe to attack finished event.
-            public void Enter(EnemyController enemy)
+            public void Enter(EnemyStateMachine enemy)
             {
                 enemy.OnAttackFinished += OnAttackFinished;
                 enemy._attackController.StartAttack(_targetPlayer);
             }
             
             //Transition to cooldown when attack is finished.
-            public  IEnemyState Update(EnemyController enemy)
+            public  IEnemyState Update(EnemyStateMachine enemy)
             {
                 return _attackFinished ? new CooldownState() : null;
             }
 
             //Unsubscribe from attack finished event.
-            public void Exit(EnemyController enemy)
+            public void Exit(EnemyStateMachine enemy)
             {
                 enemy.OnAttackFinished -= OnAttackFinished;
             }
@@ -281,12 +281,12 @@ namespace _Project.Scripts.Enemies
         {
             private float _endTime;
 
-            public void Enter(EnemyController enemy)
+            public void Enter(EnemyStateMachine enemy)
             {
                 _endTime = Time.time + enemy._attackController.Cooldown;
             }
 
-            public  IEnemyState Update(EnemyController enemy)
+            public  IEnemyState Update(EnemyStateMachine enemy)
             {
                 //Wait for cooldown to finish.
                 if (!Finished) return null;
@@ -301,7 +301,7 @@ namespace _Project.Scripts.Enemies
             }
 
 
-            public void Exit(EnemyController enemy) { }
+            public void Exit(EnemyStateMachine enemy) { }
 
             /// <summary>
             /// True if the cooldown is finished, false if not. 
