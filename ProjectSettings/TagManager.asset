@@ -15,7 +15,7 @@ TagManager:
   - 
   - Player Hitbox
   - Player Hitbox
-  - Enemies
+  - Enemy Hitbox
   - Buildings
   - Player Damage Projectiles
   - Enemy Projectiles
@@ -23,7 +23,7 @@ TagManager:
   - Stuck Excaliburs
   - Player Movement
   - Player Movement
-  - 
+  - Enemy Movement
   - 
   - 
   - 

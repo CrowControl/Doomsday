@@ -183,16 +183,20 @@ namespace _Project.Scripts.Enemies
             }
 
 
-            //Unsubscibe from events.
+            //Unsubscibe from events and stop moving.
             public void Exit(EnemyStateMachine enemy)
             {
+                //unsubscribe from events.
                 enemy._noticeRange.OnLastPlayerExitedRange -= OnNoPlayerInRange;
                 enemy._noticeRange.OnNewNearestPlayer -= OnNewNearestPlayer;
+
+                //Stop moving.
+                enemy.MovementVector = Vector2.zero;
             }
 
             private static void MoveTowardsTarget(EnemyStateMachine enemy, Transform targetPlayerTransform)
             {
-                Vector3 direction = enemy.transform.position - targetPlayerTransform.position;
+                Vector3 direction = targetPlayerTransform.position - enemy.transform.position;
                 direction.Normalize();
 
                 enemy.MovementVector = direction;
@@ -246,7 +250,7 @@ namespace _Project.Scripts.Enemies
             //Attack, subscribe to attack finished event.
             public void Enter(EnemyStateMachine enemy)
             {
-                enemy.OnAttackFinished += OnAttackFinished;
+                enemy._attackController.OnFinished += OnAttackFinished;
                 enemy._attackController.StartAttack(_targetPlayer);
             }
             
@@ -259,7 +263,7 @@ namespace _Project.Scripts.Enemies
             //Unsubscribe from attack finished event.
             public void Exit(EnemyStateMachine enemy)
             {
-                enemy.OnAttackFinished -= OnAttackFinished;
+                enemy._attackController.OnFinished -= OnAttackFinished;
             }
 
             #region Event Methods
