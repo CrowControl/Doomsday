@@ -3006,7 +3006,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.8841383}
+  m_Offset: {x: 0, y: 1.6972828}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -3017,7 +3017,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.74, y: 2.3913093}
+  m_Size: {x: 9.74, y: 2.7650204}
   m_EdgeRadius: 0
 --- !u!114 &342781058
 MonoBehaviour:
@@ -9488,7 +9488,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.0141752, y: 0.05410433}
+  m_Offset: {x: 1.9440372, y: 0.05410433}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0.5}
@@ -9499,7 +9499,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.0342908, y: 10.977298}
+  m_Size: {x: 3.1745667, y: 10.977298}
   m_EdgeRadius: 0
 --- !u!212 &1612436633
 SpriteRenderer:
@@ -10145,7 +10145,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05385685, y: 2.0718307}
+  m_Offset: {x: -0.05385685, y: 1.9139757}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -10156,7 +10156,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.803564, y: 2.838049}
+  m_Size: {x: 10.803564, y: 3.153759}
   m_EdgeRadius: 0
 --- !u!114 &1735000223
 MonoBehaviour:
@@ -12507,6 +12507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2047551726}
   - component: {fileID: 2047551725}
+  - component: {fileID: 2047551727}
   m_Layer: 0
   m_Name: Bush_01
   m_TagString: Untagged
@@ -12543,9 +12544,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -865176575
-  m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingLayerID: 10037387
+  m_SortingLayer: 2
+  m_SortingOrder: -20
   m_Sprite: {fileID: 21300040, guid: 92fd58800fe5d344d992fb4aae8f2c2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12567,6 +12568,18 @@ Transform:
   m_Father: {fileID: 409224333}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2047551727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2047551724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e40cef8f477ce47a32cc52d399051b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableAfterAwake: 1
 --- !u!1 &2049184924
 GameObject:
   m_ObjectHideFlags: 0
