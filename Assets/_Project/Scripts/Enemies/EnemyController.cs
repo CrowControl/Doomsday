@@ -4,27 +4,30 @@ using UnityEngine;
 using UnityEngine.Networking;
 using _Project.Scripts.General;
 using _Project.Scripts.Player;
+using _Project.Scripts.Units;
 
 namespace _Project.Scripts.Enemies
 {
-    public abstract class EnemyController : CustomMonoBehaviour
+    [RequireComponent(typeof(IEnemyAttackController))]
+    public class EnemyController : CustomMonoBehaviour, IMovementInputSource
     {
         #region Variables
-
-        #region Editor
-
-        [SerializeField] private float _attackDistance;
-        [SerializeField] private float _attackCooldown;
-        #endregion
 
         #region Components
 
         private EnemyRange _noticeRange;
+        private IEnemyAttackController _attackController;
 
         #endregion
 
         #region Events
         public abstract event BehaviourEventHandler OnAttackFinished;
+        #endregion
+
+        #region Properties
+
+        public Vector2 MovementVector { get; private set; }
+
         #endregion
 
         #region Internal
@@ -40,8 +43,14 @@ namespace _Project.Scripts.Enemies
         #region Awake
         private void Awake()
         {
-            _noticeRange = GetComponentInChildren<EnemyRange>();
+            GetComponents();
             TransitionTo(new IdleState());
+        }
+
+        private void GetComponents()
+        {
+            _noticeRange = GetComponentInChildren<EnemyRange>();
+            _attackController = GetComponent<IEnemyAttackController>();
         }
 
         #endregion
@@ -70,16 +79,6 @@ namespace _Project.Scripts.Enemies
             _state.Enter(this);
         }
 
-        #endregion
-
-        #region Abstract Methods
-        /// <summary>
-        /// Makes this enemy move towards the target.
-        /// </summary>
-        /// <param name="targetTransform">Transform of the target.</param>
-        protected abstract void MoveTowardsTarget(Transform targetTransform);
-
-        protected abstract void AttackPlayer(PlayerCharacterController player); 
         #endregion
 
         #endregion
@@ -183,9 +182,10 @@ namespace _Project.Scripts.Enemies
                     return new AttackState(_targetPlayer);
 
                 //Move towards the target.
-                enemy.MoveTowardsTarget(_targetPlayer.transform);
+                MoveTowardsTarget(enemy, _targetPlayer.transform);
                 return null;
             }
+
 
             //Unsubscibe from events.
             public void Exit(EnemyController enemy)
@@ -193,6 +193,15 @@ namespace _Project.Scripts.Enemies
                 enemy._noticeRange.OnLastPlayerExitedRange -= OnNoPlayerInRange;
                 enemy._noticeRange.OnNewNearestPlayer -= OnNewNearestPlayer;
             }
+
+            private static void MoveTowardsTarget(EnemyController enemy, Transform targetPlayerTransform)
+            {
+                Vector3 direction = enemy.transform.position - targetPlayerTransform.position;
+                direction.Normalize();
+
+                enemy.MovementVector = direction;
+            }
+
 
             /// <summary>
             /// Checks if the enemy is close enough to it's target.
@@ -206,7 +215,7 @@ namespace _Project.Scripts.Enemies
                 Vector2 playerPosition = _targetPlayer.transform.position;
                 double distance = Vector2.Distance(position, playerPosition);
 
-                return distance <= enemy._attackDistance;
+                return distance <= enemy._attackController.Distance;
             }
 
             #region Event Methods
@@ -242,7 +251,7 @@ namespace _Project.Scripts.Enemies
             public void Enter(EnemyController enemy)
             {
                 enemy.OnAttackFinished += OnAttackFinished;
-                enemy.AttackPlayer(_targetPlayer);
+                enemy._attackController.StartAttack(_targetPlayer);
             }
             
             //Transition to cooldown when attack is finished.
@@ -278,7 +287,7 @@ namespace _Project.Scripts.Enemies
 
             public void Enter(EnemyController enemy)
             {
-                _endTime = Time.time + enemy._attackCooldown;
+                _endTime = Time.time + enemy._attackController.Cooldown;
             }
 
             public  IEnemyState Update(EnemyController enemy)
@@ -305,5 +314,6 @@ namespace _Project.Scripts.Enemies
         }
 
         #endregion
+
     }
 }
