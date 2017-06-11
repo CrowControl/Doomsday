@@ -5,7 +5,7 @@ using _Project.Scripts.Player;
 
 namespace _Project.Scripts.Enemies
 {
-    [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof(CircleCollider2D))]
     class EnemyRange : CustomMonoBehaviour
     {
         #region Variables
@@ -14,6 +14,8 @@ namespace _Project.Scripts.Enemies
 
         #region Properties
 
+        public float Radius { get { return _collider.radius; } }
+        public int PlayersInRange { get { return _playersInRange.Count; } }
         public PlayerCharacterController NearestPlayer { get; private set; }
 
         #endregion
@@ -31,7 +33,7 @@ namespace _Project.Scripts.Enemies
 
         #region Components
 
-        private Collider2D _collider;
+        private CircleCollider2D _collider;
 
         #endregion
 
@@ -45,7 +47,7 @@ namespace _Project.Scripts.Enemies
 
         private void Awake()
         {
-            _collider = GetComponent<Collider2D>();
+            _collider = GetComponent<CircleCollider2D>();
             _collider.isTrigger = true;
         }
 
@@ -74,7 +76,7 @@ namespace _Project.Scripts.Enemies
             }
 
             //Throw event if it's a new one.
-            if (nearestPlayer != NearestPlayer && OnNewNearestPlayer != null)
+            if (nearestPlayer != NearestPlayer && nearestPlayer != null && OnNewNearestPlayer != null)
                 OnNewNearestPlayer(nearestPlayer);
 
             //Update property.
