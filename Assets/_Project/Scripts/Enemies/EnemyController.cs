@@ -20,10 +20,6 @@ namespace _Project.Scripts.Enemies
 
         #endregion
 
-        #region Events
-        public abstract event BehaviourEventHandler OnAttackFinished;
-        #endregion
-
         #region Properties
 
         public Vector2 MovementVector { get; private set; }

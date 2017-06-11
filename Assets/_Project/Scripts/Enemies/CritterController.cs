@@ -1,23 +1,50 @@
 ﻿using UnityEngine;
+using _Project.Scripts.General;
 using _Project.Scripts.Player;
 using _Project.Scripts.Units;
 
 namespace _Project.Scripts.Enemies
 {
-    [RequireComponent(typeof(MovementController))]
     [RequireComponent(typeof(Animator))]
-    class CritterController : EnemyController
+    class CritterController : CustomMonoBehaviour, IEnemyAttackController
     {
-        public override event BehaviourEventHandler OnAttackFinished;
+        #region Variables
 
-        protected override void MoveTowardsTarget(Transform targetTransform)
+        #region Editor
+        [SerializeField] private float _distance;
+        [SerializeField] private float _cooldown;
+        #endregion
+        
+        #region Properties
+
+        public float Distance { get { return _distance; } }
+        public float Cooldown { get { return _cooldown; } }
+
+        #endregion
+
+        #region Components
+
+        private Animator _animator;
+
+        #endregion
+
+        #region Events
+
+        //Called when the attack is finished.
+        public event CustomMonoBehaviour.BehaviourEventHandler OnFinished;
+
+        #endregion
+
+        #endregion
+
+        private void Awake()
         {
-            throw new System.NotImplementedException();
+            _animator = GetComponent<Animator>();
         }
 
-        protected override void AttackPlayer(PlayerCharacterController player)
+        public void StartAttack(PlayerCharacterController targetPlayer)
         {
-            throw new System.NotImplementedException();
+            //todo
         }
     }
 }
