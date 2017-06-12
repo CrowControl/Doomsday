@@ -10,7 +10,7 @@ namespace _Project.Scripts.Enemies
 {
     [RequireComponent(typeof(IEnemyAttackController))]
     [RequireComponent(typeof(Animator))]
-    public class EnemyStateMachine : CustomMonoBehaviour, IMovementInputSource, ICharacterAimSource
+    public class EnemyStateMachine : CustomMonoBehaviour, IMovementInputSource
     {
         #region Variables
 
@@ -23,34 +23,10 @@ namespace _Project.Scripts.Enemies
         #endregion
 
         #region Properties
-
-        #region IMovement Input Source Properties
         /// <summary>
         /// Direction that this character is moving in.
         /// </summary>
         public Vector2 MovementDirection { get; private set; }
-        #endregion
-
-        #region ICharacter Aim SOurce Properties
-        /// <summary>
-        /// Degree that this chaacter is aiming towards.
-        /// </summary>
-        public float AimingDegree
-        {
-            get
-            {
-                Vector2 direction = MovementDirection;
-                direction.Normalize();
-                return MathHelper.Vector2Degree(direction);
-            }
-        }
-
-        /// <summary>
-        /// Position of this Aiming source.
-        /// </summary>
-        public Vector2 SourcePosition { get { return transform.position; }}
-        #endregion
-
         #endregion
 
         #region Internal

@@ -1,29 +1,31 @@
 ﻿using UnityEngine;
 using _Project.Scripts.General;
 using _Project.Scripts.Player;
+using _Project.Scripts.Units;
 
 namespace _Project.Scripts.Enemies
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    [RequireComponent(typeof(ICharacterAimSource))]
+    [RequireComponent(typeof(IMovementInputSource))]
     class EnemySpriteHandler : CustomMonoBehaviour
     {
         #region Components
         
         private SpriteRenderer _renderer;
-        private ICharacterAimSource _aimSource;
+        private IMovementInputSource _movement;
 
         #endregion
 
         private void Awake()
         {
             _renderer = GetComponent<SpriteRenderer>();
-            _aimSource = GetComponent<ICharacterAimSource>();
+            _movement = GetComponent<IMovementInputSource>();
         }
 
         private void Update()
         {
-            _renderer.flipX = Mathf.Abs(_aimSource.AimingDegree) <= 90;
+            float degree = MathHelper.Vector2Degree(_movement.MovementDirection);
+            _renderer.flipX = Mathf.Abs(degree) <= 90;
         }
     }
 }

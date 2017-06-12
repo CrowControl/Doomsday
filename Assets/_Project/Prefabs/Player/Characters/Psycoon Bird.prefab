@@ -38,14 +38,15 @@ GameObject:
   - component: {fileID: 4525516624629304}
   - component: {fileID: 95611639330514350}
   - component: {fileID: 212623439974865046}
-  - component: {fileID: 210548934140718374}
   - component: {fileID: 114518586059332180}
+  - component: {fileID: 210548934140718374}
+  - component: {fileID: 114506462486144026}
   - component: {fileID: 61744324406524316}
   - component: {fileID: 50386153821273260}
+  - component: {fileID: 114528773481076194}
   - component: {fileID: 114525078848915458}
   - component: {fileID: 114816951235965080}
   - component: {fileID: 114724930517710214}
-  - component: {fileID: 114506462486144026}
   m_Layer: 8
   m_Name: Psycoon Bird
   m_TagString: Player
@@ -214,6 +215,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
+--- !u!114 &114528773481076194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605805755777890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3940f85e232bf9845b3dc1134fbbfb51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startingHP: 10
+  _maxHP: 10
 --- !u!114 &114724930517710214
 MonoBehaviour:
   m_ObjectHideFlags: 1

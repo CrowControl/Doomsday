@@ -25,7 +25,6 @@ namespace _Project.Scripts.Enemies
 
         public float Distance { get { return _tryAttackDistance; } }
         public float Cooldown { get { return _cooldown; } }
-
         #endregion
 
         #region Components

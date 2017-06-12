@@ -40,11 +40,12 @@ GameObject:
   - component: {fileID: 212260856754380946}
   - component: {fileID: 210928854829928244}
   - component: {fileID: 114290855526533408}
+  - component: {fileID: 114926038293344422}
   - component: {fileID: 61467836854887260}
   - component: {fileID: 50865288852016212}
+  - component: {fileID: 114688531537442158}
   - component: {fileID: 114476101262227178}
   - component: {fileID: 114481461852736004}
-  - component: {fileID: 114926038293344422}
   - component: {fileID: 114817712507816360}
   m_Layer: 8
   m_Name: Jean Bird
@@ -214,6 +215,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _abilityPrefab: {fileID: 0}
+--- !u!114 &114688531537442158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870531504023426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3940f85e232bf9845b3dc1134fbbfb51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startingHP: 10
+  _maxHP: 10
 --- !u!114 &114817712507816360
 MonoBehaviour:
   m_ObjectHideFlags: 1

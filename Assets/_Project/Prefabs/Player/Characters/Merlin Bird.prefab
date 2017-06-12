@@ -38,14 +38,15 @@ GameObject:
   - component: {fileID: 4837977586892586}
   - component: {fileID: 95309925758744094}
   - component: {fileID: 212903710445662272}
-  - component: {fileID: 210688069821252764}
   - component: {fileID: 114951519590617386}
+  - component: {fileID: 210688069821252764}
+  - component: {fileID: 114373844866530550}
   - component: {fileID: 61340914061456176}
   - component: {fileID: 50150807944703300}
+  - component: {fileID: 114138150544318832}
   - component: {fileID: 114727538256070020}
   - component: {fileID: 114031427935389688}
   - component: {fileID: 114981833702510630}
-  - component: {fileID: 114373844866530550}
   m_Layer: 8
   m_Name: Merlin Bird
   m_TagString: Player
@@ -183,6 +184,19 @@ MonoBehaviour:
     type: 2}
   _leftTriggerAbilityPrefab: {fileID: 114739830356387982, guid: cdf31f322f3390b41b77269ba88d299d,
     type: 2}
+--- !u!114 &114138150544318832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413205995278750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3940f85e232bf9845b3dc1134fbbfb51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startingHP: 10
+  _maxHP: 10
 --- !u!114 &114356091042014706
 MonoBehaviour:
   m_ObjectHideFlags: 1
