@@ -23,7 +23,7 @@ namespace _Project.Scripts.Player.Characters
         #endregion
 
         #region Components
-        private SpriteHandler _spriteHandler;
+        private PlayerSpriteHandler _spriteHandler;
         #endregion
 
         #region Internal Variables
@@ -34,7 +34,7 @@ namespace _Project.Scripts.Player.Characters
         {
             //Get Components.
             base.Awake();
-            _spriteHandler = GetComponent<SpriteHandler>();
+            _spriteHandler = GetComponent<PlayerSpriteHandler>();
 
             //Set starting state.
             TransitionTo(new NotChargingState());
@@ -92,7 +92,7 @@ namespace _Project.Scripts.Player.Characters
         {
             #region Internal Variables
             private Color _startingColor, _maxChargeColor;
-            private SpriteHandler _spriteHandler;
+            private PlayerSpriteHandler _spriteHandler;
 
             private float _charge;                          //Percentage of charge charged.
             protected InputControl MainButton, OtherButton; //Main button and off button. Differs on child classes.

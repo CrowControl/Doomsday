@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
-using _Project.Scripts.Player;
 
-namespace _Project.Scripts.Units
+namespace _Project.Scripts.Player
 {
     [RequireComponent(typeof(Rigidbody2D)),
      RequireComponent(typeof(Animator)),
      RequireComponent(typeof(SpriteRenderer)),
      RequireComponent(typeof(ICharacterAimSource))]
-    public class SpriteHandler : MonoBehaviour
+    public class PlayerSpriteHandler : MonoBehaviour
     {
         #region Components
         private Rigidbody2D _rigidbody;             //Physics Component. 

@@ -9,12 +9,14 @@ using _Project.Scripts.Units;
 namespace _Project.Scripts.Enemies
 {
     [RequireComponent(typeof(IEnemyAttackController))]
-    public class EnemyStateMachine : CustomMonoBehaviour, IMovementInputSource
+    [RequireComponent(typeof(Animator))]
+    public class EnemyStateMachine : CustomMonoBehaviour, IMovementInputSource, ICharacterAimSource
     {
         #region Variables
 
         #region Components
 
+        private Animator _animator;
         private EnemyRange _noticeRange;
         private IEnemyAttackController _attackController;
 
@@ -22,7 +24,32 @@ namespace _Project.Scripts.Enemies
 
         #region Properties
 
-        public Vector2 MovementVector { get; private set; }
+        #region IMovement Input Source Properties
+        /// <summary>
+        /// Direction that this character is moving in.
+        /// </summary>
+        public Vector2 MovementDirection { get; private set; }
+        #endregion
+
+        #region ICharacter Aim SOurce Properties
+        /// <summary>
+        /// Degree that this chaacter is aiming towards.
+        /// </summary>
+        public float AimingDegree
+        {
+            get
+            {
+                Vector2 direction = MovementDirection;
+                direction.Normalize();
+                return MathHelper.Vector2Degree(direction);
+            }
+        }
+
+        /// <summary>
+        /// Position of this Aiming source.
+        /// </summary>
+        public Vector2 SourcePosition { get { return transform.position; }}
+        #endregion
 
         #endregion
 
@@ -45,6 +72,7 @@ namespace _Project.Scripts.Enemies
 
         private void GetComponents()
         {
+            _animator = GetComponent<Animator>();
             _noticeRange = GetComponentInChildren<EnemyRange>();
             _attackController = GetComponent<IEnemyAttackController>();
         }
@@ -119,6 +147,7 @@ namespace _Project.Scripts.Enemies
             //Subsrcibe to the noticing event.
             public  void Enter(EnemyStateMachine enemy)
             {
+                enemy._animator.SetTrigger("Idle");
                 enemy._noticeRange.OnFirstPlayerEnteredRange += OnPlayerNoticed;
             }
 
@@ -162,7 +191,10 @@ namespace _Project.Scripts.Enemies
 
             //Subscribe to events.
             public void Enter(EnemyStateMachine enemy)
-            { 
+            {
+                enemy._animator.ResetTrigger("Idle");
+                enemy._animator.SetTrigger("Walk");
+
                 enemy._noticeRange.OnLastPlayerExitedRange += OnNoPlayerInRange;
                 enemy._noticeRange.OnNewNearestPlayer += OnNewNearestPlayer;
             }
@@ -191,7 +223,7 @@ namespace _Project.Scripts.Enemies
                 enemy._noticeRange.OnNewNearestPlayer -= OnNewNearestPlayer;
 
                 //Stop moving.
-                enemy.MovementVector = Vector2.zero;
+                enemy.MovementDirection = Vector2.zero;
             }
 
             private static void MoveTowardsTarget(EnemyStateMachine enemy, Transform targetPlayerTransform)
@@ -199,7 +231,7 @@ namespace _Project.Scripts.Enemies
                 Vector3 direction = targetPlayerTransform.position - enemy.transform.position;
                 direction.Normalize();
 
-                enemy.MovementVector = direction;
+                enemy.MovementDirection = direction;
             }
 
 
@@ -314,6 +346,5 @@ namespace _Project.Scripts.Enemies
         }
 
         #endregion
-
     }
 }

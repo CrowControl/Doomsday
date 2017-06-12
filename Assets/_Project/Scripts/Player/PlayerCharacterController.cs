@@ -17,7 +17,7 @@ namespace _Project.Scripts.Player
         public InputDevice Device { get; set; }         //Device that controls this character.
 
         #region IMovementInputSource
-        public Vector2 MovementVector { get; private set; } //Vector used for movement.
+        public Vector2 MovementDirection { get; private set; } //Vector used for movement.
         #endregion
 
         #region ICharacterAimSource
@@ -36,7 +36,7 @@ namespace _Project.Scripts.Player
         private void Update ()
         {
             //Movement.
-            MovementVector = Device.LeftStick.Vector;
+            MovementDirection = Device.LeftStick.Vector;
 
             //Aiming. (We read in a vector and convert it to a degree for ease of use.)
             AimingDegree = MathHelper.Vector2Degree(Device.RightStick.Vector);

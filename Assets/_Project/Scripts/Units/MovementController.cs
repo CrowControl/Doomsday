@@ -35,7 +35,7 @@ namespace _Project.Scripts.Units
         private void FixedUpdate ()
         {
             
-            _rigidbody.velocity = _movementSource.MovementVector * DetermineSpeed();
+            _rigidbody.velocity = _movementSource.MovementDirection * DetermineSpeed();
         }
 
         #region Speed moification
@@ -69,6 +69,6 @@ namespace _Project.Scripts.Units
 
     public interface IMovementInputSource
     {
-        Vector2 MovementVector { get; } 
+        Vector2 MovementDirection { get; } 
     }
 }

@@ -7,7 +7,7 @@ namespace _Project.Scripts.Player.Characters.Jean
     public class ShieldController : Ability
     {
         #region Internal Variables
-        private SpriteHandler _spawnerSprite;   //Sprite of the spawning character. (Assumes this shield is spawned as a child.)s
+        private PlayerSpriteHandler _spawnerSprite;   //Sprite of the spawning character. (Assumes this shield is spawned as a child.)s
         #endregion
 
         public override void Do(ICharacterAimSource aimSource)
@@ -21,7 +21,7 @@ namespace _Project.Scripts.Player.Characters.Jean
         /// </summary>
         private void DisableSpriteChanges()
         {
-            _spawnerSprite = GetComponentInParent<SpriteHandler>();
+            _spawnerSprite = GetComponentInParent<PlayerSpriteHandler>();
             _spawnerSprite.enabled = false;
         }
 

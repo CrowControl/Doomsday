@@ -19,7 +19,7 @@ namespace _Project.Scripts.Units.Abilities
         #endregion
 
         #region Properties
-        public Vector2 MovementVector { get; private set; }
+        public Vector2 MovementDirection { get; private set; }
         #endregion
 
         #region Unity Methods (Messages)
@@ -52,7 +52,7 @@ namespace _Project.Scripts.Units.Abilities
 
             //make the projectile move forward.
             float rotationAngle = transform.eulerAngles.z;                  //Sprite rotation is saved in the z-axis for reasons I don't really know.
-            MovementVector = MathHelper.DegreeToVector2(rotationAngle);
+            MovementDirection = MathHelper.DegreeToVector2(rotationAngle);
 
             Finish();
         }
