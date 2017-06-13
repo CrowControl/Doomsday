@@ -4,10 +4,18 @@ using InControl;
 using UnityEngine;
 using _Project.Scripts.Units.Abilities;
 
+
 namespace _Project.Scripts.Player.Characters.Chief
 {
     class ChiefController : PlayerCharacterController
     {
+        #region Audio Variables
+        [FMODUnity.EventRef]
+        public string flamethrowing = "event:/Chief/Main_attack";
+        FMOD.Studio.EventInstance flamethrowerEvent;
+        FMOD.Studio.ParameterInstance flamethrowerActive;
+        #endregion
+
         #region Editor Variables
         //Ability prefabs.
         [SerializeField] private ShotBeamController _minigunBulletBeam;
@@ -39,6 +47,10 @@ namespace _Project.Scripts.Player.Characters.Chief
         {
             InitializeAbilities();
             TransitionTo(new NotShootingState());
+
+            flamethrowerEvent = FMODUnity.RuntimeManager.CreateInstance(flamethrowing);
+            flamethrowerEvent.getParameter("Flamethrowing", out flamethrowerActive);
+            flamethrowerEvent.start();
 
             base.Awake();
         }
@@ -147,7 +159,7 @@ namespace _Project.Scripts.Player.Characters.Chief
         /// </summary>
         private abstract class ChiefState
         {
-            public virtual void Enter(ChiefController chief) { }
+            public virtual void Enter(ChiefController chief) {}
 
             public virtual ChiefState Update(ChiefController chief, InputDevice device)
             {
@@ -226,8 +238,11 @@ namespace _Project.Scripts.Player.Characters.Chief
             public override ChiefState Update(ChiefController chief, InputDevice device)
             {
                 //Check for butoon released.
-                if(device.RightTrigger.WasReleased)
+                if (device.RightTrigger.WasReleased)
+                {
+                    chief.flamethrowerActive.setValue(0);
                     return new CooldownState(chief._abilityAfterAbilityCooldown);
+                }
 
                 //Changing weapon is still possible.
                 return base.Update(chief, device);

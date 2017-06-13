@@ -44,7 +44,7 @@ namespace _Project.Scripts.Player
             //We're front facing if we're aiming to the bottom half of the screen.
             _animator.SetBool("IsFrontFacing", aimingDegree <= 0);
             //We want to flip the sprite if we're aiming to the right side of the screen.  
-            _renderer.flipX = Mathf.Abs(aimingDegree) <= 90;
+            SetFlipX(Mathf.Abs(aimingDegree) <= 90);
         }
 
         public void FadeToColor(Color color, float fadeDuration)
@@ -66,6 +66,12 @@ namespace _Project.Scripts.Player
             }
 
             Color = color;
+        }
+
+        private void SetFlipX(bool flipped)
+        {
+            float x = flipped ? 180 : 0;
+            transform.rotation = Quaternion.Euler(0, x, 0);
         }
     }
 }
