@@ -10,11 +10,21 @@ namespace _Project.Scripts.Player
 
         [SerializeField] private Ability _rightTriggerAbilityPrefab;
         [SerializeField] private Ability _leftTriggerAbilityPrefab;
-        #endregion 
+        #endregion
+
+        #region Components
+        private AbilitySpawner _abilitySpawner;
+        #endregion
 
         #region Internal Variables
         private bool _onCooldown;
+
         #endregion
+
+        private void Awake()
+        {
+            _abilitySpawner = GetComponent<AbilitySpawner>();
+        }
 
         protected override void HandleInput()
         {
@@ -24,11 +34,11 @@ namespace _Project.Scripts.Player
 
             //Shoot excalibur.
             if (Device.RightTrigger.WasPressed)
-                AbilitySpawner.Spawn(this, _rightTriggerAbilityPrefab);
+                _abilitySpawner.Spawn(this, _rightTriggerAbilityPrefab);
 
             //Shoot lightning.
             else if (Device.LeftTrigger.WasPressed)
-                AbilitySpawner.Spawn(this, _leftTriggerAbilityPrefab);
+                _abilitySpawner.Spawn(this, _leftTriggerAbilityPrefab);
         }
 
         #region Cooldown

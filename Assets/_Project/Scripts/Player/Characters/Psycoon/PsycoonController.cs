@@ -24,16 +24,18 @@ namespace _Project.Scripts.Player.Characters
 
         #region Components
         private PlayerSpriteHandler _spriteHandler;
+        private AbilitySpawner _abilitySpawner;
         #endregion
 
         #region Internal Variables
         private IPsycoonState _state;
+
         #endregion
 
-        protected override void Awake()
+        protected void Awake()
         {
             //Get Components.
-            base.Awake();
+            _abilitySpawner = GetComponent<AbilitySpawner>();
             _spriteHandler = GetComponent<PlayerSpriteHandler>();
 
             //Set starting state.
@@ -129,7 +131,7 @@ namespace _Project.Scripts.Player.Characters
 
             private IPsycoonState TransitionToChargeRelease(PsycoonController psycoon, List<Ability> abilityPrefabs)
             {
-                AbilitySpawner abilitySpawner = psycoon.AbilitySpawner;
+                AbilitySpawner abilitySpawner = psycoon._abilitySpawner;
                 abilitySpawner.AbilityPrefab = abilityPrefabs[ChargeLevel];
 
                 return new ChargeReleaseState();
@@ -206,8 +208,8 @@ namespace _Project.Scripts.Player.Characters
 
             public void Enter(PsycoonController psycoon, InputDevice controller)
             {
-                psycoon.AbilitySpawner.OnAbilitySpawnFinished += () => _shouldTransition = true;
-                psycoon.AbilitySpawner.Spawn(psycoon);
+                psycoon._abilitySpawner.OnAbilitySpawnFinished += () => _shouldTransition = true;
+                psycoon._abilitySpawner.Spawn(psycoon);
             }
 
             public IPsycoonState Update(PsycoonController psycoon, InputDevice controller)

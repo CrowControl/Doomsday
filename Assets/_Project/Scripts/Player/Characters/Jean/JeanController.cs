@@ -17,13 +17,17 @@ namespace _Project.Scripts.Player.Characters.Jean
         [SerializeField] private float _cooldown = 0.2f;
         #endregion
 
-        #region Internal Variables
-        private JeanState _state;
+        #region Components
         #endregion
 
-        protected override void Awake()
+        #region Internal Variables
+        private JeanState _state;
+        private AbilitySpawner _abilitySpawner;
+        #endregion
+
+        protected void Awake()
         {
-            base.Awake();
+            _abilitySpawner = GetComponentInChildren<AbilitySpawner>();
             //Start in idle state.
             TransitionTo(new IdleState());
         }
@@ -51,7 +55,7 @@ namespace _Project.Scripts.Player.Characters.Jean
             _state.Enter(this);
         }
 
-        #region State Mchine
+        #region State Machine
         /// <summary>
         /// Base class for states in Jean's logic state machine.
         /// </summary>
@@ -103,7 +107,7 @@ namespace _Project.Scripts.Player.Characters.Jean
                 base.Enter(jean);
 
                 //Spawn shield.
-                _shield = jean.AbilitySpawner.Spawn(jean, jean._shieldPrefab);
+                _shield = jean._abilitySpawner.Spawn(jean, jean._shieldPrefab);
                 _shield.OnDestroyed += OnShieldDestroyed;
             }
 
@@ -148,8 +152,8 @@ namespace _Project.Scripts.Player.Characters.Jean
                 base.Enter(jean);
                 
                 //Spawn rocket.
-                jean.AbilitySpawner.OnAbilitySpawnFinished += () => _shouldTransition = true;
-                jean.AbilitySpawner.Spawn(jean, jean._rocketPrefab);
+                jean._abilitySpawner.OnAbilitySpawnFinished += () => _shouldTransition = true;
+                jean._abilitySpawner.Spawn(jean, jean._rocketPrefab);
             }
 
             public override JeanState Update(InputDevice device, JeanController jean)

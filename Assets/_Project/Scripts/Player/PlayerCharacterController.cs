@@ -9,10 +9,6 @@ namespace _Project.Scripts.Player
     [RequireComponent(typeof(AbilitySpawner))]
     public abstract class PlayerCharacterController : CustomMonoBehaviour, IMovementInputSource, ICharacterAimSource
     {
-        #region Components
-        protected AbilitySpawner AbilitySpawner;
-        #endregion
-
         #region Properties
         public InputDevice Device { get; set; }         //Device that controls this character.
 
@@ -26,11 +22,6 @@ namespace _Project.Scripts.Player
         #endregion
 
         #endregion
-
-        protected virtual void Awake()
-        {
-            AbilitySpawner = GetComponent<AbilitySpawner>();
-        }
 	
         // Update is called once per frame
         private void Update ()

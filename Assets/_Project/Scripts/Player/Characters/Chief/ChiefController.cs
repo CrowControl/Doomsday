@@ -7,6 +7,7 @@ using _Project.Scripts.Units.Abilities;
 
 namespace _Project.Scripts.Player.Characters.Chief
 {
+    [RequireComponent(typeof(AbilitySpawner))]
     class ChiefController : PlayerCharacterController
     {
         #region Audio Variables
@@ -28,6 +29,10 @@ namespace _Project.Scripts.Player.Characters.Chief
         [SerializeField] private float _abilityAfterAbilityCooldown;
         #endregion
 
+        #region Components
+        private AbilitySpawner _abilitySpawner;
+        #endregion
+
         #region Properties
         //Currently selected ability.
         private ChiefAbility CurrentAbility { get { return _abilities[_abilityIndex]; } }
@@ -38,21 +43,23 @@ namespace _Project.Scripts.Player.Characters.Chief
 
         private ChiefAbility[] _abilities;  //List of all chief's abilities.
         private int _abilityIndex;          //Index of the currently selected ability.
+
         #endregion
 
         /// <summary>
         /// Called when object first awakes.
         /// </summary>
-        protected override void Awake()
+        protected void Awake()
         {
+            _abilitySpawner = GetComponent<AbilitySpawner>();
+
             InitializeAbilities();
+
             TransitionTo(new NotShootingState());
 
             flamethrowerEvent = FMODUnity.RuntimeManager.CreateInstance(flamethrowing);
             flamethrowerEvent.getParameter("Flamethrowing", out flamethrowerActive);
             flamethrowerEvent.start();
-
-            base.Awake();
         }
 
         /// <summary>
@@ -212,13 +219,13 @@ namespace _Project.Scripts.Player.Characters.Chief
             //Spawn the ability when the state is entered.
             public override void Enter(ChiefController chief)
             {
-                chief.AbilitySpawner.OnAbilitySpawnFinished += OnAbilityFinished;
-                AbilityInstance = chief.AbilitySpawner.Spawn(chief, _abilityPrefab);
+                chief._abilitySpawner.OnAbilitySpawnFinished += OnAbilityFinished;
+                AbilityInstance = chief._abilitySpawner.Spawn(chief, _abilityPrefab);
             }
 
             public override void Exit(ChiefController chief)
             {
-                chief.AbilitySpawner.OnAbilitySpawnFinished -= OnAbilityFinished;
+                chief._abilitySpawner.OnAbilitySpawnFinished -= OnAbilityFinished;
                 base.Exit(chief);
             }
 
@@ -282,7 +289,7 @@ namespace _Project.Scripts.Player.Characters.Chief
             //Spawn the switch eplxosion.
             public override void Enter(ChiefController chief)
             {
-                AbilitySpawner spawner = chief.AbilitySpawner;
+                AbilitySpawner spawner = chief._abilitySpawner;
                 spawner.OnAbilitySpawnFinished += () => _shouldTransition = true;
 
                 spawner.Spawn(chief, chief._onSwitchExplosionPrefab);
