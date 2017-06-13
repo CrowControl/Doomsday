@@ -6,7 +6,6 @@ using _Project.Scripts.Units.Abilities;
 
 namespace _Project.Scripts.Player
 {
-    [RequireComponent(typeof(AbilitySpawner))]
     public abstract class PlayerCharacterController : CustomMonoBehaviour, IMovementInputSource, ICharacterAimSource
     {
         #region Properties

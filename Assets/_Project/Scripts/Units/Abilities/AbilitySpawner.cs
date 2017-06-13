@@ -31,7 +31,7 @@ namespace _Project.Scripts.Units.Abilities
         public Ability Spawn(ICharacterAimSource aimsource)
         {
             //Spawn a projectile.
-            Ability ability = Instantiate(AbilityPrefab, transform);
+            Ability ability = Instantiate(AbilityPrefab, transform.position, transform.rotation);
             
             ability.OnNoLongerOccuppiesCaster += OnAbilityNoLongerOccuppiesCaster;
             ability.Do(aimsource);

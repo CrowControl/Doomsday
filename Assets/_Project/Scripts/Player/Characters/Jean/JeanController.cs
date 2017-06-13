@@ -8,28 +8,39 @@ namespace _Project.Scripts.Player.Characters.Jean
     public class JeanController : PlayerCharacterController
     {
         #region Editor Variables
-        [SerializeField] private Ability _rocketPrefab;
-        [SerializeField] private Ability _shieldPrefab;
-
         [SerializeField] private float _maxShieldTime = 4;
-
-
         [SerializeField] private float _cooldown = 0.2f;
+        [SerializeField] private float _ShootingArmRotationDuringShield = -100;
         #endregion
 
         #region Components
+        private ArmsController _arms;
+        private PlayerSpriteHandler _spriteHandler;
+        private AbilitySpawner _abilitySpawner;
+        private ShieldArmController _shieldArm;
         #endregion
 
         #region Internal Variables
         private JeanState _state;
-        private AbilitySpawner _abilitySpawner;
         #endregion
 
         protected void Awake()
         {
-            _abilitySpawner = GetComponentInChildren<AbilitySpawner>();
+            GetComponents();
+
             //Start in idle state.
             TransitionTo(new IdleState());
+        }
+
+        private void GetComponents()
+        {
+            //Get components.
+            _arms = GetComponent<ArmsController>();
+            _spriteHandler = GetComponent<PlayerSpriteHandler>();
+
+            //Get child components.
+            _abilitySpawner = GetComponentInChildren<AbilitySpawner>();
+            _shieldArm = GetComponentInChildren<ShieldArmController>();
         }
 
         protected override void HandleInput()
@@ -98,7 +109,7 @@ namespace _Project.Scripts.Player.Characters.Jean
         /// </summary>
         private class ShieldState : JeanState
         {
-            private Ability _shield;            //Reference to the shield.
+            private ShieldArmController _shield;            //Reference to the shield.
             private float _enterTime;           //Time when this state was entered.
             private bool _shouldTransition;     //bool to check if we should transition.
 
@@ -106,9 +117,15 @@ namespace _Project.Scripts.Player.Characters.Jean
             {
                 base.Enter(jean);
 
-                //Spawn shield.
-                _shield = jean._abilitySpawner.Spawn(jean, jean._shieldPrefab);
-                _shield.OnDestroyed += OnShieldDestroyed;
+                //Disable arm movement and sprite flipping.
+                jean._spriteHandler.XFlippingEnabled = false;
+                jean._arms.RotateShootingArmToAim = false;
+                jean._arms.ShootingArmTransform.rotation = Quaternion.Euler(0, 0, jean._ShootingArmRotationDuringShield);
+
+                //Use shield.
+                _shield = jean._shieldArm;
+                _shield.OnNoLongerOccuppiesCaster += OnShieldFinished;
+                _shield.EnableShield();
             }
 
             public override JeanState Update(InputDevice device, JeanController jean)
@@ -124,17 +141,19 @@ namespace _Project.Scripts.Player.Characters.Jean
 
             public override void Exit(JeanController jean)
             {
-                //Destroy the shield if it isn't yet.
-                if (_shield == null) return;
+                //Re-enable sprite flipping and arm movement.
+                jean._spriteHandler.XFlippingEnabled = true;
+                jean._arms.RotateShootingArmToAim = true;
 
-                _shield.OnDestroyed -= OnShieldDestroyed;
-                Destroy(_shield.gameObject);
+                //Stop using shield.
+                _shield.OnNoLongerOccuppiesCaster -= OnShieldFinished;
+                _shield.DisableShield();
             }
 
             /// <summary>
             /// Called when the shield is destroyed.
             /// </summary>
-            private void OnShieldDestroyed()
+            private void OnShieldFinished()
             {
                 _shouldTransition = true;
             }
@@ -153,7 +172,7 @@ namespace _Project.Scripts.Player.Characters.Jean
                 
                 //Spawn rocket.
                 jean._abilitySpawner.OnAbilitySpawnFinished += () => _shouldTransition = true;
-                jean._abilitySpawner.Spawn(jean, jean._rocketPrefab);
+                jean._abilitySpawner.Spawn(jean);
             }
 
             public override JeanState Update(InputDevice device, JeanController jean)

@@ -15,13 +15,19 @@ namespace _Project.Scripts.Player
         private Transform _shootingArmTransform;
         private Transform _otherArmTransform;
 
-        //Renderers
+        //Renderer
         private SpriteRenderer _shootingArmRenderer;
-        private SpriteRenderer _otherArmRenderer;
+        #endregion
+
+        #region Properties
+        public bool RotateShootingArmToAim { get; set; }
+        public Transform ShootingArmTransform { get { return _shootingArmTransform; } }
         #endregion
 
         private void Awake()
         {
+            RotateShootingArmToAim = true;
+
             _animationNodes = GetComponent<SpriteAnimNodes>();
             _aimSource = GetComponent<ICharacterAimSource>();
 
@@ -31,7 +37,6 @@ namespace _Project.Scripts.Player
 
             //Get arm renderers.
             _shootingArmRenderer = _shootingArmTransform.GetComponent<SpriteRenderer>();
-            _otherArmRenderer = _otherArmTransform.GetComponent<SpriteRenderer>();
         }
 
         private void LateUpdate()
@@ -40,7 +45,8 @@ namespace _Project.Scripts.Player
             _otherArmTransform.position = _animationNodes.GetPosition(0);
             _shootingArmTransform.position = _animationNodes.GetPosition(1);
 
-            UpdateShootingArmRotation();
+            if(RotateShootingArmToAim)
+                UpdateShootingArmRotation();
         }
 
         private void UpdateShootingArmRotation()

@@ -23,10 +23,14 @@ namespace _Project.Scripts.Player
             get { return _renderer.color; }
             set { _renderer.color = value; }
         }
+
+        public bool XFlippingEnabled { get; set; }
         #endregion
 
         private void Awake()
         {
+            XFlippingEnabled = true;
+
             //Get components.
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
@@ -39,12 +43,12 @@ namespace _Project.Scripts.Player
             //Tell the animator we're moving if we have velocity.
             _animator.SetBool("IsMoving", _rigidbody.velocity != Vector2.zero);
 
-            float aimingDegree = _characterAim.AimingDegree;
-
             //We're front facing if we're aiming to the bottom half of the screen.
-            _animator.SetBool("IsFrontFacing", aimingDegree <= 0);
-            //We want to flip the sprite if we're aiming to the right side of the screen.  
-            SetFlipX(Mathf.Abs(aimingDegree) <= 90);
+            _animator.SetBool("IsFrontFacing", _characterAim.AimingDegree <= 0);
+            
+            //We want to flip the sprite if we're aiming to the right side of the screen, except when we don't xD.  
+            if(XFlippingEnabled)
+                SetFlipX(Mathf.Abs(_characterAim.AimingDegree) <= 90);
         }
 
         public void FadeToColor(Color color, float fadeDuration)
@@ -68,9 +72,16 @@ namespace _Project.Scripts.Player
             Color = color;
         }
 
+        /// <summary>
+        /// Sets the flipping of the entire character.
+        /// </summary>
+        /// <param name="flipped">if true, we flip.</param>
         private void SetFlipX(bool flipped)
         {
+            //Choose.
             float x = flipped ? 180 : 0;
+
+            //Assign.
             transform.rotation = Quaternion.Euler(0, x, 0);
         }
     }
