@@ -13,8 +13,9 @@ namespace _Project.Scripts.Player.Characters.Chief
         #region Audio Variables
         [FMODUnity.EventRef]
         public string flamethrowing = "event:/Chief/Main_attack";
-        FMOD.Studio.EventInstance flamethrowerEvent;
-        FMOD.Studio.ParameterInstance flamethrowerActive;
+        public string shootingcannon = "event:/Chief/Secondary_attack";
+        FMOD.Studio.EventInstance[] chiefEvents = new FMOD.Studio.EventInstance[2];
+        FMOD.Studio.ParameterInstance[] chiefEventParams = new FMOD.Studio.ParameterInstance[2];
         #endregion
 
         #region Editor Variables
@@ -29,7 +30,8 @@ namespace _Project.Scripts.Player.Characters.Chief
         [SerializeField] private float _abilityAfterAbilityCooldown;
         #endregion
 
-        #region Components
+        #region Properties
+
         private AbilitySpawner _abilitySpawner;
         #endregion
 
@@ -43,7 +45,6 @@ namespace _Project.Scripts.Player.Characters.Chief
 
         private ChiefAbility[] _abilities;  //List of all chief's abilities.
         private int _abilityIndex;          //Index of the currently selected ability.
-
         #endregion
 
         /// <summary>
@@ -54,12 +55,12 @@ namespace _Project.Scripts.Player.Characters.Chief
             _abilitySpawner = GetComponent<AbilitySpawner>();
 
             InitializeAbilities();
-
             TransitionTo(new NotShootingState());
+       
+            //init audio event playback
+            chiefEvents[0] = FMODUnity.RuntimeManager.CreateInstance(flamethrowing);
+            chiefEvents[1] = FMODUnity.RuntimeManager.CreateInstance(shootingcannon);
 
-            flamethrowerEvent = FMODUnity.RuntimeManager.CreateInstance(flamethrowing);
-            flamethrowerEvent.getParameter("Flamethrowing", out flamethrowerActive);
-            flamethrowerEvent.start();
         }
 
         /// <summary>
@@ -112,9 +113,20 @@ namespace _Project.Scripts.Player.Characters.Chief
             //Increment index.
             _abilityIndex++;
 
+
             //Wrap around to zero if we've reached the end of the list.
             if (_abilityIndex >= _abilities.Length)
+            {
+                //ability isnt continious
+                chiefEvents[0].stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 _abilityIndex = 0;
+            }
+            else
+            {
+                //ability is continious
+                chiefEvents[0].start();
+                chiefEventParams[0].setValue(0);
+            }
         }
 
         private enum ChiefAbilityType
@@ -190,7 +202,18 @@ namespace _Project.Scripts.Player.Characters.Chief
             {
                 //Check for shot button pressed.
                 if (device.RightTrigger.WasPressed)
+                {
+                    if(chief._abilityIndex == 0)
+                    {
+                        FMODUnity.RuntimeManager.PlayOneShot(chief.shootingcannon,chief.SourcePosition);
+                    } //not continious
+                    else
+                    {
+                        chief.chiefEventParams[0].setValue(1);
+                    } //continious
+
                     return chief.CurrentAbility.ShootingState;
+                }
 
                 //Else check for ability-switch.
                 return base.Update(chief, device);
@@ -247,7 +270,8 @@ namespace _Project.Scripts.Player.Characters.Chief
                 //Check for butoon released.
                 if (device.RightTrigger.WasReleased)
                 {
-                    chief.flamethrowerActive.setValue(0);
+                    
+                    chief.chiefEventParams[0].setValue(0);
                     return new CooldownState(chief._abilityAfterAbilityCooldown);
                 }
 
