@@ -119,8 +119,8 @@ namespace _Project.Scripts.Player.Characters.Jean
 
                 //Disable arm movement and sprite flipping.
                 jean._spriteHandler.XFlippingEnabled = false;
-                jean._arms.RotateShootingArmToAim = false;
-                jean._arms.ShootingArmTransform.rotation = Quaternion.Euler(0, 0, jean._ShootingArmRotationDuringShield);
+                jean._arms.RotateFrontArmToAim = false;
+                jean._arms.FrontArmRotation = Quaternion.Euler(0, 0, jean._ShootingArmRotationDuringShield);
 
                 //Use shield.
                 _shield = jean._shieldArm;
@@ -143,7 +143,7 @@ namespace _Project.Scripts.Player.Characters.Jean
             {
                 //Re-enable sprite flipping and arm movement.
                 jean._spriteHandler.XFlippingEnabled = true;
-                jean._arms.RotateShootingArmToAim = true;
+                jean._arms.RotateFrontArmToAim = true;
 
                 //Stop using shield.
                 _shield.OnNoLongerOccuppiesCaster -= OnShieldFinished;

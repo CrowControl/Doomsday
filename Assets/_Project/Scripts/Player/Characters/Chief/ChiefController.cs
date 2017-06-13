@@ -16,6 +16,7 @@ namespace _Project.Scripts.Player.Characters.Chief
         public string shootingcannon = "event:/Chief/Secondary_attack";
         FMOD.Studio.EventInstance[] chiefEvents = new FMOD.Studio.EventInstance[2];
         FMOD.Studio.ParameterInstance[] chiefEventParams = new FMOD.Studio.ParameterInstance[2];
+        FMOD.ATTRIBUTES_3D attributes;
         #endregion
 
         #region Editor Variables
@@ -58,7 +59,6 @@ namespace _Project.Scripts.Player.Characters.Chief
             TransitionTo(new NotShootingState());
        
             //init audio event playback
-            chiefEvents[0] = FMODUnity.RuntimeManager.CreateInstance(flamethrowing);
             chiefEvents[1] = FMODUnity.RuntimeManager.CreateInstance(shootingcannon);
 
         }
@@ -124,6 +124,9 @@ namespace _Project.Scripts.Player.Characters.Chief
             else
             {
                 //ability is continious
+                chiefEvents[0] = FMODUnity.RuntimeManager.CreateInstance(flamethrowing);
+                chiefEvents[0].set3DAttributes(attributes);
+                chiefEvents[0].getParameter("Hit", out chiefEventParams[0]);
                 chiefEvents[0].start();
                 chiefEventParams[0].setValue(0);
             }
@@ -271,7 +274,7 @@ namespace _Project.Scripts.Player.Characters.Chief
                 if (device.RightTrigger.WasReleased)
                 {
                     
-                    chief.chiefEventParams[0].setValue(0);
+                  //  chief.chiefEventParams[0].setValue(0);
                     return new CooldownState(chief._abilityAfterAbilityCooldown);
                 }
 
