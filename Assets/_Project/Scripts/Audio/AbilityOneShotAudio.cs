@@ -1,42 +1,31 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using _Project.Scripts.Units.Abilities;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(Ability))]
-public class AbilityOneShotAudio : MonoBehaviour
+namespace _Project.Scripts.Audio
 {
-    #region Editor
-
-    [SerializeField] private string _onActivateEventString;
-    [SerializeField] private string _onDestroyEventString;
-
-    #endregion
-
-    private void Awake()
+    public class AbilityOneShotAudio : AbilityAudio
     {
-        Ability ability = GetComponent<Ability>();
+        #region Editor
 
-        ability.OnActivated += OnAbilityActivated;
-        ability.OnDestroyed += OnAbilityDestroyed;
-    }
+        [SerializeField] private string _onActivateEventString;
+        [SerializeField] private string _onDestroyEventString;
+
+        #endregion
+
+        protected override void OnAbilityActivated()
+        {
+            PlayOneShot(_onActivateEventString);
+        }
+
+        protected override void OnAbilityDestroyed()
+        {
+            PlayOneShot(_onDestroyEventString);
+        }
 
 
-    private void OnAbilityActivated()
-    {
-        PlayOneShot(_onActivateEventString);
-    }
-
-    private void OnAbilityDestroyed()
-    {
-        PlayOneShot(_onDestroyEventString);
-    }
-
-
-    private void PlayOneShot(string eventString)
-    {
-        if(!string.IsNullOrEmpty(eventString))
-            FMODUnity.RuntimeManager.PlayOneShot(eventString, transform.position);
+        private void PlayOneShot(string eventString)
+        {
+            if(!string.IsNullOrEmpty(eventString))
+                FMODUnity.RuntimeManager.PlayOneShot(eventString, transform.position);
+        }
     }
 }

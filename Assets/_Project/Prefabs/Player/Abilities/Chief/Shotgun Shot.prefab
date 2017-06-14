@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95aa2139ea40324dbea66367d7d2967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnAsChild: 0
+  _spawnAsChild: 1
   _offsetDistance: 1
 --- !u!114 &114125732881126966
 MonoBehaviour:
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89bed70da6935864e8b304a98789da5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onActivateEventString: 
+  _onActivateEventString: event:/Chief/Secondary_attack
   _onDestroyEventString: 
 --- !u!114 &114551627638372776
 MonoBehaviour:

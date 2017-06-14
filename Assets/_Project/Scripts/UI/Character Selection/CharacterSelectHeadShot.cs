@@ -57,11 +57,7 @@ namespace _Project.Scripts.UI.Character_Selection
 
         public void UnFocus()
         {
-            if (!IsFocus)
-            {
-                Debug.LogError("Tried to unfocus a headshot that wasn't focussed.");
-                return;
-            }
+            if (!IsFocus) return;
 
             _outline.effectColor = _previousOutLineColor;
             IsFocus = false;
