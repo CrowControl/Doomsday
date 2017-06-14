@@ -12,10 +12,7 @@ namespace _Project.Scripts.Player.Characters.Chief
     {
         #region Audio Variables
         [FMODUnity.EventRef]
-        public string flamethrowing = "event:/Chief/Main_attack";
-        public string shootingcannon = "event:/Chief/Secondary_attack";
-        FMOD.Studio.EventInstance[] chiefEvents = new FMOD.Studio.EventInstance[2];
-        FMOD.Studio.ParameterInstance[] chiefEventParams = new FMOD.Studio.ParameterInstance[2];
+        public FMOD.Studio.EventInstance flameThrower;
         FMOD.ATTRIBUTES_3D attributes;
         #endregion
 
@@ -55,12 +52,12 @@ namespace _Project.Scripts.Player.Characters.Chief
         {
             _abilitySpawner = GetComponent<AbilitySpawner>();
 
+            //init audio event instance
+            flameThrower = FMODUnity.RuntimeManager.CreateInstance("event:/Chief/Main_attack");
+            flameThrower.set3DAttributes(attributes);
+
             InitializeAbilities();
             TransitionTo(new NotShootingState());
-       
-            //init audio event playback
-            chiefEvents[1] = FMODUnity.RuntimeManager.CreateInstance(shootingcannon);
-
         }
 
         /// <summary>
@@ -100,9 +97,9 @@ namespace _Project.Scripts.Player.Characters.Chief
         {
             _abilities = new ChiefAbility[3];
 
-            _abilities[0] = new ChiefAbility(_minigunBulletBeam, ChiefAbilityType.Coninuous);
-            _abilities[1] = new ChiefAbility(_flameThrowerBeam, ChiefAbilityType.Coninuous);
-            _abilities[2] = new ChiefAbility(_shotGunShotPrefab, ChiefAbilityType.SinglePress);
+            _abilities[0] = new ChiefAbility(_minigunBulletBeam, ChiefAbilityType.Coninuous, flameThrower);
+            _abilities[1] = new ChiefAbility(_flameThrowerBeam, ChiefAbilityType.Coninuous, flameThrower);
+            _abilities[2] = new ChiefAbility(_shotGunShotPrefab, ChiefAbilityType.SinglePress, flameThrower);
         }
 
         /// <summary>
@@ -113,23 +110,9 @@ namespace _Project.Scripts.Player.Characters.Chief
             //Increment index.
             _abilityIndex++;
 
-
             //Wrap around to zero if we've reached the end of the list.
             if (_abilityIndex >= _abilities.Length)
-            {
-                //ability isnt continious
-                chiefEvents[0].stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 _abilityIndex = 0;
-            }
-            else
-            {
-                //ability is continious
-                chiefEvents[0] = FMODUnity.RuntimeManager.CreateInstance(flamethrowing);
-                chiefEvents[0].set3DAttributes(attributes);
-                chiefEvents[0].getParameter("Hit", out chiefEventParams[0]);
-                chiefEvents[0].start();
-                chiefEventParams[0].setValue(0);
-            }
         }
 
         private enum ChiefAbilityType
@@ -145,11 +128,48 @@ namespace _Project.Scripts.Player.Characters.Chief
         {
             private readonly Ability _ability;          //Prefab to spawn.
             private readonly ChiefAbilityType _type;    //Type of this ability.
+            private readonly FMOD.Studio.EventInstance _abilitySoundfile; //corresponding audiofile
 
-            public ChiefAbility(Ability ability, ChiefAbilityType type)
+            public ChiefAbility(Ability ability, ChiefAbilityType type, FMOD.Studio.EventInstance abilitySoundfile)
             {
                 _ability = ability;
                 _type = type;
+                _abilitySoundfile = abilitySoundfile;
+            }
+
+            public void StartSound()
+            {
+                if(_type == ChiefAbilityType.Coninuous)
+                    _abilitySoundfile.start();
+            }
+
+            public void StartIdleSound()
+            {
+                Debug.Log("startidlesound");
+                if(_type == ChiefAbilityType.Coninuous)
+                {
+                    _abilitySoundfile.setParameterValue("Flamethrowing", 0);
+                }
+            }
+
+            public void StartActiveSound()
+            {
+                Debug.Log("startactivesound");
+                if (_type == ChiefAbilityType.SinglePress)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Chief/Secondary_attack");
+                }
+                else
+                {
+                    _abilitySoundfile.setParameterValue("Flamethrowing", 1);
+                }
+            }
+
+            public void StopSound()
+            {
+                Debug.Log("stopsound");
+                if(_type == ChiefAbilityType.Coninuous)
+                  _abilitySoundfile.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             }
 
             /// <summary>
@@ -171,7 +191,6 @@ namespace _Project.Scripts.Player.Characters.Chief
                     }
                 }
             }
-
         }
         #endregion
 
@@ -201,20 +220,17 @@ namespace _Project.Scripts.Player.Characters.Chief
         /// </summary>
         private class NotShootingState : ChiefState
         {
+            public override void Enter(ChiefController chief)
+            {
+                base.Enter(chief);
+                chief.CurrentAbility.StartIdleSound();
+            }
+
             public override ChiefState Update(ChiefController chief, InputDevice device)
             {
                 //Check for shot button pressed.
                 if (device.RightTrigger.WasPressed)
                 {
-                    if(chief._abilityIndex == 0)
-                    {
-                        FMODUnity.RuntimeManager.PlayOneShot(chief.shootingcannon,chief.SourcePosition);
-                    } //not continious
-                    else
-                    {
-                        chief.chiefEventParams[0].setValue(1);
-                    } //continious
-
                     return chief.CurrentAbility.ShootingState;
                 }
 
@@ -245,12 +261,14 @@ namespace _Project.Scripts.Player.Characters.Chief
             //Spawn the ability when the state is entered.
             public override void Enter(ChiefController chief)
             {
+                chief.CurrentAbility.StartActiveSound();
                 chief._abilitySpawner.OnAbilitySpawnFinished += OnAbilityFinished;
                 AbilityInstance = chief._abilitySpawner.Spawn(chief, _abilityPrefab);
             }
 
             public override void Exit(ChiefController chief)
             {
+                chief.CurrentAbility.StartIdleSound();
                 chief._abilitySpawner.OnAbilitySpawnFinished -= OnAbilityFinished;
                 base.Exit(chief);
             }
@@ -273,8 +291,6 @@ namespace _Project.Scripts.Player.Characters.Chief
                 //Check for butoon released.
                 if (device.RightTrigger.WasReleased)
                 {
-                    
-                  //  chief.chiefEventParams[0].setValue(0);
                     return new CooldownState(chief._abilityAfterAbilityCooldown);
                 }
 
@@ -316,6 +332,9 @@ namespace _Project.Scripts.Player.Characters.Chief
             //Spawn the switch eplxosion.
             public override void Enter(ChiefController chief)
             {
+                chief.CurrentAbility.StopSound();
+
+                //***************** oneshot voor wapenverandering *************8
                 AbilitySpawner spawner = chief._abilitySpawner;
                 spawner.OnAbilitySpawnFinished += () => _shouldTransition = true;
 
@@ -331,6 +350,7 @@ namespace _Project.Scripts.Player.Characters.Chief
             //Change to the next ability.
             public override void Exit(ChiefController chief)
             {
+                chief.CurrentAbility.StartSound();
                 chief.ChangeAbility();
             }
         }
