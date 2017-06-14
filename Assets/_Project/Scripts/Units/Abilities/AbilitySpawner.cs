@@ -10,6 +10,8 @@ namespace _Project.Scripts.Units.Abilities
         #region Editor Variables
         //projectile.
         [SerializeField] private Ability _abilityPrefab;
+        
+
         #endregion
 
         #region Properties
@@ -18,6 +20,9 @@ namespace _Project.Scripts.Units.Abilities
             get { return _abilityPrefab; }
             set { _abilityPrefab = value; }
         }
+
+        public bool UseCustomAimSource { get; set; }
+        public ICharacterAimSource CustomAimSource { get; set; }
         #endregion
 
         #region Events
@@ -30,11 +35,15 @@ namespace _Project.Scripts.Units.Abilities
         /// <param name="aimsource">Source of aiming.</param>
         public Ability Spawn(ICharacterAimSource aimsource)
         {
-            //Spawn a projectile.
-            Ability ability = Instantiate(AbilityPrefab, transform.position, transform.rotation);
+            //Spawn the ability.
+            Ability ability = AbilityPrefab.SpawnAsChild ? 
+                Instantiate(AbilityPrefab, transform) :
+                Instantiate(AbilityPrefab, transform.position, transform.rotation);
             
+            //Activate the ability.
             ability.OnNoLongerOccuppiesCaster += OnAbilityNoLongerOccuppiesCaster;
-            ability.Do(aimsource);
+            ICharacterAimSource aimingSource = UseCustomAimSource ? CustomAimSource : aimsource;
+            ability.Activate(aimingSource);
 
             return ability;
         }

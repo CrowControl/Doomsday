@@ -43,7 +43,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterSelectUIPrefab: {fileID: 114571192873246292, guid: a7d56899b02245447bfa78e068239e8d,
     type: 2}
-  _characterselectUIPosition: {x: 350, y: 210}
+  _characterselectUIPosition: {x: 250, y: 210}
 --- !u!114 &114642412548447192
 MonoBehaviour:
   m_ObjectHideFlags: 1

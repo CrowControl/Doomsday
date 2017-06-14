@@ -46,7 +46,7 @@ namespace _Project.Scripts.Units.Abilities
         /// <summary>
         /// Start moving.
         /// </summary>
-        public override void Do(ICharacterAimSource aimSource)
+        public override void Activate(ICharacterAimSource aimSource)
         {
             RotateTowardAim(aimSource);
 

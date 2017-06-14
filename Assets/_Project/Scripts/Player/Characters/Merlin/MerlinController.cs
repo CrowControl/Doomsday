@@ -23,7 +23,7 @@ namespace _Project.Scripts.Player.Characters.Merlin
 
             //Shoot excalibur.
             if (Device.RightTrigger.WasPressed && _swordShooter.IsLoaded)
-                _swordShooter.Do(this);
+                _swordShooter.Activate(this);
 
             //Shoot lightning.
             else if (Device.LeftTrigger.WasPressed)

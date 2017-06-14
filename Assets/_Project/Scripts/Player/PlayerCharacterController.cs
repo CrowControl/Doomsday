@@ -40,10 +40,4 @@ namespace _Project.Scripts.Player
         /// </summary>
         protected abstract void HandleInput();
     }
-
-    public interface ICharacterAimSource
-    {
-        float AimingDegree { get; }     //Degree that this character is aiming at.
-        Vector2 SourcePosition { get; }
-    }
 }

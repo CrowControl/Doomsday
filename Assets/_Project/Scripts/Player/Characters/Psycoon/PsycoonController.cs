@@ -2,12 +2,10 @@
 using InControl;
 using UnityEngine;
 using _Project.Scripts.General;
-using _Project.Scripts.Units;
 using _Project.Scripts.Units.Abilities;
 
-namespace _Project.Scripts.Player.Characters
+namespace _Project.Scripts.Player.Characters.Psycoon
 {
-     [RequireComponent(typeof(AbilitySpawner))]
     public class PsycoonController : PlayerCharacterController
     {
         #region Editor Variables
@@ -24,7 +22,10 @@ namespace _Project.Scripts.Player.Characters
 
         #region Components
         private PlayerSpriteHandler _spriteHandler;
-        private AbilitySpawner _abilitySpawner;
+        private PsycoonEyeController _eye;
+
+        private AbilitySpawner _beamSpawner;
+        private AbilitySpawner _auraSpawner;
         #endregion
 
         #region Internal Variables
@@ -35,11 +36,17 @@ namespace _Project.Scripts.Player.Characters
         protected void Awake()
         {
             //Get Components.
-            _abilitySpawner = GetComponent<AbilitySpawner>();
             _spriteHandler = GetComponent<PlayerSpriteHandler>();
+            _eye = GetComponentInChildren<PsycoonEyeController>();
 
             //Set starting state.
             TransitionTo(new NotChargingState());
+        }
+
+        private void Start()
+        {
+            _beamSpawner = _eye.AbilitySpawner;
+            _auraSpawner = GetComponent<AbilitySpawner>();
         }
 
         protected override void HandleInput()
@@ -104,6 +111,8 @@ namespace _Project.Scripts.Player.Characters
             private int ChargeLevel { get { return (int) Mathf.Floor(_charge / 25); } }   //We only need to know in what plateau of charge we are.
             protected List<Ability> ButtonReleaseAbilityPrefabs { private get; set; }
             protected List<Ability> OtherButtonPressAbilityPrefabs { private get; set; }
+            protected AbilitySpawner ButtonReleaseSpawner { private get; set; }
+            protected AbilitySpawner OtherButtonpressSpawner { private get; set; }
             #endregion
 
             public virtual void Enter(PsycoonController psycoon, InputDevice controller)
@@ -111,6 +120,7 @@ namespace _Project.Scripts.Player.Characters
                 InitializeColorManagement(psycoon);
                 AssignButtons(controller);
                 AssignPrefabs(psycoon);
+                AssignSpawners(psycoon);
 
                 UpdateCharge(psycoon._chargePerSecond);
             }
@@ -121,20 +131,18 @@ namespace _Project.Scripts.Player.Characters
                 UpdateColor(psycoon);
 
                 if (MainButton.WasReleased)
-                    return TransitionToChargeRelease(psycoon, ButtonReleaseAbilityPrefabs);
+                    return TransitionToChargeRelease(psycoon, ButtonReleaseSpawner, ButtonReleaseAbilityPrefabs);
 
                 if (OtherButton.WasPressed)
-                    return TransitionToChargeRelease(psycoon, OtherButtonPressAbilityPrefabs);
+                    return TransitionToChargeRelease(psycoon, OtherButtonpressSpawner, OtherButtonPressAbilityPrefabs);
 
                 return null;
             }
 
-            private IPsycoonState TransitionToChargeRelease(PsycoonController psycoon, List<Ability> abilityPrefabs)
+            private IPsycoonState TransitionToChargeRelease(PsycoonController psycoon, AbilitySpawner spawner, List<Ability> abilityPrefabs)
             {
-                AbilitySpawner abilitySpawner = psycoon._abilitySpawner;
-                abilitySpawner.AbilityPrefab = abilityPrefabs[ChargeLevel];
-
-                return new ChargeReleaseState();
+                spawner.AbilityPrefab = abilityPrefabs[ChargeLevel];
+                return new ChargeReleaseState(spawner);
             }
 
             public void Exit(PsycoonController psycoon, InputDevice controller)
@@ -167,6 +175,7 @@ namespace _Project.Scripts.Player.Characters
             #region Abstract Methods
             protected abstract void AssignButtons(InputDevice controller);
             protected abstract void AssignPrefabs(PsycoonController psycoon);
+            protected abstract void AssignSpawners(PsycoonController psycoon);
 
             #endregion
         }
@@ -184,6 +193,12 @@ namespace _Project.Scripts.Player.Characters
                 ButtonReleaseAbilityPrefabs = psycoon._healAuraPrefabs;
                 OtherButtonPressAbilityPrefabs = psycoon._healBeamPrefabs;
             }
+
+            protected override void AssignSpawners(PsycoonController psycoon)
+            {
+                ButtonReleaseSpawner = psycoon._auraSpawner;
+                OtherButtonpressSpawner = psycoon._beamSpawner;
+            }
         }
 
         private class ChargingDamageState : ChargingState
@@ -199,17 +214,29 @@ namespace _Project.Scripts.Player.Characters
                 ButtonReleaseAbilityPrefabs = psycoon._damageBeamPrefabs;
                 OtherButtonPressAbilityPrefabs = psycoon._damageAuraPrefabs;
             }
+
+            protected override void AssignSpawners(PsycoonController psycoon)
+            {
+                ButtonReleaseSpawner = psycoon._beamSpawner;
+                OtherButtonpressSpawner = psycoon._auraSpawner;
+            }
         }
         #endregion
         
         private class ChargeReleaseState : IPsycoonState
         {
+            private readonly AbilitySpawner _spawner;
             private bool _shouldTransition;
+
+            public ChargeReleaseState(AbilitySpawner spawner)
+            {
+                _spawner = spawner;
+            }
 
             public void Enter(PsycoonController psycoon, InputDevice controller)
             {
-                psycoon._abilitySpawner.OnAbilitySpawnFinished += () => _shouldTransition = true;
-                psycoon._abilitySpawner.Spawn(psycoon);
+                _spawner.OnAbilitySpawnFinished += OnAbilityFinished;
+                _spawner.Spawn(psycoon);
             }
 
             public IPsycoonState Update(PsycoonController psycoon, InputDevice controller)
@@ -217,7 +244,16 @@ namespace _Project.Scripts.Player.Characters
                 return _shouldTransition ? new ChargeCooldownState() : null;
             }
 
-            public void Exit(PsycoonController psycoon, InputDevice controller){ }
+            public void Exit(PsycoonController psycoon, InputDevice controller)
+            {
+                if (_spawner != null)
+                    _spawner.OnAbilitySpawnFinished -= OnAbilityFinished;
+            }
+
+            private void OnAbilityFinished()
+            {
+                _shouldTransition = true;
+            }
         }
 
         private class ChargeCooldownState : IPsycoonState

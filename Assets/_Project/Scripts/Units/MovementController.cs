@@ -7,8 +7,8 @@ namespace _Project.Scripts.Units
 {
     [RequireComponent(typeof(Rigidbody2D)),
      RequireComponent(typeof(IMovementInputSource))]
-    public class MovementController : MonoBehaviour {
-
+    public class MovementController : MonoBehaviour
+    {
         #region Editor Variables
         [SerializeField] private float _speed;          //Speed that this character moves at.
         #endregion

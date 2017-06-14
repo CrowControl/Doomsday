@@ -6,10 +6,27 @@ namespace _Project.Scripts.Units.Abilities
 {
     public class Ability : CustomMonoBehaviour
     {
-        public event BehaviourEventHandler OnNoLongerOccuppiesCaster;
-        private bool _finished;
+        #region Editor
+        [SerializeField] private bool _spawnAsChild;
+        #endregion
 
-        public virtual void Do(ICharacterAimSource aimSource) { }
+        #region Events
+        public event BehaviourEventHandler OnNoLongerOccuppiesCaster, OnActivated;
+        #endregion
+
+        #region Properties
+        public bool SpawnAsChild { get { return _spawnAsChild; } }
+        #endregion
+
+        #region Internal
+        private bool _finished;
+        #endregion
+
+        public virtual void Activate(ICharacterAimSource aimSource)
+        {
+            if (OnActivated != null)
+                OnActivated();
+        }
 
         protected void RotateTowardAim(ICharacterAimSource aimSource)
         {

@@ -38,7 +38,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 523935104ef202749bc93ac6bd561e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _changeFocusCooldown: 0.2
+  _changeFocusCooldown: 0.3
+  _focusOutlineColor: {r: 0.88235295, g: 0.19607843, b: 1, a: 1}
+  _betweenHeadshotSpace: 10
   _headshotResourcePath: UI\Character Selection
 --- !u!224 &224829895342844162
 RectTransform:

@@ -47,7 +47,7 @@ namespace _Project.Scripts.Player.Characters.Jean
         /// <summary>
         /// Use shield ability.
         /// </summary>
-        public override void Do(ICharacterAimSource aimSource)
+        public override void Activate(ICharacterAimSource aimSource)
         {
             EnableShield();
             Invoke("DisableShield", Duration);

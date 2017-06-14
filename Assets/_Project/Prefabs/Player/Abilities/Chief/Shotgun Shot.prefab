@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114109883025387210}
   - component: {fileID: 114806727146672474}
   - component: {fileID: 114992604259218408}
+  - component: {fileID: 114125732881126966}
   m_Layer: 12
   m_Name: Shotgun Shot
   m_TagString: Untagged
@@ -71,7 +72,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95aa2139ea40324dbea66367d7d2967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnAsChild: 0
   _offsetDistance: 1
+--- !u!114 &114125732881126966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1295072508783576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bed70da6935864e8b304a98789da5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onActivateEventString: 
+  _onDestroyEventString: 
 --- !u!114 &114551627638372776
 MonoBehaviour:
   m_ObjectHideFlags: 1

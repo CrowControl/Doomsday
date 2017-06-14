@@ -12,6 +12,8 @@ namespace _Project.Scripts.UI.Character_Selection
         /// Cooldown on changing which of the headshots is currently focused on. 
         /// </summary>
         [SerializeField] private float _changeFocusCooldown;
+
+        [SerializeField] private Color _focusOutlineColor;
         [SerializeField] private float _betweenHeadshotSpace;
         [SerializeField] private string _headshotResourcePath;
         #endregion
@@ -177,7 +179,7 @@ namespace _Project.Scripts.UI.Character_Selection
 
             //Focus the new headshot.
             _focusedHeadShot = newFocus;
-            _focusedHeadShot.Focus();
+            _focusedHeadShot.Focus(_focusOutlineColor);
         }
         #endregion
 

@@ -45,7 +45,7 @@ namespace _Project.Scripts.Player.Characters.Merlin
         /// Shoots a sword.
         /// </summary>
         /// <param name="aimSource"></param>
-        public override void Do(ICharacterAimSource aimSource)
+        public override void Activate(ICharacterAimSource aimSource)
         {
             if(!IsLoaded)
                 throw new InvalidOperationException("Excalibur gun isn't loaded.");

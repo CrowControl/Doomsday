@@ -41,7 +41,7 @@ namespace _Project.Scripts.Units.Abilities
         /// Starts the beam.
         /// </summary>
         /// <param name="aimSource"></param>
-        public override void Do(ICharacterAimSource aimSource)
+        public override void Activate(ICharacterAimSource aimSource)
         {
             //Set the aim source.
             _aimSource = aimSource;

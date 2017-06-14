@@ -11,17 +11,26 @@ namespace _Project.Scripts.Player
     {
         #region Editor Variables
         [SerializeField] private float _maxPlayerCount;     //Maximum amount of players allowed.
-        [SerializeField] private Vector2 _spawnPosition;    //Position to spawn new players at.
         #endregion
 
         #region Other Objects
         private CharacterSelectUIManager _characterSelectUIManager; //The object that spawns Character select UI.
+        private Camera _camera;
         #endregion
-        
+
+        #region Properties
+        public List<PlayerCharacterController> Players { get { return _playerCharacters; } }
+        #endregion
+
         #region Internal Variables
         private readonly List<PlayerCharacterController> _playerCharacters = new List<PlayerCharacterController>();
         private int _newPlayerIndex;
         #endregion
+
+        private void Awake()
+        {
+            _camera = Camera.main;
+        }
 
         private void Start()
         {
@@ -45,7 +54,7 @@ namespace _Project.Scripts.Player
         private void OnCharacterSelected(PlayerCharacterController characterPrefab, InputDevice device)
         {
             //Spawn the character, pass the device reference.
-            PlayerCharacterController playerCharacter = Instantiate(characterPrefab, _spawnPosition, Quaternion.identity);
+            PlayerCharacterController playerCharacter = Instantiate(characterPrefab,  (Vector2)_camera.transform.position, Quaternion.identity);
             playerCharacter.Device = device;
             
             _playerCharacters.Add(playerCharacter);

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114396284227814726}
   - component: {fileID: 114587771544754484}
   - component: {fileID: 114033892647294414}
+  - component: {fileID: 114183523048580788}
   m_Layer: 0
   m_Name: Player Manager
   m_TagString: Untagged
@@ -54,7 +55,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxPlayerCount: 4
-  _spawnPosition: {x: 0, y: 0}
+--- !u!114 &114183523048580788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1994416676569404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc144ebdd6b6c440a07f1b59603539e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minSize: 3
+  _maxSize: 7
+  _playerDistanceAtMinSize: 2
+  _playerDistanceAtMaxSize: 6
+  _singlePlayerSize: 3
 --- !u!114 &114396284227814726
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -25,6 +25,12 @@ namespace _Project.Scripts.UI.Character_Selection
 
         public float Width { get { return _rectTransform.rect.width; } }
 
+        public bool IsFocus { get; private set; }
+
+        #endregion
+
+        #region Internal
+        private Color _previousOutLineColor;
         #endregion
 
         private void Awake()
@@ -36,14 +42,29 @@ namespace _Project.Scripts.UI.Character_Selection
             UnFocus();
         }
 
-        public void Focus()
+        public void Focus(Color focusOutlineColor)
         {
-            _outline.enabled = true;
+            if (IsFocus)
+            {
+                Debug.LogError("Tried to focus a headshot that was already focussed.");
+                return;
+            }
+
+            _previousOutLineColor = _outline.effectColor;
+            _outline.effectColor = focusOutlineColor;
+            IsFocus = true;
         }
 
         public void UnFocus()
         {
-            _outline.enabled = false;
+            if (!IsFocus)
+            {
+                Debug.LogError("Tried to unfocus a headshot that wasn't focussed.");
+                return;
+            }
+
+            _outline.effectColor = _previousOutLineColor;
+            IsFocus = false;
         }
     }
 }
