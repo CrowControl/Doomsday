@@ -19,9 +19,6 @@ namespace _Project.Scripts.Player.Characters.Psycoon
         {
             _aimsource = GetComponentInParent<ICharacterAimSource>();
             AbilitySpawner = GetComponentInChildren<AbilitySpawner>();
-
-            AbilitySpawner.UseCustomAimSource = true;
-            AbilitySpawner.CustomAimSource = new ProxyAimSource(_aimsource, transform);
         }
 
         private void Update()

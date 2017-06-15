@@ -14,6 +14,8 @@ namespace _Project.Scripts.Player
         private Animator _animator;                 //Handles Animation.
         private SpriteRenderer _renderer;           //Handles rendering of the sprite.
         private ICharacterAimSource _characterAim;  //Component to get aiming input from.
+
+        private ISpriteHandlerAssistant[] _assistants;
         #endregion
 
         #region Properties
@@ -36,6 +38,8 @@ namespace _Project.Scripts.Player
             _animator = GetComponent<Animator>();
             _renderer = GetComponent<SpriteRenderer>();
             _characterAim = GetComponent<ICharacterAimSource>();
+
+            _assistants = GetComponentsInChildren<ISpriteHandlerAssistant>();
         }
 
         private void Update()
@@ -78,11 +82,19 @@ namespace _Project.Scripts.Player
         /// <param name="flipped">if true, we flip.</param>
         private void SetFlipX(bool flipped)
         {
+            foreach (ISpriteHandlerAssistant assistant in _assistants)
+                assistant.SetFlipX(flipped);
+
             //Choose.
             float x = flipped ? 180 : 0;
 
             //Assign.
             transform.rotation = Quaternion.Euler(0, x, 0);
         }
+    }
+
+    public interface ISpriteHandlerAssistant
+    {
+        void SetFlipX(bool flipped);
     }
 }

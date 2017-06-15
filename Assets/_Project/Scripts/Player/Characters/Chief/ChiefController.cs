@@ -19,11 +19,6 @@ namespace _Project.Scripts.Player.Characters.Chief
         #endregion
 
         #region Editor Variables
-        //Ability prefabs.
-        [SerializeField] private ShotBeamController _minigunBulletBeam;
-        [SerializeField] private ShotBeamController _flameThrowerBeam;
-        [SerializeField] private Ability _shotGunShotPrefab;
-
         [SerializeField] private ChiefAbility _minigunAbility;
         [SerializeField] private ChiefAbility _flameAbility;
         [SerializeField] private ChiefAbility _shotGunAbility;
@@ -36,8 +31,9 @@ namespace _Project.Scripts.Player.Characters.Chief
         #endregion
 
         #region Components
-
-        private AbilitySpawner _abilitySpawner;
+        private ChiefGunSpriteHandler _chiefGun;
+        private AbilitySpawner _gunAbilitySpawner;
+        private AbilitySpawner _switchExplosionSpawner;
         #endregion
 
         #region Properties
@@ -57,12 +53,19 @@ namespace _Project.Scripts.Player.Characters.Chief
         /// </summary>
         protected void Awake()
         {
-            _abilitySpawner = GetComponentInChildren<AbilitySpawner>();
+            _chiefGun = GetComponentInChildren<ChiefGunSpriteHandler>();
+            _switchExplosionSpawner = GetComponent<AbilitySpawner>();
+
             InitializeAudio();
             
             _abilities = new[] { _minigunAbility, _flameAbility, _shotGunAbility };
 
             TransitionTo(new NotShootingState());
+        }
+
+        private void Start()
+        {
+            _gunAbilitySpawner = _chiefGun.AbilitySpawner;
         }
 
         /// <summary>
@@ -109,7 +112,7 @@ namespace _Project.Scripts.Player.Characters.Chief
         /// <summary>
         /// Changes to the next ability.
         /// </summary>
-        private void ChangeAbility()
+        private void IncrementAbilityIndex()
         {
             //Increment index.
             _abilityIndex++;
@@ -130,6 +133,8 @@ namespace _Project.Scripts.Player.Characters.Chief
 
             private EventInstance _abilitySoundfile; //corresponding audiofile
             private string _parameterName;
+
+            public Sprite GunSprite { get { return _gunSprite; } }
             
             #region Audio
             public bool HandlesAudio { get { return _abilitySoundfile != null; } }
@@ -254,8 +259,8 @@ namespace _Project.Scripts.Player.Characters.Chief
                 if (ability.HandlesAudio)
                     ability.StartActiveSound();
 
-                chief._abilitySpawner.OnAbilitySpawnFinished += OnAbilityFinished;
-                AbilityInstance = chief._abilitySpawner.Spawn(chief, _abilityPrefab);
+                chief._gunAbilitySpawner.OnAbilitySpawnFinished += OnAbilityFinished;
+                AbilityInstance = chief._gunAbilitySpawner.Spawn(chief, _abilityPrefab, true);
             }
 
             public override void Exit(ChiefController chief)
@@ -264,7 +269,7 @@ namespace _Project.Scripts.Player.Characters.Chief
                 if (ability.HandlesAudio)
                     ability.StartIdleSound();
 
-                chief._abilitySpawner.OnAbilitySpawnFinished -= OnAbilityFinished;
+                chief._gunAbilitySpawner.OnAbilitySpawnFinished -= OnAbilityFinished;
                 base.Exit(chief);
             }
 
@@ -332,7 +337,7 @@ namespace _Project.Scripts.Player.Characters.Chief
                     ability.StopSound();
 
                 //***************** oneshot voor wapenverandering *************8
-                AbilitySpawner spawner = chief._abilitySpawner;
+                AbilitySpawner spawner = chief._switchExplosionSpawner;
                 spawner.OnAbilitySpawnFinished += () => _shouldTransition = true;
 
                 spawner.Spawn(chief, chief._onSwitchExplosionPrefab);
@@ -347,9 +352,10 @@ namespace _Project.Scripts.Player.Characters.Chief
             //Change to the next ability.
             public override void Exit(ChiefController chief)
             {
-                chief.ChangeAbility();
+                chief.IncrementAbilityIndex();
 
                 ChiefAbility ability = chief.CurrentAbility;
+                chief._chiefGun.SetSprite(ability.GunSprite);
                 if (ability.HandlesAudio)
                     ability.StartSound();
             }

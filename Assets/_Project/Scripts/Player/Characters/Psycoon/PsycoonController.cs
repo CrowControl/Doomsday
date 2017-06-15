@@ -237,7 +237,7 @@ namespace _Project.Scripts.Player.Characters.Psycoon
             public void Enter(PsycoonController psycoon, InputDevice controller)
             {
                 _spawner.OnAbilitySpawnFinished += OnAbilityFinished;
-                _spawner.Spawn(psycoon);
+                _spawner.Spawn(psycoon, _spawner.transform);
             }
 
             public IPsycoonState Update(PsycoonController psycoon, InputDevice controller)

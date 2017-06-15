@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4786292806616188}
   - component: {fileID: 212965694023184786}
+  - component: {fileID: 114963580088792620}
   - component: {fileID: 61255321888747132}
   m_Layer: 8
   m_Name: Totem gun
@@ -154,7 +155,7 @@ GameObject:
   - component: {fileID: 114094246316704064}
   - component: {fileID: 212260856754380946}
   - component: {fileID: 114290855526533408}
-  - component: {fileID: 114843900847552908}
+  - component: {fileID: 114545102952557934}
   - component: {fileID: 210928854829928244}
   - component: {fileID: 114451780621710850}
   - component: {fileID: 66931305478444848}
@@ -162,6 +163,7 @@ GameObject:
   - component: {fileID: 114476101262227178}
   - component: {fileID: 114202905633741406}
   - component: {fileID: 114966411696685126}
+  - component: {fileID: 114595889519025374}
   m_Layer: 8
   m_Name: Chief
   m_TagString: Player
@@ -490,7 +492,7 @@ CompositeCollider2D:
       - X: 1925666
         Y: 6556072
       - X: 3426813
-        Y: -6213224
+        Y: -6213225
   - m_Collider: {fileID: 61518728812246578}
     m_ColliderPaths:
     - - X: -3252418
@@ -533,8 +535,8 @@ CompositeCollider2D:
         Y: 2800500
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.3280601, y: -0.4969492}
-      - {x: 0.34268132, y: -0.6213224}
+    - - {x: 0.3280601, y: -0.49694932}
+      - {x: 0.34268132, y: -0.6213225}
       - {x: 1.1596394, y: -0.5252815}
       - {x: 1.0095246, y: 0.751648}
       - {x: 0.5834787, y: 0.7015624}
@@ -667,7 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
---- !u!114 &114843900847552908
+--- !u!114 &114545102952557934
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -675,12 +677,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 1870531504023426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47a801963464ec244953b3864453c5f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5611ef11d9da1d84ca8e8e770185da00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _rotateFrontArmToAim: 0
   _rotateBackArmToAim: 1
-  _aimDegreeAdjustment: 20
+--- !u!114 &114595889519025374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870531504023426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be738b0d41402024d99376565891a11a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abilityPrefab: {fileID: 0}
+--- !u!114 &114963580088792620
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1529444412368444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de8214ed1dd4e1ca21a30c5cd5d3138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114966411696685126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -692,12 +716,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a57f20bed99ba4b81ea7ac390b8587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minigunBulletBeam: {fileID: 114790013702403584, guid: 6bfe57cf7b6f61e488a5875771330330,
-    type: 2}
-  _flameThrowerBeam: {fileID: 114585453643312248, guid: 4015feade9942b149bd838af420a38dd,
-    type: 2}
-  _shotGunShotPrefab: {fileID: 114109883025387210, guid: 9267ecd3fda2a6b4e846df8781ecd3b4,
-    type: 2}
+  _minigunAbility:
+    _ability: {fileID: 114790013702403584, guid: 6bfe57cf7b6f61e488a5875771330330,
+      type: 2}
+    _gunSprite: {fileID: 21300000, guid: 20f6643524d261046805ca67f1aabb80, type: 3}
+  _flameAbility:
+    _ability: {fileID: 114585453643312248, guid: 4015feade9942b149bd838af420a38dd,
+      type: 2}
+    _gunSprite: {fileID: 21300000, guid: d65c66e28ee979342914d1107a825e49, type: 3}
+  _shotGunAbility:
+    _ability: {fileID: 114109883025387210, guid: 9267ecd3fda2a6b4e846df8781ecd3b4,
+      type: 2}
+    _gunSprite: {fileID: 21300000, guid: 010c12f2da641a54db04734805e59d5c, type: 3}
   _onSwitchExplosionPrefab: {fileID: 114339485180710576, guid: d3d0886cda034d64093994931ea74c85,
     type: 2}
   _abilityAfterSwitchCooldown: 0
@@ -711,7 +741,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 10037387
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 12
 --- !u!212 &212260856754380946
 SpriteRenderer:
   m_ObjectHideFlags: 1
