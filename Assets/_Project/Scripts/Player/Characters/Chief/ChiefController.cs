@@ -5,6 +5,7 @@ using UnityEngine;
 using FMOD;
 using FMOD.Studio;
 using _Project.Scripts.Units.Abilities;
+using _Project.Scripts.Units.Spawners;
 
 
 namespace _Project.Scripts.Player.Characters.Chief

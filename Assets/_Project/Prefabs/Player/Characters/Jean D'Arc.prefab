@@ -306,7 +306,7 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
+  m_UseAutoMass: 0
   m_Mass: 0.11049997
   m_LinearDrag: 0
   m_AngularDrag: 0
@@ -475,7 +475,7 @@ CompositeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -649,6 +649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ff9d2b17426c64d8dc68bdf170d936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnAsChild: 0
   _shieldArmSprite: {fileID: 21300000, guid: 7b8caa58ade13c849a0622cedf6fb656, type: 3}
 --- !u!114 &114476101262227178
 MonoBehaviour:

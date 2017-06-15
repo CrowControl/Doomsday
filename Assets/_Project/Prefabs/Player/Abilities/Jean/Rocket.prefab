@@ -26,8 +26,9 @@ GameObject:
   - component: {fileID: 114836680725642908}
   - component: {fileID: 114801431922103660}
   - component: {fileID: 114818604722063896}
-  - component: {fileID: 114659212547773550}
   - component: {fileID: 114671612853625208}
+  - component: {fileID: 114419537923020402}
+  - component: {fileID: 114004626811188858}
   m_Layer: 12
   m_Name: Rocket
   m_TagString: Untagged
@@ -77,12 +78,26 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.009252431, y: 0.009251535}
-  m_Size: {x: 2.2027295, y: 0.28011885}
+  m_Offset: {x: -0.15312739, y: 0.0092515545}
+  m_Size: {x: 1.8779746, y: 0.28011948}
   m_Direction: 1
+--- !u!114 &114004626811188858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1192009315006256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc356a2bbae28b346a5c74eb28c65652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnPrefab: {fileID: 1654054511866574, guid: 5cdc70ad4beacb84ab097d76a14725ba,
+    type: 2}
+  _destroyOnSpawn: 1
 --- !u!114 &114198970506474280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -95,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disableAfterAwake: 0
---- !u!114 &114659212547773550
+--- !u!114 &114419537923020402
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -103,15 +118,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1192009315006256}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa0a6cbcd97c834fb8bff70ffee1a26, type: 3}
+  m_Script: {fileID: 11500000, guid: 28a4f74ab5413b145a744c6ff0a461e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectPrefab: {fileID: 114466793232508624, guid: c3bd5f9cc6974b442b6c691b7386d452,
+  _spawnPrefab: {fileID: 1654054511866574, guid: 5cdc70ad4beacb84ab097d76a14725ba,
     type: 2}
-  _useMaxHitCount: 1
-  _maxHitCount: 1
-  _singleTargetHitCooldown: 1
-  _destroyOnMaxHitReached: 1
+  _destroyOnSpawn: 1
+  _maxDistance: 10
 --- !u!114 &114671612853625208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,8 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55e62dea70f0894e9074737b12b3a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventInstancePath: event:/Joanne/Main__atack
-  _stopMode: 1
+  _eventInstancePath: event:/Joanne/Main_attack
+  _stopMode: 0
 --- !u!114 &114801431922103660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnAsChild: 0
-  _range: 10
+  _range: 11
 --- !u!114 &114818604722063896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,7 +167,7 @@ MonoBehaviour:
   _useMaxHitCount: 1
   _maxHitCount: 1
   _singleTargetHitCooldown: 1
-  _destroyOnMaxHitReached: 1
+  _destroyOnMaxHitReached: 0
 --- !u!114 &114836680725642908
 MonoBehaviour:
   m_ObjectHideFlags: 1
