@@ -47,6 +47,8 @@ namespace _Project.Scripts.Player
             set { _backArm.Rotation = value; }
         }
 
+        protected virtual float AimingDegree { get { return _aimSource.AimingDegree; } }
+
         #endregion
 
         private void Awake()
@@ -62,14 +64,15 @@ namespace _Project.Scripts.Player
         private void LateUpdate()
         {
             //Set arm positions.
-            _frontArm.Update(_animationNodes.GetPosition(0), _aimSource);
-            _backArm.Update(_animationNodes.GetPosition(1), _aimSource);
+            _frontArm.Update(_animationNodes.GetPosition(0), AimingDegree);
+            _backArm.Update(_animationNodes.GetPosition(1), AimingDegree);
         }
+
 
         [Serializable]
         private class Arm
         {
-            private readonly SpriteRenderer _renderer;
+            private readonly SpriteRenderer[] _renderers;
             private readonly Transform _transform;
 
             #region Properties
@@ -85,28 +88,33 @@ namespace _Project.Scripts.Player
             public Arm(Transform transform, bool canRotate = true)
             {
                 _transform = transform;
-                _renderer = transform.GetComponent<SpriteRenderer>();
+                _renderers = transform.GetComponentsInChildren<SpriteRenderer>();
 
                 CanRotate = canRotate;
             }
 
-            public void Update(Vector3 newPosition, ICharacterAimSource aimSource)
+            public void Update(Vector3 newPosition, float degree)
             {
                 _transform.position = newPosition;
 
                 if(CanRotate)
-                    RotateTowards(aimSource);
+                    RotateTowards(degree);
             }
 
-            private void RotateTowards(ICharacterAimSource aimSource)
+            private void RotateTowards(float degree)
             {
                 //Rotate arm to where the player is aiming.
-                float degree = aimSource.AimingDegree;
                 _transform.rotation = Quaternion.AngleAxis(degree, Vector3.forward);
 
                 //The shooting arm sprite needs to be flipped if we're aiming at the right side of the screen. 
                 //If your wondering why, try commenting the line below.
-                _renderer.flipY = Mathf.Abs(degree) < 90;
+                FlipArm(Mathf.Abs(degree) < 90);
+            }
+
+            protected virtual void FlipArm(bool flip)
+            {
+                foreach (SpriteRenderer renderer in _renderers)
+                    renderer.flipY = flip;
             }
         }
     }

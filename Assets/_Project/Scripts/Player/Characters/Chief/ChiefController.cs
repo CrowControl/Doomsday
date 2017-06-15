@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using InControl;
 using UnityEngine;
 using FMOD;
 using FMOD.Studio;
 using _Project.Scripts.Units.Abilities;
 using _Project.Scripts.Units.Spawners;
+using Debug = UnityEngine.Debug;
 
 
 namespace _Project.Scripts.Player.Characters.Chief
 {
-    [RequireComponent(typeof(AbilitySpawner))]
     class ChiefController : PlayerCharacterController
     {
         #region Audio Variables
@@ -24,6 +23,11 @@ namespace _Project.Scripts.Player.Characters.Chief
         [SerializeField] private ShotBeamController _minigunBulletBeam;
         [SerializeField] private ShotBeamController _flameThrowerBeam;
         [SerializeField] private Ability _shotGunShotPrefab;
+
+        [SerializeField] private ChiefAbility _minigunAbility;
+        [SerializeField] private ChiefAbility _flameAbility;
+        [SerializeField] private ChiefAbility _shotGunAbility;
+
         [SerializeField] private Ability _onSwitchExplosionPrefab;
 
         //Cooldowns.
@@ -31,7 +35,7 @@ namespace _Project.Scripts.Player.Characters.Chief
         [SerializeField] private float _abilityAfterAbilityCooldown;
         #endregion
 
-        #region Properties
+        #region Components
 
         private AbilitySpawner _abilitySpawner;
         #endregion
@@ -53,13 +57,11 @@ namespace _Project.Scripts.Player.Characters.Chief
         /// </summary>
         protected void Awake()
         {
-            _abilitySpawner = GetComponent<AbilitySpawner>();
+            _abilitySpawner = GetComponentInChildren<AbilitySpawner>();
+            InitializeAudio();
+            
+            _abilities = new[] { _minigunAbility, _flameAbility, _shotGunAbility };
 
-            //init audio event instance
-            _flameThrower = FMODUnity.RuntimeManager.CreateInstance("event:/Chief/Main_attack");
-            _flameThrower.set3DAttributes(_attribute);
-
-            InitializeAbilities();
             TransitionTo(new NotShootingState());
         }
 
@@ -96,13 +98,12 @@ namespace _Project.Scripts.Player.Characters.Chief
         /// <summary>
         /// Initialize the abilities.
         /// </summary>
-        private void InitializeAbilities()
+        private void InitializeAudio()
         {
-            _abilities = new ChiefAbility[3];
-
-            _abilities[0] = new ChiefAbility(_minigunBulletBeam, ChiefAbilityType.Coninuous);
-            _abilities[1] = new ChiefAbility(_flameThrowerBeam, ChiefAbilityType.Coninuous, _flameThrower, "Flamethrowing");
-            _abilities[2] = new ChiefAbility(_shotGunShotPrefab, ChiefAbilityType.SinglePress);
+            //init audio event instance
+            _flameThrower = FMODUnity.RuntimeManager.CreateInstance("event:/Chief/Main_attack");
+            _flameThrower.set3DAttributes(_attribute);
+            _flameAbility.SetAudio(_flameThrower, "Flamethrowing");
         }
 
         /// <summary>
@@ -118,33 +119,23 @@ namespace _Project.Scripts.Player.Characters.Chief
                 _abilityIndex = 0;
         }
 
-        private enum ChiefAbilityType
-        {
-            Coninuous,  //Abilities that stay until the button is released.
-            SinglePress //Abilities that are fired by a single press, and don't care about any further input.
-        }
-
         /// <summary>
         /// We wrap the abilities is a class that also saves what type of shooting the ability needs.
         /// </summary>
+        [Serializable]
         private class ChiefAbility
         {
-            private readonly Ability _ability;          //Prefab to spawn.
-            private readonly ChiefAbilityType _type;    //Type of this ability.
-            private readonly EventInstance _abilitySoundfile; //corresponding audiofile
-            private readonly string _parameterName;
+            [SerializeField] private Ability _ability;          //Prefab to spawn.
+            [SerializeField] private Sprite _gunSprite;
 
+            private EventInstance _abilitySoundfile; //corresponding audiofile
+            private string _parameterName;
+            
+            #region Audio
             public bool HandlesAudio { get { return _abilitySoundfile != null; } }
 
-            public ChiefAbility(Ability ability, ChiefAbilityType type)
+            public void SetAudio(EventInstance abilitySoundfile, string parameterName)
             {
-                _ability = ability;
-                _type = type;
-            }
-            public ChiefAbility(Ability ability, ChiefAbilityType type, EventInstance abilitySoundfile, string parameterName)
-            {
-                _ability = ability;
-                _type = type;
                 _abilitySoundfile = abilitySoundfile;
                 _parameterName = parameterName;
             }
@@ -169,6 +160,7 @@ namespace _Project.Scripts.Player.Characters.Chief
             {
                 _abilitySoundfile.stop(STOP_MODE.IMMEDIATE);
             }
+            #endregion
 
             /// <summary>
             /// The shooting state to transition to when we want to shoot this ability.
@@ -177,19 +169,14 @@ namespace _Project.Scripts.Player.Characters.Chief
             {
                 get
                 {
-                    switch (_type)
-                    {
-                        case ChiefAbilityType.Coninuous:
-                            return new ContinuousShootingState(_ability);
-                        case ChiefAbilityType.SinglePress:
-                            return new SinglePressShootingState(_ability);
+                    if (_ability is ShotBeamController)
+                        return new ContinuousShootingState(_ability);
 
-                        default:
-                            throw new ArgumentOutOfRangeException();    //Shouldn't be possible.
-                    }
+                    return new SinglePressShootingState(_ability);
                 }
             }
         }
+
         #endregion
 
         #region State Machine
