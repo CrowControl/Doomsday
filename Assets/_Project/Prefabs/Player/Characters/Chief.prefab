@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 114966411696685126}
   - component: {fileID: 114595889519025374}
   - component: {fileID: 114093019532582162}
+  - component: {fileID: 114089319185966054}
   m_Layer: 8
   m_Name: Chief
   m_TagString: Player
@@ -579,6 +580,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disableAfterAwake: 0
+--- !u!114 &114089319185966054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870531504023426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f911ac75f355d5f439efdd3d3736fd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventRef: event:/Chief/Drop_in
 --- !u!114 &114093019532582162
 MonoBehaviour:
   m_ObjectHideFlags: 1

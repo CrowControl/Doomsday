@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 114138150544318832}
   - component: {fileID: 114727538256070020}
   - component: {fileID: 114684397211812886}
+  - component: {fileID: 114083498707733578}
   m_Layer: 8
   m_Name: Merlin
   m_TagString: Player
@@ -564,6 +565,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856769d817076174c8a632a1a1d47c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114083498707733578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413205995278750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f911ac75f355d5f439efdd3d3736fd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventRef: event:/Merlin/Drop_in
 --- !u!114 &114138150544318832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -577,6 +590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingHP: 10
   _maxHP: 10
+  _destroyOnDeath: 0
 --- !u!114 &114247769142816122
 MonoBehaviour:
   m_ObjectHideFlags: 1
