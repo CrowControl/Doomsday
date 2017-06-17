@@ -66,3 +66,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPrefab: {fileID: 1324862906674764, guid: 3a5c6f30300d94141818913171ed75ee,
     type: 2}
+  _maxInstancesOnOneTarget: 0

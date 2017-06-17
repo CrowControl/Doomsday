@@ -110,7 +110,7 @@ MonoBehaviour:
   _useMaxHitCount: 1
   _maxHitCount: 1
   _singleTargetHitCooldown: 0.5
-  _destroyOnMaxHitReached: 0
+  _destroyOnMaxHitReached: 1
 --- !u!114 &114575790909404676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,7 +139,7 @@ MonoBehaviour:
   _useMaxHitCount: 1
   _maxHitCount: 1
   _singleTargetHitCooldown: 0.5
-  _destroyOnMaxHitReached: 0
+  _destroyOnMaxHitReached: 1
 --- !u!114 &114930643367000526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e367be5f9a974014ca239bd8bc8a6398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnAsChild: 0
   _range: 11.53
 --- !u!212 &212951030579463466
 SpriteRenderer:

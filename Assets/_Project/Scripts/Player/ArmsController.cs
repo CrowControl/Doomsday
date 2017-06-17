@@ -111,7 +111,7 @@ namespace _Project.Scripts.Player
                 FlipArm(Mathf.Abs(degree) < 90);
             }
 
-            protected virtual void FlipArm(bool flip)
+            private void FlipArm(bool flip)
             {
                 foreach (SpriteRenderer renderer in _renderers)
                     renderer.flipY = flip;

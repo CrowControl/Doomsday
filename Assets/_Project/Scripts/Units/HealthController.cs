@@ -8,6 +8,7 @@ namespace _Project.Scripts.Units
         #region Editor Variables
         [SerializeField] private float _startingHP;
         [SerializeField] private float _maxHP;
+
         [SerializeField] private bool _destroyOnDeath;
         #endregion
 

@@ -25,10 +25,11 @@ GameObject:
   - component: {fileID: 50309409962105102}
   - component: {fileID: 114836680725642908}
   - component: {fileID: 114801431922103660}
+  - component: {fileID: 114175957926566118}
   - component: {fileID: 114818604722063896}
-  - component: {fileID: 114769438899574480}
   - component: {fileID: 114419537923020402}
   - component: {fileID: 114004626811188858}
+  - component: {fileID: 114769438899574480}
   - component: {fileID: 114504612628175006}
   m_Layer: 12
   m_Name: Rocket
@@ -99,6 +100,20 @@ MonoBehaviour:
   _spawnPrefab: {fileID: 1654054511866574, guid: 5cdc70ad4beacb84ab097d76a14725ba,
     type: 2}
   _destroyOnSpawn: 1
+--- !u!114 &114175957926566118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1192009315006256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3940f85e232bf9845b3dc1134fbbfb51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startingHP: 1
+  _maxHP: 1
+  _destroyOnDeath: 1
 --- !u!114 &114198970506474280
 MonoBehaviour:
   m_ObjectHideFlags: 1
