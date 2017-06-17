@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55e62dea70f0894e9074737b12b3a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventInstancePath: event:/Merlin/Secondary_attack
+  _eventInstancePath: ondary_attack/Secondary_attack
   _stopMode: 0
 --- !u!114 &114617326546459318
 MonoBehaviour:
