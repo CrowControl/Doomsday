@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114557359408058200}
   - component: {fileID: 114623983640892600}
   - component: {fileID: 114130489157853814}
-  - component: {fileID: 114653329058631120}
+  - component: {fileID: 114723975182003268}
   - component: {fileID: 114777517711570054}
   m_Layer: 11
   m_Name: Excalibur Projectile
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnAsChild: 0
   _range: 10
---- !u!114 &114653329058631120
+--- !u!114 &114723975182003268
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -145,15 +145,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1623881854764504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa0a6cbcd97c834fb8bff70ffee1a26, type: 3}
+  m_Script: {fileID: 11500000, guid: dc356a2bbae28b346a5c74eb28c65652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectPrefab: {fileID: 114715104579810534, guid: 070e21149fd016f46a0c142eb8a8415c,
+  _spawnPrefab: {fileID: 1868300637659562, guid: c0596f11855846a458987e7d7d864413,
     type: 2}
-  _useMaxHitCount: 1
-  _maxHitCount: 1
-  _singleTargetHitCooldown: 0
-  _destroyOnMaxHitReached: 1
+  _destroyOnSpawn: 1
+  _spawnParent: 2
+  _maxSpawnCount: 1
 --- !u!114 &114777517711570054
 MonoBehaviour:
   m_ObjectHideFlags: 1
