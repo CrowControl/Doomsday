@@ -7,7 +7,7 @@ namespace _Project.Scripts.Audio
     [RequireComponent(typeof(Ability))]
     public abstract class AbilityAudio : CustomMonoBehaviour 
     {
-        private void Awake()
+        protected virtual void Awake()
         {
             Ability ability = GetComponent<Ability>();
 

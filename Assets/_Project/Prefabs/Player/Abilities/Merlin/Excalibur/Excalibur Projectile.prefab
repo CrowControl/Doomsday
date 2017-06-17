@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114623983640892600}
   - component: {fileID: 114130489157853814}
   - component: {fileID: 114653329058631120}
+  - component: {fileID: 114777517711570054}
   m_Layer: 11
   m_Name: Excalibur Projectile
   m_TagString: Untagged
@@ -134,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e367be5f9a974014ca239bd8bc8a6398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnAsChild: 0
   _range: 10
 --- !u!114 &114653329058631120
 MonoBehaviour:
@@ -152,6 +154,19 @@ MonoBehaviour:
   _maxHitCount: 1
   _singleTargetHitCooldown: 0
   _destroyOnMaxHitReached: 1
+--- !u!114 &114777517711570054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1623881854764504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89bed70da6935864e8b304a98789da5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onActivateEventString: event:/Merlin/Main_attack
+  _onDestroyEventString: 
 --- !u!212 &212292420552856900
 SpriteRenderer:
   m_ObjectHideFlags: 1

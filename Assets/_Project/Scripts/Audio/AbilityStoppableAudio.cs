@@ -14,8 +14,10 @@ namespace _Project.Scripts.Audio
 
         private EventInstance _eventInstance;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             _eventInstance = FMODUnity.RuntimeManager.CreateInstance(_eventInstancePath);
             _eventInstance.set3DAttributes(new ATTRIBUTES_3D());
         }

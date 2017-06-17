@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 114031427935389688}
   - component: {fileID: 114138150544318832}
   - component: {fileID: 114727538256070020}
+  - component: {fileID: 114684397211812886}
   m_Layer: 8
   m_Name: Merlin
   m_TagString: Player
@@ -630,6 +631,17 @@ MonoBehaviour:
     type: 3}
   _unLoadedSwordGunSprite: {fileID: 21300000, guid: 772fb17f59912384aa507e0b344c9e57,
     type: 3}
+--- !u!114 &114684397211812886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413205995278750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbcb2b8eaf902e344bc11902de75ec7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114700735524367780
 MonoBehaviour:
   m_ObjectHideFlags: 1

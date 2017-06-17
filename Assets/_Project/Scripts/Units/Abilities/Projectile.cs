@@ -48,6 +48,8 @@ namespace _Project.Scripts.Units.Abilities
         /// </summary>
         public override void Activate(ICharacterAimSource aimSource)
         {
+            base.Activate(aimSource);
+
             RotateTowardAim(aimSource);
 
             //make the projectile move forward.
