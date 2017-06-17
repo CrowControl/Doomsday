@@ -5,51 +5,18 @@ using _Project.Scripts.General;
 
 namespace _Project.Scripts.Player.Characters.Merlin
 {
-    [RequireComponent(typeof(CircleCollider2D)),    //Used as range to find other excaliburs in.
-     RequireComponent(typeof(CapsuleCollider2D))]   //This is so other excaliburs can detect this one.
+    [RequireComponent(typeof(CapsuleCollider2D))]
     public class StuckExcalibur : CustomMonoBehaviour
     {
-        #region Properties
-        public int OtherExcalibursInRange { get { return _otherExcalibursInRange.Count; } }
-        #endregion
-
-        #region Internal Variables
-        private readonly HashSet<StuckExcalibur> _otherExcalibursInRange = new HashSet<StuckExcalibur>();
-        #endregion
-
-        private void Awake()
-        {
-            GetComponent<CircleCollider2D>().isTrigger = true;
-            GetComponent<CapsuleCollider2D>().isTrigger = false;
-        }
-
-        #region Range
-        //Watches out for excaliburs entering in range.
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            StuckExcalibur otherExcalibur = other.GetComponent<StuckExcalibur>();
-            if(otherExcalibur != null && otherExcalibur != this)
-                _otherExcalibursInRange.Add(otherExcalibur);
-        }
-
-        //Watches out for excaliburs extiting range.
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            StuckExcalibur otherExcalibur = other.GetComponent<StuckExcalibur>();
-            if (otherExcalibur != null)
-                _otherExcalibursInRange.Remove(otherExcalibur);
-        }
-        #endregion
-
         /// <summary>
         /// Gets the nearest other excalibur.
         /// </summary>
         /// <param name="excluded">excaliburs to ignore.</param>
         /// <returns>The nearest other excalibur</returns>
-        public StuckExcalibur GetNearestOtherExcalibur(List<StuckExcalibur> excluded)
+        public StuckExcalibur GetNearestOtherExcalibur(List<StuckExcalibur> excluded, float range)
         {
             //Exclude the excluded excaliburs. hehe.
-            List<StuckExcalibur> otherExcaliburs = new List<StuckExcalibur>(_otherExcalibursInRange);
+            List<StuckExcalibur> otherExcaliburs = FindExcalibursInRange(range);
             if (excluded != null)
                 foreach (StuckExcalibur excludedExcalibur in excluded)
                     otherExcaliburs.Remove(excludedExcalibur);
@@ -74,18 +41,35 @@ namespace _Project.Scripts.Player.Characters.Merlin
 
             return nearestExcalibur;
         }
-        public StuckExcalibur GetNearestOtherExcalibur(StuckExcalibur excluded)
+
+        public StuckExcalibur GetNearestOtherExcalibur(StuckExcalibur excluded, float range)
         {
-            return GetNearestOtherExcalibur(new List<StuckExcalibur> { excluded });
+            return GetNearestOtherExcalibur(new List<StuckExcalibur> { excluded }, range);
         }
 
         /// <summary>
         /// Gets the nearest other excalibur.
         /// </summary>
         /// <returns>The nearest other excalibur</returns>
-        public StuckExcalibur GetNearestOtherExcalibur()
+        public StuckExcalibur GetNearestOtherExcalibur(float range)
         {
-            return GetNearestOtherExcalibur(new List<StuckExcalibur>());
+            return GetNearestOtherExcalibur(new List<StuckExcalibur>(), range);
+        }
+
+        private List<StuckExcalibur> FindExcalibursInRange(float range)
+        {
+            List<StuckExcalibur> excalibursInRange = new List<StuckExcalibur>();// = new List<StuckExcalibur>(_otherExcalibursInRange);
+
+            Collider2D[] collidersInRange = Physics2D.OverlapCircleAll(transform.position, range, 1 << 15);
+            foreach (Collider2D collider in collidersInRange)
+            {
+                StuckExcalibur excalibur = collider.gameObject.GetComponent<StuckExcalibur>();
+                if (excalibur != null)
+                    excalibursInRange.Add(excalibur);
+            }
+
+            excalibursInRange.Remove(this);
+            return excalibursInRange;
         }
     }
 }
