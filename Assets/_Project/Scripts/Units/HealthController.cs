@@ -8,6 +8,7 @@ namespace _Project.Scripts.Units
         #region Editor Variables
         [SerializeField] private float _startingHP;
         [SerializeField] private float _maxHP;
+        [SerializeField] private bool _destroyOnDeath;
         #endregion
 
         #region Properties
@@ -44,6 +45,9 @@ namespace _Project.Scripts.Units
         private void Awake()
         {
             HP = _startingHP;
+
+            if (_destroyOnDeath)
+                OnDeath += Destroy;
         }
 
         public void GetHit(float damage)
@@ -58,6 +62,11 @@ namespace _Project.Scripts.Units
             //Trigger death event if health reaches zero.
             if (_hp < 0 && OnDeath != null)
                 OnDeath();
+        }
+
+        private void Destroy()
+        {
+            Destroy(gameObject);
         }
     }
 }
