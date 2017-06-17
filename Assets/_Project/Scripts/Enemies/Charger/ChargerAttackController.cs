@@ -8,16 +8,26 @@ namespace _Project.Scripts.Enemies.Charger
     {
         #region Editor
 
-        [SerializeField] private float _distance;
+        [SerializeField] private float _chargeDistance;
+        [SerializeField] private float _speed;
+
+        [SerializeField] private float _willAttackDistance;
         [SerializeField] private float _cooldown;
         #endregion
 
+        #region Events
         public event BehaviourEventHandler OnFinished;
-        public float Distance { get { return _distance; } }
+        #endregion
+
+        #region Properties
+        public float Distance { get { return _willAttackDistance; } }
         public float Cooldown { get { return _cooldown; } }
+        #endregion
+
         public void StartAttack(PlayerCharacterController targetPlayer)
         {
-            throw new System.NotImplementedException();
+            Vector3 direction = transform.position - targetPlayer.transform.position;
+            direction.Normalize();
         }
     }
 }

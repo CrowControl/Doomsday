@@ -26,4 +26,9 @@ namespace _Project.Scripts.Enemies
         /// <param name="targetPlayer">The player the attack targets.</param>
         void StartAttack(PlayerCharacterController targetPlayer);
     }
+
+    public class EnemyAttackController : CustomMonoBehaviour
+    {
+        
+    }
 }
