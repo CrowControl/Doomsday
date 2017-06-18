@@ -1,6 +1,7 @@
 ﻿using System;
 using InControl;
 using UnityEngine;
+using _Project.Scripts.Units;
 using _Project.Scripts.Units.Abilities;
 using _Project.Scripts.Units.Spawners;
 
@@ -10,15 +11,17 @@ namespace _Project.Scripts.Player.Characters.Jean
     {
         #region Editor Variables
         [SerializeField] private float _maxShieldTime = 4;
+        [SerializeField] private float _shieldModeWalkingSpeed;
         [SerializeField] private float _cooldown = 0.2f;
         [SerializeField] private float _ShootingArmRotationDuringShield = -100;
         #endregion
 
         #region Components
         private ArmsController _arms;
+        private ShieldArmController _shieldArm;
         private PlayerSpriteHandler _spriteHandler;
         private AbilitySpawner _abilitySpawner;
-        private ShieldArmController _shieldArm;
+        private MovementController _movementController;
         #endregion
 
         #region Internal Variables
@@ -38,6 +41,7 @@ namespace _Project.Scripts.Player.Characters.Jean
             //Get components.
             _arms = GetComponent<ArmsController>();
             _spriteHandler = GetComponent<PlayerSpriteHandler>();
+            _movementController = GetComponent<MovementController>();
 
             //Get child components.
             _abilitySpawner = GetComponentInChildren<AbilitySpawner>();
@@ -114,9 +118,15 @@ namespace _Project.Scripts.Player.Characters.Jean
             private float _enterTime;           //Time when this state was entered.
             private bool _shouldTransition;     //bool to check if we should transition.
 
+            private float _previousSpeed;
+
             public override void Enter(JeanController jean)
             {
                 base.Enter(jean);
+
+                //Set walking speed.
+                _previousSpeed = jean._movementController.Speed;
+                jean._movementController.Speed = jean._shieldModeWalkingSpeed;
 
                 //Disable arm movement and sprite flipping.
                 jean._spriteHandler.XFlippingEnabled = false;
@@ -142,6 +152,9 @@ namespace _Project.Scripts.Player.Characters.Jean
 
             public override void Exit(JeanController jean)
             {
+                //Reset walking speed.
+                jean._movementController.Speed = _previousSpeed;
+
                 //Re-enable sprite flipping and arm movement.
                 jean._spriteHandler.XFlippingEnabled = true;
                 jean._arms.RotateBackArmToAim = true;

@@ -729,6 +729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxShieldTime: 4
+  _shieldModeWalkingSpeed: 1
   _cooldown: 0.5
   _ShootingArmRotationDuringShield: -100
 --- !u!114 &114879509179312186
