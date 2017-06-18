@@ -8,6 +8,9 @@ namespace _Project.Scripts.Units.Spawners
         [SerializeField] private GameObject _spawnPrefab;
         [SerializeField] private bool _destroyOnSpawn;
 
+        public delegate void SpawnerEventHandler(GameObject spawnedObject);
+        public event SpawnerEventHandler OnSpawn;
+
         /// <summary>
         /// Spawns the spawn prefab of this spawner.
         /// </summary>
@@ -28,6 +31,9 @@ namespace _Project.Scripts.Units.Spawners
 
                 spawnedObject.transform.SetParent(empty.transform);
             }
+
+            if (OnSpawn != null)
+                OnSpawn(spawnedObject);
 
             //Destroy if wanted.
             if (_destroyOnSpawn)
