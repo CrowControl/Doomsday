@@ -76,11 +76,11 @@ GameObject:
   - component: {fileID: 66227406330919578}
   - component: {fileID: 50150807944703300}
   - component: {fileID: 114031427935389688}
+  - component: {fileID: 114840167506929318}
   - component: {fileID: 114138150544318832}
   - component: {fileID: 114727538256070020}
   - component: {fileID: 114684397211812886}
   - component: {fileID: 114083498707733578}
-  - component: {fileID: 114840167506929318}
   m_Layer: 8
   m_Name: Merlin
   m_TagString: Player
@@ -205,7 +205,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1713063608981850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.222, y: -0.27, z: 0}
+  m_LocalPosition: {x: -0.781, y: 0.036, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4821223861207094}
@@ -273,7 +273,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1413205995278750}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -283,7 +283,7 @@ Transform:
   - {fileID: 4177517913596884}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4905859756488984
 Transform:
   m_ObjectHideFlags: 1
@@ -493,18 +493,18 @@ CompositeCollider2D:
         Y: 7726142
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.64025, y: 0.5685397}
-      - {x: 0.4046249, y: 0.5685397}
-      - {x: 0.4046249, y: 0.9184996}
-      - {x: 0.2037285, y: 0.9184996}
-      - {x: 0.0251093, y: 1.3853859}
-      - {x: -0.2231975, y: 1.2903897}
-      - {x: -0.0809215, y: 0.9184996}
-      - {x: -0.14662491, y: 0.9184996}
-      - {x: -0.14662491, y: 0.5685397}
-      - {x: -0.62225, y: 0.5685397}
-      - {x: -0.62225, y: -1.4965397}
-      - {x: 0.64025, y: -1.4965397}
+    - - {x: 0.62225, y: 0.5685397}
+      - {x: 0.14662491, y: 0.5685397}
+      - {x: 0.14662491, y: 0.9184996}
+      - {x: 0.0809215, y: 0.9184996}
+      - {x: 0.2231975, y: 1.2903897}
+      - {x: -0.0251093, y: 1.3853859}
+      - {x: -0.2037285, y: 0.9184996}
+      - {x: -0.4046249, y: 0.9184996}
+      - {x: -0.4046249, y: 0.5685397}
+      - {x: -0.64025, y: 0.5685397}
+      - {x: -0.64025, y: -1.4965397}
+      - {x: 0.62225, y: -1.4965397}
   m_VertexDistance: 0.0005
 --- !u!95 &95309925758744094
 Animator:
@@ -788,12 +788,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4b624219eabbc7d4aa76def25f0c167a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.1, y: 0.81}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
 --- !u!212 &212903710445662272
