@@ -57,8 +57,13 @@ namespace _Project.Scripts.Player
             _aimSource = GetComponent<ICharacterAimSource>();
 
             //Get arms.
-            _frontArm = new Arm(transform.Find("Front Arm"), _rotateFrontArmToAim);
-            _backArm = new Arm(transform.Find("Back Arm"), _rotateBackArmToAim);
+            _frontArm = InititializeArm(transform.Find("Front Arm"), _rotateFrontArmToAim);
+            _backArm = InititializeArm(transform.Find("Back Arm"), _rotateBackArmToAim);
+        }
+
+        protected virtual Arm InititializeArm(Transform armTransform, bool rotateToAim)
+        {
+            return new Arm(armTransform, rotateToAim);
         }
 
         private void LateUpdate()
@@ -70,9 +75,9 @@ namespace _Project.Scripts.Player
 
 
         [Serializable]
-        private class Arm
+        protected class Arm
         {
-            private readonly SpriteRenderer[] _renderers;
+            protected readonly SpriteRenderer[] _renderers;
             private readonly Transform _transform;
 
             #region Properties
@@ -111,7 +116,7 @@ namespace _Project.Scripts.Player
                 FlipArm(Mathf.Abs(degree) < 90);
             }
 
-            private void FlipArm(bool flip)
+            protected virtual void FlipArm(bool flip)
             {
                 foreach (SpriteRenderer renderer in _renderers)
                     renderer.flipY = flip;

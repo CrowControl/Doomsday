@@ -45,7 +45,7 @@ namespace _Project.Scripts.Player.Characters.Merlin
                 chainedExcaliburs.Add(currentExcalibur);
 
                 //Get the nearest other excalibur. If none are found, stop.
-                StuckExcalibur nearest = currentExcalibur.GetNearestOtherExcalibur(previousExcalibur);
+                StuckExcalibur nearest = currentExcalibur.GetNearestOtherExcalibur(previousExcalibur, _maxChainDistance);
                 if (nearest == null || !CloseEnoughTogether(currentExcalibur, nearest))
                     break;
 

@@ -27,7 +27,7 @@ namespace _Project.Scripts.Units.Spawners
             //update distance traveled.
             _distanceTraveled += Vector2.Distance(_previousPosition, position);
             if (_distanceTraveled >= _maxDistance)
-                Spawn();
+                Spawn(null, transform.position, transform.rotation);
 
             //save for next update.
             _previousPosition = position;

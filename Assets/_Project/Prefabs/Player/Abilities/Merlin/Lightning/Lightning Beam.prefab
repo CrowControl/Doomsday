@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114739830356387982}
   - component: {fileID: 114015555236895044}
   - component: {fileID: 114679557416369364}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Lightning Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c140b80f0744ff868c8686564b43db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _distanceTweak: 4
+  _distanceTweak: 2.86
 --- !u!114 &114599197602112900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnAsChild: 0
-  _layersToHit: 090000000a0000000c0000000e000000
+  _layersToHit: 0a0000000b0000000d0000000f000000
   _maxDistance: 3
 --- !u!114 &114740259865142280
 MonoBehaviour:

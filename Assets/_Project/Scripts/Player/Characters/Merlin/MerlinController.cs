@@ -28,7 +28,7 @@ namespace _Project.Scripts.Player.Characters.Merlin
 
             //Shoot lightning.
             else if (Device.LeftTrigger.WasPressed)
-                _lightningSpawner.Spawn(this);
+                _lightningSpawner.Spawn(this, true);
         }
     }
 }

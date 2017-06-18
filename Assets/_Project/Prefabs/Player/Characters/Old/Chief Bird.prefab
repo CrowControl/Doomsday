@@ -194,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingHP: 10
   _maxHP: 10
+  _destroyOnDeath: 0
 --- !u!114 &114290855526533408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,12 +264,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a57f20bed99ba4b81ea7ac390b8587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minigunBulletBeam: {fileID: 114790013702403584, guid: 6bfe57cf7b6f61e488a5875771330330,
-    type: 2}
-  _flameThrowerBeam: {fileID: 114585453643312248, guid: 4015feade9942b149bd838af420a38dd,
-    type: 2}
-  _shotGunShotPrefab: {fileID: 114109883025387210, guid: 9267ecd3fda2a6b4e846df8781ecd3b4,
-    type: 2}
+  _minigunAbility:
+    _ability: {fileID: 0}
+    _gunSprite: {fileID: 0}
+  _flameAbility:
+    _ability: {fileID: 0}
+    _gunSprite: {fileID: 0}
+  _shotGunAbility:
+    _ability: {fileID: 0}
+    _gunSprite: {fileID: 0}
   _onSwitchExplosionPrefab: {fileID: 114339485180710576, guid: d3d0886cda034d64093994931ea74c85,
     type: 2}
   _abilityAfterSwitchCooldown: 0

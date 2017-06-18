@@ -100,6 +100,7 @@ MonoBehaviour:
   _spawnPrefab: {fileID: 1654054511866574, guid: 5cdc70ad4beacb84ab097d76a14725ba,
     type: 2}
   _destroyOnSpawn: 1
+  _spawnParent: 0
 --- !u!114 &114175957926566118
 MonoBehaviour:
   m_ObjectHideFlags: 1

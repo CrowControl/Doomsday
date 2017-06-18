@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 114525078848915458}
   - component: {fileID: 114816951235965080}
   - component: {fileID: 114479557700711556}
+  - component: {fileID: 114994684540687650}
   m_Layer: 8
   m_Name: Psycoon
   m_TagString: Player
@@ -310,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83fc4e5c4b95eb845bf7b5b770dab5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
+  _speed: 7
 --- !u!114 &114528773481076194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -324,6 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingHP: 10
   _maxHP: 10
+  _destroyOnDeath: 0
 --- !u!114 &114816951235965080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -362,6 +364,18 @@ MonoBehaviour:
   - {fileID: 114543988792312364, guid: 8a3b622bde4c1164a9fd1a837247f75d, type: 2}
   - {fileID: 114653774463222814, guid: d9dd5d737e44b1f4c96f619c1bc4fe10, type: 2}
   - {fileID: 114163360442946646, guid: d15ea3f151ca97f449e3d569828069aa, type: 2}
+--- !u!114 &114994684540687650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605805755777890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f911ac75f355d5f439efdd3d3736fd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventRef: event:/Psycoon/Drop_in
 --- !u!210 &210548934140718374
 SortingGroup:
   m_ObjectHideFlags: 1

@@ -54,6 +54,6 @@ MonoBehaviour:
   _chainBeamControllerPrefab: {fileID: 114674128936521654, guid: 759cd5dd19b46154c80b1eb070dee0be,
     type: 2}
   _totalDuration: 10
-  _timeBetweenChain: 0
+  _timeBetweenChain: 0.1
   _maxChainDistance: 100
   _maxChainedExcaliburs: 100

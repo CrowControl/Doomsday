@@ -647,6 +647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingHP: 10
   _maxHP: 10
+  _destroyOnDeath: 0
 --- !u!114 &114290855526533408
 MonoBehaviour:
   m_ObjectHideFlags: 1

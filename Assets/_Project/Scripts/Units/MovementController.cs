@@ -18,6 +18,15 @@ namespace _Project.Scripts.Units
         private IMovementInputSource _movementSource;   //Provides movement input.
         #endregion
 
+        #region Properties
+
+        public float Speed
+        {
+            get { return _speed; }
+            set { _speed = value; }
+        }
+        #endregion
+
         #region Internal Variables
         private readonly List<float> _speedModifiers = new List<float>();
         private bool _stunned;

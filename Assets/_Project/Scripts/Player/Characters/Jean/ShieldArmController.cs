@@ -28,7 +28,6 @@ namespace _Project.Scripts.Player.Characters.Jean
         #endregion
 
         private Sprite _previousSprite;
-
         private void Awake()
         {
             //Get renderers.
@@ -58,6 +57,9 @@ namespace _Project.Scripts.Player.Characters.Jean
         /// </summary>
         public void EnableShield()
         {
+
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Joanne/Arm_shield", transform.position);
+
             //Set arm sprite.
             _previousSprite = _armRenderer.sprite;
             _armRenderer.sprite = _shieldArmSprite;
@@ -72,6 +74,7 @@ namespace _Project.Scripts.Player.Characters.Jean
         /// </summary>
         public void DisableShield()
         {
+
             //Reset to the old sprite.
             _armRenderer.sprite = _previousSprite;
 

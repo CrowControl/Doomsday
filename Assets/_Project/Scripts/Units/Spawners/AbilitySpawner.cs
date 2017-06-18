@@ -28,8 +28,11 @@ namespace _Project.Scripts.Units.Spawners
         /// Shoots a projectile.
         /// </summary>
         /// <param name="aimSource">Source of aiming.</param>
-        public Ability Spawn(ICharacterAimSource aimSource)
+        public Ability Spawn(ICharacterAimSource aimSource, bool useSpawnerTransform = false)
         {
+            if (useSpawnerTransform)
+                aimSource = new ProxyAimSource(aimSource, transform);
+
             //Spawn the ability.
             Ability ability = AbilityPrefab.SpawnAsChild ? 
                 Instantiate(AbilityPrefab, transform) :

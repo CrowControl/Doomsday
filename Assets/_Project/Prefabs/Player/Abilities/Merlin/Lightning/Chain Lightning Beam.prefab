@@ -22,12 +22,11 @@ GameObject:
   - component: {fileID: 212924204277842602}
   - component: {fileID: 70612339378060998}
   - component: {fileID: 114247976130295142}
-  - component: {fileID: 114834972173196912}
   - component: {fileID: 114777392248636634}
   - component: {fileID: 114617326546459318}
   - component: {fileID: 114784825809545112}
   - component: {fileID: 114542065980361146}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Chain Lightning Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55e62dea70f0894e9074737b12b3a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventInstancePath: event:/Merlin/Secondary_attack
+  _eventInstancePath: ondary_attack/Secondary_attack
   _stopMode: 0
 --- !u!114 &114617326546459318
 MonoBehaviour:
@@ -115,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c140b80f0744ff868c8686564b43db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _distanceTweak: 1.85
+  _distanceTweak: 14
 --- !u!114 &114784825809545112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,23 +127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnAsChild: 0
---- !u!114 &114834972173196912
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1064870848372778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa0a6cbcd97c834fb8bff70ffee1a26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _effectPrefab: {fileID: 114368633265314134, guid: 83a336468d8516541b7add3ad464a9d9,
-    type: 2}
-  _useMaxHitCount: 1
-  _maxHitCount: 1
-  _singleTargetHitCooldown: 5
-  _destroyOnMaxHitReached: 0
 --- !u!212 &212924204277842602
 SpriteRenderer:
   m_ObjectHideFlags: 1

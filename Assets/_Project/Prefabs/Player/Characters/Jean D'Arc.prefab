@@ -664,6 +664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingHP: 10000
   _maxHP: 10000
+  _destroyOnDeath: 0
 --- !u!114 &114368251262423448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -688,7 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83fc4e5c4b95eb845bf7b5b770dab5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
+  _speed: 7
 --- !u!114 &114626998878756876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -715,6 +716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingHP: 10
   _maxHP: 10
+  _destroyOnDeath: 0
 --- !u!114 &114817712507816360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -727,6 +729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxShieldTime: 4
+  _shieldModeWalkingSpeed: 1
   _cooldown: 0.5
   _ShootingArmRotationDuringShield: -100
 --- !u!114 &114879509179312186
