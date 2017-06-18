@@ -71,7 +71,6 @@ GameObject:
   - component: {fileID: 212903710445662272}
   - component: {fileID: 114951519590617386}
   - component: {fileID: 114014323810036976}
-  - component: {fileID: 114247769142816122}
   - component: {fileID: 210688069821252764}
   - component: {fileID: 114373844866530550}
   - component: {fileID: 66227406330919578}
@@ -81,6 +80,7 @@ GameObject:
   - component: {fileID: 114727538256070020}
   - component: {fileID: 114684397211812886}
   - component: {fileID: 114083498707733578}
+  - component: {fileID: 114840167506929318}
   m_Layer: 8
   m_Name: Merlin
   m_TagString: Player
@@ -273,7 +273,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1413205995278750}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -283,7 +283,7 @@ Transform:
   - {fileID: 4177517913596884}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4905859756488984
 Transform:
   m_ObjectHideFlags: 1
@@ -465,21 +465,21 @@ CompositeCollider2D:
     m_ColliderPaths:
     - - X: 1466249
         Y: 9184996
-      - X: -4046248
+      - X: -4046249
         Y: 9184996
-      - X: -4046248
+      - X: -4046249
         Y: 3935004
       - X: 1466249
         Y: 3935004
   - m_Collider: {fileID: 61674058406556172}
     m_ColliderPaths:
-    - - X: 6222499
+    - - X: 6222500
         Y: 5685397
-      - X: -6402501
+      - X: -6402500
         Y: 5685397
-      - X: -6402501
+      - X: -6402500
         Y: -14965397
-      - X: 6222499
+      - X: 6222500
         Y: -14965397
   - m_Collider: {fileID: 61099936397638024}
     m_ColliderPaths:
@@ -493,18 +493,18 @@ CompositeCollider2D:
         Y: 7726142
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.6222499, y: 0.5685397}
-      - {x: 0.14662491, y: 0.5685397}
-      - {x: 0.14662491, y: 0.9184996}
-      - {x: 0.0809215, y: 0.9184996}
-      - {x: 0.2231975, y: 1.2903897}
-      - {x: -0.0251093, y: 1.3853859}
-      - {x: -0.2037285, y: 0.9184996}
-      - {x: -0.4046248, y: 0.9184996}
-      - {x: -0.4046248, y: 0.5685397}
-      - {x: -0.6402501, y: 0.5685397}
-      - {x: -0.6402501, y: -1.4965397}
-      - {x: 0.6222499, y: -1.4965397}
+    - - {x: 0.64025, y: 0.5685397}
+      - {x: 0.4046249, y: 0.5685397}
+      - {x: 0.4046249, y: 0.9184996}
+      - {x: 0.2037285, y: 0.9184996}
+      - {x: 0.0251093, y: 1.3853859}
+      - {x: -0.2231975, y: 1.2903897}
+      - {x: -0.0809215, y: 0.9184996}
+      - {x: -0.14662491, y: 0.9184996}
+      - {x: -0.14662491, y: 0.5685397}
+      - {x: -0.62225, y: 0.5685397}
+      - {x: -0.62225, y: -1.4965397}
+      - {x: 0.64025, y: -1.4965397}
   m_VertexDistance: 0.0005
 --- !u!95 &95309925758744094
 Animator:
@@ -591,19 +591,6 @@ MonoBehaviour:
   _startingHP: 10
   _maxHP: 10
   _destroyOnDeath: 0
---- !u!114 &114247769142816122
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1413205995278750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5611ef11d9da1d84ca8e8e770185da00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rotateFrontArmToAim: 1
-  _rotateBackArmToAim: 0
 --- !u!114 &114356091042014706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -641,6 +628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnAsChild: 0
   _reloadTime: 0.5
+  _maxSwordCount: 4
   _loadedSwordGunSprite: {fileID: 21300000, guid: 363e5627ec80a55478df97d12e13a275,
     type: 3}
   _unLoadedSwordGunSprite: {fileID: 21300000, guid: 772fb17f59912384aa507e0b344c9e57,
@@ -694,6 +682,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _abilityPrefab: {fileID: 114623983640892600, guid: 85983f061ed40a740aa32cad9ea92aa8,
     type: 2}
+--- !u!114 &114840167506929318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413205995278750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 570e2ff4d9b7a5b46b03de85349bd9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotateFrontArmToAim: 1
+  _rotateBackArmToAim: 0
 --- !u!114 &114951519590617386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -714,7 +715,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 10037387
   m_SortingLayer: 2
-  m_SortingOrder: 14
+  m_SortingOrder: 0
 --- !u!212 &212072494931855544
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -746,7 +747,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 10037387
   m_SortingLayer: 2
-  m_SortingOrder: 11
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 363e5627ec80a55478df97d12e13a275, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
