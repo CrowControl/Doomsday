@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Assets._Project.Scripts.Units.Abilities;
 using UnityEngine;
 using _Project.Scripts.General;
 using _Project.Scripts.Units;
 
 namespace _Project.Scripts.Effects
 {
-    [RequireComponent(typeof(Collider2D))]
     public class OnCollisionEffectApplier : CustomMonoBehaviour
     {
         #region Editor Variables
@@ -15,6 +15,10 @@ namespace _Project.Scripts.Effects
         [SerializeField] private int _maxHitCount;                  //Maximum amount of hits we want to allow.
         [SerializeField] private float _singleTargetHitCooldown;    //Cooldown for a single target that got hit.
         [SerializeField] private bool _destroyOnMaxHitReached;
+        #endregion
+
+        #region Components
+        private List<ChildCollider> _childColliders;
         #endregion
 
         #region Properties
@@ -33,11 +37,26 @@ namespace _Project.Scripts.Effects
         private int _hits;
         #endregion
 
-        //private void Awake()
-        //{
-        //    //Ensure it's a trigger Collider.
-        //    GetComponent<Collider2D>().isTrigger = true;
-        //}
+        #region Child colliders
+        private void Awake()
+        {
+            _childColliders = GetComponentsInChildren<ChildCollider>().ToList();
+            foreach (ChildCollider child in _childColliders)
+                child.OnCollisionEnter += CheckCollision;
+        }
+
+        public void RegisterChildCollider(ChildCollider child)
+        {
+            _childColliders.Add(child);
+            child.OnCollisionEnter += CheckCollision;
+        }
+
+        public void UnRegisterChildCollider(ChildCollider child)
+        {
+            _childColliders.Remove(child);
+            child.OnCollisionEnter -= CheckCollision;
+        }
+        #endregion
 
         #region Collision
 
@@ -49,6 +68,11 @@ namespace _Project.Scripts.Effects
         private void OnCollisionEnter2D(Collision2D collision)
         {
             CheckCollision(collision.gameObject);
+        }
+
+        private void OnParticleCollision(GameObject other)
+        {
+            CheckCollision(other);
         }
 
         private void CheckCollision(GameObject gameObj)
@@ -91,7 +115,11 @@ namespace _Project.Scripts.Effects
         {
             //Cancel any outstanding invokes.
             CancelInvoke();
-            
+
+            //Stop checking child colliders.
+            foreach (ChildCollider child in _childColliders)
+                child.OnCollisionEnter -= CheckCollision;
+
             base.OnDestroy();
         }
     }
