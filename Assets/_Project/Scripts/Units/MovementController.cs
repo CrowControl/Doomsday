@@ -25,6 +25,13 @@ namespace _Project.Scripts.Units
             get { return _speed; }
             set { _speed = value; }
         }
+
+        public IMovementInputSource MovementInputSource
+        {
+            get { return _movementSource; }
+            set{ _movementSource = value; }
+        }
+
         #endregion
 
         #region Internal Variables
@@ -43,8 +50,8 @@ namespace _Project.Scripts.Units
         // Update is called once per frame
         private void FixedUpdate ()
         {
-            
-            _rigidbody.velocity = _movementSource.MovementDirection * DetermineSpeed();
+            float speed = DetermineSpeed();
+            _rigidbody.velocity = _movementSource.MovementDirection * speed;
         }
 
         #region Speed moification
@@ -79,5 +86,14 @@ namespace _Project.Scripts.Units
     public interface IMovementInputSource
     {
         Vector2 MovementDirection { get; } 
+    }
+
+    public class MovementInputSource : IMovementInputSource
+    {
+        public MovementInputSource(Vector2 movementDirection)
+        {
+            MovementDirection = movementDirection;
+        }
+        public Vector2 MovementDirection { get; private set; }
     }
 }

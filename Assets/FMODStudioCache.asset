@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114583895514425438}
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   EditorEvents:
   - {fileID: 114377864339984926}
   - {fileID: 114479281648284218}
@@ -30,10 +30,25 @@ MonoBehaviour:
   - {fileID: 114287076559730008}
   - {fileID: 114748396538802270}
   - {fileID: 114431949003489210}
-  MasterBankRef: {fileID: 114632682663928704}
+  MasterBankRef: {fileID: 114898016728073226}
   StringsBankRef: {fileID: 114583895514425438}
   stringsBankWriteTime: 636334260422656863
   cacheVersion: 2
+--- !u!114 &114004820949726900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Flamethrowing
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114005673866664620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +323,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114136965322375734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Flamethrowing
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114141116218150632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,21 +405,6 @@ MonoBehaviour:
   - {fileID: 114235319652232714}
   MinDistance: 1
   MaxDistance: 20
---- !u!114 &114159433446659832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: curGamePlay
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &114173967429665960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +419,7 @@ MonoBehaviour:
   Path: event:/Merlin/Sword_stick_in_terrain
   guid: 4dd89ce230bfd4478d5933d463a815d4
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -471,25 +486,6 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &114203588638445336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: D:\Gamedev Project Files\Unity Projects\DDRS\Doomsday 1\Assets\Plugins\FMOD\Desktop\Master
-    Bank.bank
-  lastModified: 636334120868553341
-  LoadResult: 0
-  FileSizes:
-  - Name: 
-    Value: 33948992
-  Exists: 0
 --- !u!114 &114204292769157464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,7 +569,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &114262771853562810
+--- !u!114 &114261737933392080
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -581,17 +577,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: D:\Gamedev Project Files\Unity Projects\DDRS\Doomsday 1\Assets\Plugins\FMOD\Desktop\Master
-    Bank.bank
-  lastModified: 636334120868553341
-  LoadResult: 0
-  FileSizes:
-  - Name: 
-    Value: 33948992
-  Exists: 0
+  Name: curGamePlay
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114267870685430754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,7 +628,7 @@ MonoBehaviour:
   Path: event:/Merlin/Drop_in
   guid: fc75528ee60109478150b0754c031f23
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -691,7 +683,7 @@ MonoBehaviour:
   Path: event:/Joanne/Drop_in
   guid: 42bba1a97f182c4cb996346a1a7eccca
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -756,11 +748,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: D:\Dropbox\projects\hawt_dayum\Game\Doomsday\Assets\Plugins\FMOD\Desktop\Master
     Bank.bank
-  lastModified: 636333067785478927
+  lastModified: 636333071168353929
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 33919936
+    Value: 33948992
   Exists: 0
 --- !u!114 &114338990906860210
 MonoBehaviour:
@@ -906,13 +898,28 @@ MonoBehaviour:
   Path: event:/Chief/Footstep
   guid: 470d5c03502836459fcbb32043c43eed
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &114378991018333676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Flamethrowing
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114379430030469658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,6 +932,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Flamethrowing
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114384065815189756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: curGamePlay
   Min: 0
   Max: 1
   Default: 0
@@ -964,7 +986,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
---- !u!114 &114409861702992006
+--- !u!114 &114397080216083502
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -975,10 +997,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: curGamePlay
+  Name: Flamethrowing
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114399541568821262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\Studie\Vakken\GT J4\Periode 4\Doomsday\Doomsday Reckoning\Doomsday\Assets\Plugins\FMOD\Desktop\Master
+    Bank.bank
+  lastModified: 636334260422381712
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 33948992
+  Exists: 0
 --- !u!114 &114423080471980364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1038,7 +1079,7 @@ MonoBehaviour:
   Path: event:/Joanne/Arm_shield
   guid: c2dda22fdaaf2d4f91293c0a0e5c0225
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1134,7 +1175,7 @@ MonoBehaviour:
   Path: event:/Merlin/Footstep
   guid: 4d39f5cf85b0b441a5a293e97045fb7e
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1185,28 +1226,13 @@ MonoBehaviour:
   Path: event:/Chief/Secondary_attack
   guid: a4f5d452225304429aef9e8b604508b3
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
---- !u!114 &114516585866697018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Flamethrowing
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &114521312129610928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1266,7 +1292,7 @@ MonoBehaviour:
   Path: event:/Chief/Drop_in
   guid: 1ede2b8b0853c740b9a2334c3630dcd7
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1321,6 +1347,21 @@ MonoBehaviour:
   - Name: 
     Value: 1378
   Exists: 1
+--- !u!114 &114592630130009728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: curGamePlay
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114601210977264212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,6 +1392,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114612614687483876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: curGamePlay
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114621980025448398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1366,40 +1422,6 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &114622754259988210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: curGamePlay
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &114632682663928704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: D:\Studie\Vakken\GT J4\Periode 4\Doomsday\Doomsday Reckoning\Doomsday\Assets\Plugins\FMOD\Desktop\Master
-    Bank.bank
-  lastModified: 636334260422381712
-  LoadResult: 0
-  FileSizes:
-  - Name: 
-    Value: 33948992
-  Exists: 1
 --- !u!114 &114633630482181592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1459,13 +1481,28 @@ MonoBehaviour:
   Path: event:/Merlin/Main_attack
   guid: 94c0bb933bfadd419c963527fe216e94
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &114662229222816218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Flamethrowing
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114671261315361380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,6 +1533,25 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114680333551365798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\Gebruikers\Koen\Documents\Unity\DoomsdayReckoning\Doomsday\Assets\Plugins\FMOD\Desktop\Master
+    Bank.bank
+  lastModified: 636334812343408646
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 33948992
+  Exists: 1
 --- !u!114 &114695067437677840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1527,21 +1583,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: curGamePlay
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &114713246488095742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Flamethrowing
   Min: 0
   Max: 1
   Default: 0
@@ -1638,7 +1679,7 @@ MonoBehaviour:
   Path: event:/Psycoon/Drop_in
   guid: 351cc61bbfec654aa0e85d72a82b91ee
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1659,12 +1700,12 @@ MonoBehaviour:
   Path: event:/Music_level_1
   guid: fc6cdc9c5a7fc74e8bd79f4f26a64dfc
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114159433446659832}
+  - {fileID: 114853440755586450}
   MinDistance: 0
   MaxDistance: 0
 --- !u!114 &114752563347998916
@@ -1712,21 +1753,6 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &114777523783669372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Flamethrowing
-  Min: 0
-  Max: 1
-  Default: 0
 --- !u!114 &114790325692576752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1756,7 +1782,7 @@ MonoBehaviour:
   Path: event:/Joanne/Main_attack
   guid: aeec27732ca6e449b6ef6c987555ac0c
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
@@ -1807,13 +1833,32 @@ MonoBehaviour:
   Path: event:/Joanne/Main_attack_hit
   guid: f3556a439de6cc46b3ce9fc9867628da
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
+--- !u!114 &114814610415029702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\Gebruikers\Koen\Documents\Unity\DoomsdayReckoning\Doomsday\Assets\Plugins\FMOD\Desktop\Master
+    Bank.bank
+  lastModified: 636334812343408646
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 33948992
+  Exists: 0
 --- !u!114 &114818132294202778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1829,56 +1874,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
---- !u!114 &114819757516381306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: D:\Studie\Vakken\GT J4\Periode 4\Doomsday\Doomsday Reckoning\Doomsday\Assets\Plugins\FMOD\Desktop\Master
-    Bank.bank
-  lastModified: 636333199459377413
-  LoadResult: 0
-  FileSizes:
-  - Name: 
-    Value: 33948992
-  Exists: 0
 --- !u!114 &114821209423768842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: curGamePlay
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &114821543771940804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Flamethrowing
-  Min: 0
-  Max: 1
-  Default: 0
---- !u!114 &114843173798935708
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1920,6 +1916,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Hit
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114853440755586450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: curGamePlay
   Min: 0
   Max: 1
   Default: 0
@@ -2027,14 +2038,33 @@ MonoBehaviour:
   Path: event:/Chief/Main_attack
   guid: a6aa7bb830b8c44d9a79a1827cd99e97
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 114713246488095742}
+  - {fileID: 114136965322375734}
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &114898016728073226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\Studie\Vakken\GT J4\Periode 4\Doomsday\Doomsday Reckoning\Doomsday\Assets\Plugins\FMOD\Desktop\Master
+    Bank.bank
+  lastModified: 636334260422381712
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 33948992
+  Exists: 1
 --- !u!114 &114908085910690284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2139,7 +2169,7 @@ MonoBehaviour:
   Path: event:/Merlin/Secondary_attack
   guid: 6213db938cc92c408d2b8d0048319523
   Banks:
-  - {fileID: 114632682663928704}
+  - {fileID: 114898016728073226}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
