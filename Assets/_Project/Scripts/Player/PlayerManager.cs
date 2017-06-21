@@ -9,6 +9,8 @@ namespace _Project.Scripts.Player
     [RequireComponent(typeof(PlayerDeviceManager))]
     public class PlayerManager : MonoBehaviour
     {
+        FMOD.Studio.EventInstance gameMusic;
+
         #region Editor Variables
         [SerializeField] private float _maxPlayerCount;     //Maximum amount of players allowed.
         #endregion
@@ -29,11 +31,13 @@ namespace _Project.Scripts.Player
 
         private void Awake()
         {
+            gameMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music_level_1");
             _camera = Camera.main;
         }
 
         private void Start()
         {
+            gameMusic.start();
             GetComponent<PlayerDeviceManager>().OnNewDeviceInUse += OnOnNewDeviceInUse;
             _characterSelectUIManager = FindObjectOfType<CharacterSelectUIManager>();
         }

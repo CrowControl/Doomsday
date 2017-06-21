@@ -146,7 +146,7 @@ namespace _Project.Scripts.Player.Characters.Psycoon
                 return new ChargeReleaseState(spawner);
             }
 
-            public void Exit(PsycoonController psycoon, InputDevice controller)
+            public virtual void Exit(PsycoonController psycoon, InputDevice controller)
             {
                 _spriteHandler.FadeToColor(_startingColor, 0.3f);
             }
@@ -183,6 +183,16 @@ namespace _Project.Scripts.Player.Characters.Psycoon
 
         private class ChargingHealState : ChargingState
         {
+            FMOD.Studio.EventInstance chargeHeal;
+
+            public override void Enter(PsycoonController psycoon, InputDevice controller)
+            {
+                base.Enter(psycoon, controller);
+                chargeHeal = FMODUnity.RuntimeManager.CreateInstance("event:/Psycoon/Charge_heal");
+                chargeHeal.set3DAttributes(new FMOD.ATTRIBUTES_3D());
+                chargeHeal.start();
+            }
+
             protected override void AssignButtons(InputDevice controller)
             {
                 MainButton = controller.LeftTrigger;
@@ -199,6 +209,12 @@ namespace _Project.Scripts.Player.Characters.Psycoon
             {
                 ButtonReleaseSpawner = psycoon._auraSpawner;
                 OtherButtonpressSpawner = psycoon._beamSpawner;
+            }
+            
+            public override void Exit(PsycoonController psycoon, InputDevice controller)
+            {
+                base.Exit(psycoon, controller);
+                chargeHeal.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             }
         }
 

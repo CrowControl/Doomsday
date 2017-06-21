@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 50369021972530924}
   - component: {fileID: 114124459364993260}
   - component: {fileID: 114568864579480482}
-  - component: {fileID: 114679911582228976}
+  - component: {fileID: 114611341800786552}
   m_Layer: 15
   m_Name: Stuck Excalibur
   m_TagString: Untagged
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnAsChild: 0
---- !u!114 &114679911582228976
+--- !u!114 &114611341800786552
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -124,11 +124,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1868300637659562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89bed70da6935864e8b304a98789da5e, type: 3}
+  m_Script: {fileID: 11500000, guid: f911ac75f355d5f439efdd3d3736fd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onActivateEventString: event:/Merlin/Sword_stick_in_terrain
-  _onDestroyEventString: 
+  eventRef: event:/Merlin/Sword_stick_in_terrain
 --- !u!212 &212363684867640924
 SpriteRenderer:
   m_ObjectHideFlags: 1

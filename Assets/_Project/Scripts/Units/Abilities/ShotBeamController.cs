@@ -43,6 +43,8 @@ namespace _Project.Scripts.Units.Abilities
         /// <param name="aimSource"></param>
         public override void Activate(ICharacterAimSource aimSource)
         {
+            base.Activate(aimSource);
+
             //Set the aim source.
             _aimSource = aimSource;
 
