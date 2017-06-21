@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 114506423005549054}
   - component: {fileID: 114406064895364446}
   - component: {fileID: 114590769317008530}
+  - component: {fileID: 114686075141842806}
   m_Layer: 10
   m_Name: Critter
   m_TagString: Untagged
@@ -267,6 +268,19 @@ MonoBehaviour:
   _cooldown: 0.7
   _effects:
   - {fileID: 114975647408621852, guid: e7cdbd2e8d1fae7438a3b653d701dd60, type: 2}
+--- !u!114 &114686075141842806
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1837288779111138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98bca19a4854fbab5783b58daf2794c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnPrefab: {fileID: 1756490938883638, guid: 80e250d7cca90584787d4e0dec544e4b,
+    type: 2}
 --- !u!114 &114714405465530370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,7 +334,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 10037387
   m_SortingLayer: 2
-  m_SortingOrder: -31
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 85251d2e12a88e94b888edccc7de96ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

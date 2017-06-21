@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 114340765746579598}
   - component: {fileID: 114625658968587914}
   - component: {fileID: 114887940644817610}
+  - component: {fileID: 114194283037405744}
   m_Layer: 10
   m_Name: Charger
   m_TagString: Untagged
@@ -381,13 +382,13 @@ CompositeCollider2D:
   - m_Collider: {fileID: 61477908172705276}
     m_ColliderPaths:
     - - X: 1486296
-        Y: 12533705
+        Y: 12533703
       - X: -1877098
-        Y: 12533705
+        Y: 12533703
       - X: -1877098
-        Y: 3505029
+        Y: 3505028
       - X: 1486296
-        Y: 3505029
+        Y: 3505028
   - m_Collider: {fileID: 61206746022553520}
     m_ColliderPaths:
     - - X: -3840594
@@ -400,13 +401,13 @@ CompositeCollider2D:
         Y: -371111
   - m_Collider: {fileID: 61682482998852494}
     m_ColliderPaths:
-    - - X: 7019105
-        Y: 3031077
-      - X: 2291293
-        Y: 3031077
-      - X: 2291293
+    - - X: 7019106
+        Y: 3031078
+      - X: 2291295
+        Y: 3031078
+      - X: 2291295
         Y: -3097588
-      - X: 7019105
+      - X: 7019106
         Y: -3097588
   m_CompositePaths:
     m_Paths:
@@ -457,6 +458,19 @@ MonoBehaviour:
   _maxHitCount: 10000
   _singleTargetHitCooldown: 5
   _destroyOnMaxHitReached: 0
+--- !u!114 &114194283037405744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1854414818851540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98bca19a4854fbab5783b58daf2794c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnPrefab: {fileID: 1470357406987376, guid: 53c70009a45bdde4a939944d78a70ecc,
+    type: 2}
 --- !u!114 &114197944523421048
 MonoBehaviour:
   m_ObjectHideFlags: 1
