@@ -41,11 +41,14 @@ namespace _Project.Scripts.Units
 
         #region Internal Variables
         private float _hp;
+        private bool _isDead;
         #endregion
 
         private void Awake()
         {
             HP = _startingHP;
+
+            OnDeath += () => _isDead = true;
 
             if (_destroyOnDeath)
                 OnDeath += Destroy;
@@ -56,13 +59,13 @@ namespace _Project.Scripts.Units
             //Apply damage.
             _hp -= damage;
 
-            //Trigger hit event.
-            if (OnHit != null)
-                OnHit(damage);
-
             //Trigger death event if health reaches zero.
             if (_hp < 0 && OnDeath != null)
                 OnDeath();
+
+            //Trigger hit event.
+            if (OnHit != null && !_isDead)
+                OnHit(damage);
         }
 
         private void Destroy()

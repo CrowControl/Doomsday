@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using _Project.Scripts.Units;
 
 namespace _Project.Scripts.Player
 {
@@ -33,12 +34,17 @@ namespace _Project.Scripts.Player
         {
             XFlippingEnabled = true;
 
+            GetComponents();
+            InitializeAnimationEvents();
+        }
+
+        private void GetComponents()
+        {
             //Get components.
             _rigidbody = GetComponent<Rigidbody2D>();
-            _animator = GetComponent<Animator>();
             _renderer = GetComponent<SpriteRenderer>();
+            _animator = GetComponent<Animator>();
             _characterAim = GetComponent<ICharacterAimSource>();
-
             _assistants = GetComponentsInChildren<ISpriteHandlerAssistant>();
         }
 
@@ -46,15 +52,30 @@ namespace _Project.Scripts.Player
         {
             //Tell the animator we're moving if we have velocity.
             _animator.SetBool("IsMoving", _rigidbody.velocity != Vector2.zero);
-
-            //We're front facing if we're aiming to the bottom half of the screen.
-            _animator.SetBool("IsFrontFacing", _characterAim.AimingDegree <= 0);
             
             //We want to flip the sprite if we're aiming to the right side of the screen, except when we don't xD.  
             if(XFlippingEnabled)
                 SetFlipX(Mathf.Abs(_characterAim.AimingDegree) <= 90);
         }
 
+
+        /// <summary>
+        /// Sets the flipping of the entire character.
+        /// </summary>
+        /// <param name="flipped">if true, we flip.</param>
+        private void SetFlipX(bool flipped)
+        {
+            foreach (ISpriteHandlerAssistant assistant in _assistants)
+                assistant.SetFlipX(flipped);
+
+            //Choose.
+            float x = flipped ? 180 : 0;
+
+            //Assign.
+            transform.rotation = Quaternion.Euler(0, x, 0);
+        }
+
+        #region Color
         public void FadeToColor(Color color, float fadeDuration)
         {
             StartCoroutine(FadeToColorRoutine(color, fadeDuration));
@@ -75,22 +96,26 @@ namespace _Project.Scripts.Player
 
             Color = color;
         }
+        #endregion
 
-        /// <summary>
-        /// Sets the flipping of the entire character.
-        /// </summary>
-        /// <param name="flipped">if true, we flip.</param>
-        private void SetFlipX(bool flipped)
+        #region Animation Events
+        private void InitializeAnimationEvents()
         {
-            foreach (ISpriteHandlerAssistant assistant in _assistants)
-                assistant.SetFlipX(flipped);
-
-            //Choose.
-            float x = flipped ? 180 : 0;
-
-            //Assign.
-            transform.rotation = Quaternion.Euler(0, x, 0);
+            HealthController healthController = GetComponent<HealthController>();
+            healthController.OnDeath += OnPlayerDeath;
+            healthController.OnHit += OnPlayerHit;
         }
+
+        private void OnPlayerDeath()
+        {
+            _animator.SetTrigger("Die");
+        }
+
+        private void OnPlayerHit(float damage)
+        {
+            _animator.SetTrigger("GetHit");
+        }
+        #endregion
     }
 
     public interface ISpriteHandlerAssistant

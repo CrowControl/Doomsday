@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 114595889519025374}
   - component: {fileID: 114093019532582162}
   - component: {fileID: 114089319185966054}
+  - component: {fileID: 114055339009353296}
   m_Layer: 8
   m_Name: Chief
   m_TagString: Player
@@ -259,7 +260,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870531504023426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.1483072, y: 0.008384228, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4290949166704322}
@@ -580,6 +581,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disableAfterAwake: 0
+--- !u!114 &114055339009353296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870531504023426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98bca19a4854fbab5783b58daf2794c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnPrefab: {fileID: 1382199421985652, guid: 3b607a85244d4e6409861d53cd5e0c75,
+    type: 2}
 --- !u!114 &114089319185966054
 MonoBehaviour:
   m_ObjectHideFlags: 1

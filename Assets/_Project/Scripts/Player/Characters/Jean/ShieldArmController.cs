@@ -48,6 +48,7 @@ namespace _Project.Scripts.Player.Characters.Jean
         /// </summary>
         public override void Activate(ICharacterAimSource aimSource)
         {
+            base.Activate(aimSource);
             EnableShield();
             Invoke("DisableShield", Duration);
         }
