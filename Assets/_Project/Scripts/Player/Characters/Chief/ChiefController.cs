@@ -107,6 +107,7 @@ namespace _Project.Scripts.Player.Characters.Chief
             _flameThrower = FMODUnity.RuntimeManager.CreateInstance("event:/Chief/Main_attack");
             _flameThrower.set3DAttributes(_attribute);
             _flameAbility.SetAudio(_flameThrower, "Flamethrowing");
+
         }
 
         /// <summary>
@@ -148,6 +149,9 @@ namespace _Project.Scripts.Player.Characters.Chief
             public void StartSound()
             {
                 _abilitySoundfile.start();
+                //attach the position to the ability
+                FMODUnity.RuntimeManager.AttachInstanceToGameObject(_abilitySoundfile, 
+                    _ability.GetComponent<Transform>(), _ability.GetComponent<Rigidbody>());
             }
 
             public void StartIdleSound()

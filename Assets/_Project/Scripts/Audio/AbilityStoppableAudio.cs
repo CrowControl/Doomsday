@@ -25,6 +25,8 @@ namespace _Project.Scripts.Audio
         protected override void OnAbilityActivated()
         {
             _eventInstance.start();
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(_eventInstance,
+                GetComponent<Transform>(), GetComponent<Rigidbody>());
         }
 
         protected override void OnAbilityDestroyed()

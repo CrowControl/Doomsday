@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using _Project.Scripts.General;
+
 
 namespace Assets._Project.Scripts.Units.Abilities
 { 
     [RequireComponent(typeof(ParticleSystem))]
-    public class ChildCollider
+    public class ChildCollider : CustomMonoBehaviour
     {
         public delegate void CollisionEventHandler(GameObject other);
         public event CollisionEventHandler OnCollisionEnter;

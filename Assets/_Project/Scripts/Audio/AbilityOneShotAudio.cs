@@ -20,11 +20,9 @@ namespace _Project.Scripts.Audio
         {
             PlayOneShot(_onDestroyEventString);
         }
-
-
         private void PlayOneShot(string eventString)
         {
-            if(!string.IsNullOrEmpty(eventString))
+            if (!string.IsNullOrEmpty(eventString))
                 FMODUnity.RuntimeManager.PlayOneShot(eventString, transform.position);
         }
     }

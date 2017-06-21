@@ -7,6 +7,7 @@ namespace _Project.Scripts.Player.Characters.Merlin
 {
     public class ChainLightning : Effect
     {
+
         #region Editor Variables
         [SerializeField] private ChainBeamController _chainBeamControllerPrefab;
 

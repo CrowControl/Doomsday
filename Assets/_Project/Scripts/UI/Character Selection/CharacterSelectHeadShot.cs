@@ -50,6 +50,8 @@ namespace _Project.Scripts.UI.Character_Selection
                 return;
             }
 
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Change_character");
+
             _previousOutLineColor = _outline.effectColor;
             _outline.effectColor = focusOutlineColor;
             IsFocus = true;

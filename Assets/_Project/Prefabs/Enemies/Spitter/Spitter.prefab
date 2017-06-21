@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 114159941796766634}
   - component: {fileID: 114877029676922028}
   - component: {fileID: 114579197969131268}
+  - component: {fileID: 114985322951696078}
   m_Layer: 10
   m_Name: Spitter
   m_TagString: Untagged
@@ -523,6 +524,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shootingDistance: 8
   _cooldown: 0.8
+--- !u!114 &114985322951696078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1948134800983246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f911ac75f355d5f439efdd3d3736fd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventRef: event:/Spitter/Spawn
 --- !u!210 &210989781441567218
 SortingGroup:
   m_ObjectHideFlags: 1

@@ -6,6 +6,7 @@ using _Project.Scripts.Units.Abilities;
 
 namespace _Project.Scripts.Player.Characters.Merlin
 {
+
     class ChainBeamController : CustomMonoBehaviour
     {
         #region Editor Variables
@@ -30,6 +31,7 @@ namespace _Project.Scripts.Player.Characters.Merlin
         /// <param name="target"></param>
         public void Activate(GameObject source, GameObject target)
         {
+
             //spawn the beam.
             _beam = Instantiate(_beamPrefab, transform);
             RegisterDependentBehaviour(_beam);
