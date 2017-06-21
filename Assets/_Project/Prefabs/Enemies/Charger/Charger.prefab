@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 114625658968587914}
   - component: {fileID: 114887940644817610}
   - component: {fileID: 114194283037405744}
+  - component: {fileID: 114106013062268922}
   m_Layer: 10
   m_Name: Charger
   m_TagString: Untagged
@@ -458,6 +459,17 @@ MonoBehaviour:
   _maxHitCount: 10000
   _singleTargetHitCooldown: 5
   _destroyOnMaxHitReached: 0
+--- !u!114 &114106013062268922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1854414818851540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496735dedd8e3ba46aa05bb7aee67c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114194283037405744
 MonoBehaviour:
   m_ObjectHideFlags: 1

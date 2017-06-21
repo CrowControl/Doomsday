@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 114006468759553854}
   - component: {fileID: 114069107053043098}
   - component: {fileID: 114522452803951842}
+  - component: {fileID: 114426487483914592}
   m_Layer: 8
   m_Name: Jean D'Arc
   m_TagString: Player
@@ -679,6 +680,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnAsChild: 0
   _shieldArmSprite: {fileID: 21300000, guid: 7b8caa58ade13c849a0622cedf6fb656, type: 3}
+--- !u!114 &114426487483914592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870531504023426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496735dedd8e3ba46aa05bb7aee67c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114476101262227178
 MonoBehaviour:
   m_ObjectHideFlags: 1

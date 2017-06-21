@@ -152,6 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4679105844907398}
   - component: {fileID: 95494829412209398}
+  - component: {fileID: 114277761374382226}
   - component: {fileID: 114094246316704064}
   - component: {fileID: 212260856754380946}
   - component: {fileID: 114290855526533408}
@@ -162,11 +163,11 @@ GameObject:
   - component: {fileID: 50865288852016212}
   - component: {fileID: 114476101262227178}
   - component: {fileID: 114202905633741406}
+  - component: {fileID: 114055339009353296}
   - component: {fileID: 114966411696685126}
   - component: {fileID: 114595889519025374}
   - component: {fileID: 114093019532582162}
   - component: {fileID: 114089319185966054}
-  - component: {fileID: 114055339009353296}
   m_Layer: 8
   m_Name: Chief
   m_TagString: Player
@@ -662,6 +663,17 @@ MonoBehaviour:
   _startingHP: 10
   _maxHP: 10
   _destroyOnDeath: 0
+--- !u!114 &114277761374382226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870531504023426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496735dedd8e3ba46aa05bb7aee67c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114290855526533408
 MonoBehaviour:
   m_ObjectHideFlags: 1

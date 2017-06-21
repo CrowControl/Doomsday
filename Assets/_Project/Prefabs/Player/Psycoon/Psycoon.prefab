@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 114479557700711556}
   - component: {fileID: 114994684540687650}
   - component: {fileID: 114053129569298340}
+  - component: {fileID: 114103810850636476}
   m_Layer: 8
   m_Name: Psycoon
   m_TagString: Player
@@ -267,6 +268,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _disableAfterAwake: 0
+--- !u!114 &114103810850636476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605805755777890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496735dedd8e3ba46aa05bb7aee67c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114364395381425750
 MonoBehaviour:
   m_ObjectHideFlags: 1

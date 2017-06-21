@@ -35,7 +35,6 @@ namespace _Project.Scripts.Player
             XFlippingEnabled = true;
 
             GetComponents();
-            InitializeAnimationEvents();
         }
 
         private void GetComponents()
@@ -95,25 +94,6 @@ namespace _Project.Scripts.Player
             }
 
             Color = color;
-        }
-        #endregion
-
-        #region Animation Events
-        private void InitializeAnimationEvents()
-        {
-            HealthController healthController = GetComponent<HealthController>();
-            healthController.OnDeath += OnPlayerDeath;
-            healthController.OnHit += OnPlayerHit;
-        }
-
-        private void OnPlayerDeath()
-        {
-            _animator.SetTrigger("Die");
-        }
-
-        private void OnPlayerHit(float damage)
-        {
-            _animator.SetTrigger("GetHit");
         }
         #endregion
     }

@@ -81,6 +81,8 @@ GameObject:
   - component: {fileID: 114727538256070020}
   - component: {fileID: 114684397211812886}
   - component: {fileID: 114083498707733578}
+  - component: {fileID: 114266389393866960}
+  - component: {fileID: 114355721670679020}
   m_Layer: 8
   m_Name: Merlin
   m_TagString: Player
@@ -591,6 +593,30 @@ MonoBehaviour:
   _startingHP: 10
   _maxHP: 10
   _destroyOnDeath: 0
+--- !u!114 &114266389393866960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413205995278750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98bca19a4854fbab5783b58daf2794c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnPrefab: {fileID: 1927371149781372, guid: 6bc30519bd8dd0f41bfb1de39cc35e85,
+    type: 2}
+--- !u!114 &114355721670679020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413205995278750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496735dedd8e3ba46aa05bb7aee67c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114356091042014706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -715,7 +741,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 10037387
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 14
 --- !u!212 &212072494931855544
 SpriteRenderer:
   m_ObjectHideFlags: 1

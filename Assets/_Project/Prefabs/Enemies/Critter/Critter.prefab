@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 114406064895364446}
   - component: {fileID: 114590769317008530}
   - component: {fileID: 114686075141842806}
+  - component: {fileID: 114530959253353574}
   m_Layer: 10
   m_Name: Critter
   m_TagString: Untagged
@@ -241,6 +242,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 2
+--- !u!114 &114530959253353574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1837288779111138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496735dedd8e3ba46aa05bb7aee67c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114531683755924414
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -53,6 +53,8 @@ namespace _Project.Scripts.Enemies
             _attackController = GetComponent<IEnemyAttackController>();
         }
 
+
+
         #endregion
 
         #region Update
