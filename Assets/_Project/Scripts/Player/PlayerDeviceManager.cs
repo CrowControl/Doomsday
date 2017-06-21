@@ -18,20 +18,23 @@ namespace _Project.Scripts.Player
         /// Event that triggers when a new device is registered.
         /// </summary>
         public event DeviceEventHandler OnNewDeviceInUse;
+        public event DeviceEventHandler OnDeviceDetached;
         #endregion
         #endregion
 
         #region Unity Methods (Messages)
+
         private void Start()
         {
-            InputManager.OnDeviceDetached += OnDeviceDetached;
+            InputManager.OnDeviceDetached += UnRegisterDevice;
         }
 
         private void Update()
         {
             CheckForNewDevice();
         }
-        #endregion 
+
+        #endregion
 
         #region Checks
         /// <summary>
@@ -78,15 +81,19 @@ namespace _Project.Scripts.Player
         #endregion
 
         #region Event Methods
+
         /// <summary>
         /// Called when a device is detached.
         /// </summary>
         /// <param name="device"></param>
-        private void OnDeviceDetached(InputDevice device)
+        public void UnRegisterDevice(InputDevice device)
         {
+            if (OnDeviceDetached != null)
+                OnDeviceDetached(device);
+
             _devicesInUse.Remove(device);
-            //todo
         }
+
         #endregion
     }
 }

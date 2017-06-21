@@ -37,7 +37,11 @@ namespace _Project.Scripts.UI.Character_Selection
         /// <summary>
         /// Event that is thrown when a character has been selected. Includes a reference to the character prefab in the parameters.
         /// </summary>
-        public event CharacterSelectEventHandler OnCharacterSelected;
+        public event CharacterSelectEventHandler OnCharacterSelected, OnSelectionFailed;
+        #endregion
+
+        #region Internal
+        private bool _succesfullySelected;
         #endregion
 
         private void Awake()
@@ -126,6 +130,8 @@ namespace _Project.Scripts.UI.Character_Selection
 
             //Throw select event and destroy this ui.
             OnCharacterSelected(_focusedHeadShot.AssociatedCharacterPrefab, Device);
+            _succesfullySelected = true;
+
             Destroy(gameObject);
         }
 
@@ -202,5 +208,11 @@ namespace _Project.Scripts.UI.Character_Selection
         }
 
         #endregion
+
+        private void OnDestroy()
+        {
+            if (_succesfullySelected && OnSelectionFailed != null)
+                OnSelectionFailed(null, Device);
+        }
     }
 }
