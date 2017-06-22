@@ -45,6 +45,11 @@ namespace _Project.Scripts.General
             return value;
         }
 
+        public static float MinClamp(float value, float minValue)
+        {
+            return value < minValue ? minValue : value;
+        }
+
         public static float Clamp(float value, float maxValue)
         {
             return Clamp(value, 0, maxValue);

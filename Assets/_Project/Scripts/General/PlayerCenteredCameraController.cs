@@ -15,6 +15,7 @@ namespace _Project.Scripts.General
 
         #region Components
         private Player.PlayerManager _playerManager;
+        private TransformLimitManager _cameraLimits;
         private Camera _camera;
         #endregion
 
@@ -22,7 +23,9 @@ namespace _Project.Scripts.General
         private void Awake()
         {
             _playerManager = GetComponent<Player.PlayerManager>();
+
             _camera = Camera.main;
+            _cameraLimits = _camera.GetComponent<TransformLimitManager>();
         }
 
         // Update is called once per frame
@@ -45,6 +48,7 @@ namespace _Project.Scripts.General
             //Get center position by getting the average, and use it as camera position.
             Vector3 center = sum / players.Count;
             _camera.transform.position = new Vector3(center.x, center.y, _camera.transform.position.z);
+            _cameraLimits.ApplyLimits(_camera.transform);
         }
         private void UpdateViewPortsize()
         {

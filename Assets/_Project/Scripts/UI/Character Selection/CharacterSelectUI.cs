@@ -211,7 +211,7 @@ namespace _Project.Scripts.UI.Character_Selection
 
         private void OnDestroy()
         {
-            if (_succesfullySelected && OnSelectionFailed != null)
+            if (!_succesfullySelected && OnSelectionFailed != null)
                 OnSelectionFailed(null, Device);
         }
     }

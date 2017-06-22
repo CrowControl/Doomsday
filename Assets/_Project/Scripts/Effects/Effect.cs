@@ -10,7 +10,6 @@ namespace _Project.Scripts.Effects
         /// </summary>
         /// <param name="effectPrefab">Effect prefab to apply.</param>
         /// <param name="gameObj">Game object to apply the effect to.</param>
-        /// <param name="instantiatedEffect">reference to the instantiated effect. null if not succesfull.</param>
         /// <returns>true if the effect was succesfully applied, false otherwise.</returns>
         public static bool TryApplyEffect(Effect effectPrefab, GameObject gameObj)
         {

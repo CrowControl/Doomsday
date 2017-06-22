@@ -67,20 +67,21 @@ namespace _Project.Scripts.Player
             charSelect.Device = device;
 
             //Hook up to both succes and failure events.
-            charSelect.OnCharacterSelected += OnCharacterSelected;
+            charSelect.OnCharacterSelected += AddPlayer;
             charSelect.OnSelectionFailed += (c, inputDevice) => _deviceManager.UnRegisterDevice(inputDevice);
             
             //Set the index for the next player.
             _newPlayerIndex++;
         }
 
-        private void OnCharacterSelected(PlayerCharacterController characterPrefab, InputDevice device)
+        public void AddPlayer(PlayerCharacterController characterPrefab, InputDevice device)
         {
             //Spawn the character, pass the device reference.
             PlayerCharacterController playerCharacter = Instantiate(characterPrefab,  (Vector2)_camera.transform.position, Quaternion.identity);
             playerCharacter.Device = device;
             
             _playerCharacters.Add(playerCharacter);
+            playerCharacter.OnDestroyed += () => _playerCharacters.Remove(playerCharacter);
         }
 
         #endregion

@@ -1,12 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[ExecuteInEditMode]
-public class IsometricSpriteRenderer : MonoBehaviour
+namespace _Project.Scripts.General
 {
-    void Update()
+    [ExecuteInEditMode]
+    public class IsometricSpriteRenderer : MonoBehaviour
     {
-        GetComponent<Renderer>().sortingOrder = (int)(transform.position.y * -10);
+        void Update()
+        {
+            GetComponent<Renderer>().sortingOrder = (int)(transform.position.y * -10);
+        }
     }
 }

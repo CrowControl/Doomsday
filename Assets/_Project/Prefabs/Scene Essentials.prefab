@@ -674,6 +674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxPlayerCount: 4
+  _timeUntilOrphanDies: 5
 --- !u!114 &114949749195507596
 MonoBehaviour:
   m_ObjectHideFlags: 1
