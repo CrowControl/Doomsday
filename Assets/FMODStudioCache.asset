@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114583895514425438}
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   EditorEvents:
   - {fileID: 114377864339984926}
   - {fileID: 114479281648284218}
@@ -35,9 +35,9 @@ MonoBehaviour:
   - {fileID: 114360312029951544}
   - {fileID: 114834009176852834}
   - {fileID: 114318929823378640}
-  MasterBankRef: {fileID: 114616423174830810}
+  MasterBankRef: {fileID: 114263383714848324}
   StringsBankRef: {fileID: 114583895514425438}
-  stringsBankWriteTime: 636336603920605032
+  stringsBankWriteTime: 636337246257087445
   cacheVersion: 2
 --- !u!114 &114005673866664620
 MonoBehaviour:
@@ -145,6 +145,21 @@ MonoBehaviour:
   Max: 1
   Default: 0
 --- !u!114 &114038408491207810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: curGamePlay
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114038929820465032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -589,13 +604,28 @@ MonoBehaviour:
   Path: event:/Psycoon/Charge_heal
   guid: ea4fb2c877064548a93c2dac4a06f79a
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &114173306718787778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Flamethrowing
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114173967429665960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,7 +640,7 @@ MonoBehaviour:
   Path: event:/Merlin/Sword_stick_in_terrain
   guid: 4dd89ce230bfd4478d5933d463a815d4
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -880,6 +910,25 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114263383714848324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\Dropbox\projects\hawt_dayum\Game\Doomsday 1\Assets\Plugins\FMOD\Desktop\Master
+    Bank.bank
+  lastModified: 636337246257067490
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 98461248
+  Exists: 1
 --- !u!114 &114267870685430754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -959,7 +1008,7 @@ MonoBehaviour:
   Path: event:/Merlin/Drop_in
   guid: fc75528ee60109478150b0754c031f23
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1014,7 +1063,7 @@ MonoBehaviour:
   Path: event:/Joanne/Drop_in
   guid: 42bba1a97f182c4cb996346a1a7eccca
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1065,7 +1114,7 @@ MonoBehaviour:
   Path: event:/Change_character
   guid: 98b5093309138c4f81b3fadf025a54a3
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1250,7 +1299,7 @@ MonoBehaviour:
   Path: event:/Spitter/Spawn
   guid: 4fb07aa463b8cf4f822c67a8388e810a
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1331,13 +1380,13 @@ MonoBehaviour:
   Path: event:/Chief/Footstep
   guid: 470d5c03502836459fcbb32043c43eed
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 30
 --- !u!114 &114379430030469658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1354,6 +1403,21 @@ MonoBehaviour:
   Max: 1
   Default: 0
 --- !u!114 &114384065815189756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: curGamePlay
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114387269781398998
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1542,13 +1606,28 @@ MonoBehaviour:
   Path: event:/Joanne/Arm_shield
   guid: c2dda22fdaaf2d4f91293c0a0e5c0225
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &114440771040250020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: curGamePlay
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114441206065683860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1668,7 +1747,7 @@ MonoBehaviour:
   Path: event:/Merlin/Footstep
   guid: 4d39f5cf85b0b441a5a293e97045fb7e
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1719,7 +1798,7 @@ MonoBehaviour:
   Path: event:/Chief/Secondary_attack
   guid: a4f5d452225304429aef9e8b604508b3
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1742,6 +1821,21 @@ MonoBehaviour:
   Max: 1
   Default: 0
 --- !u!114 &114521312129610928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Flamethrowing
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114522531276042066
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1830,7 +1924,7 @@ MonoBehaviour:
   Path: event:/Chief/Drop_in
   guid: 1ede2b8b0853c740b9a2334c3630dcd7
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1851,7 +1945,7 @@ MonoBehaviour:
   Path: event:/Spitter/Hit
   guid: b415173ba495e44fa653c9e5cdc84995
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1900,7 +1994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Plugins\FMOD\Desktop\Master Bank.strings.bank
-  lastModified: 636336603920605032
+  lastModified: 636337246257087445
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -2074,7 +2168,7 @@ MonoBehaviour:
   Path: event:/Merlin/Main_attack
   guid: 94c0bb933bfadd419c963527fe216e94
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2112,6 +2206,51 @@ MonoBehaviour:
   Max: 1
   Default: 0
 --- !u!114 &114676919803262168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Flamethrowing
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114677609498716474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Flamethrowing
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114686667290808716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: curGamePlay
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114691109155301272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -2302,7 +2441,7 @@ MonoBehaviour:
   Path: event:/Psycoon/Drop_in
   guid: 351cc61bbfec654aa0e85d72a82b91ee
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2323,12 +2462,12 @@ MonoBehaviour:
   Path: event:/Music_level_1
   guid: fc6cdc9c5a7fc74e8bd79f4f26a64dfc
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114369189342483622}
+  - {fileID: 114038929820465032}
   MinDistance: 0
   MaxDistance: 0
 --- !u!114 &114752563347998916
@@ -2435,13 +2574,13 @@ MonoBehaviour:
   Path: event:/Joanne/Main_attack
   guid: aeec27732ca6e449b6ef6c987555ac0c
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 70
 --- !u!114 &114793377653648640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2499,15 +2638,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: event:/Joanne/Main_attack_hit
-  guid: f3556a439de6cc46b3ce9fc9867628da
+  guid: 06726fc87280b1469d6cd1b17678411a
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 90
 --- !u!114 &114817635390742094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2582,7 +2721,7 @@ MonoBehaviour:
   Path: event:/Chief/Dead
   guid: ac7c7afc6bbd994c8a1269fbbd346870
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2616,6 +2755,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Hit
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114853829017429868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Flamethrowing
   Min: 0
   Max: 1
   Default: 0
@@ -2753,14 +2907,14 @@ MonoBehaviour:
   Path: event:/Chief/Main_attack
   guid: a6aa7bb830b8c44d9a79a1827cd99e97
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 114833463886595672}
+  - {fileID: 114677609498716474}
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 80
 --- !u!114 &114908085910690284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2910,13 +3064,28 @@ MonoBehaviour:
   Path: event:/Merlin/Secondary_attack
   guid: 6213db938cc92c408d2b8d0048319523
   Banks:
-  - {fileID: 114616423174830810}
+  - {fileID: 114263383714848324}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &114973212200213798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: curGamePlay
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114994418208172310
 MonoBehaviour:
   m_ObjectHideFlags: 0
