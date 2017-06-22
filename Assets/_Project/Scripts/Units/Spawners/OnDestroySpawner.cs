@@ -7,9 +7,17 @@ namespace _Project.Scripts.Units.Spawners
     {
         [SerializeField] private GameObject _spawnPrefab;
 
+        private bool _applicationIsQuitting;
+
+        protected virtual void OnApplicationQuit()
+        {
+            _applicationIsQuitting = true;
+        }
+
         protected override void OnDestroy()
         {
-            Instantiate(_spawnPrefab, transform.position, Quaternion.identity);
+            if(!_applicationIsQuitting)
+                Instantiate(_spawnPrefab, transform.position, Quaternion.identity);
         }
     }
 }
